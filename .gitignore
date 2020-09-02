@@ -1,0 +1,10 @@
+*.s#*
+*.b#*
+*.l#*
+*.epf
+*.zip
+*.lck*
+*.scr*
+*.lck
+*.sch.lck
+*.brd.lck
