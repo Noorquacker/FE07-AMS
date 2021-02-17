@@ -12013,6 +12013,12 @@ W = angled&lt;p&gt;
 <part name="R33" library="rcl" deviceset="R-US_" device="R0805" value="150k">
 <attribute name="PARTNO" value="ERJ-6ENF1503V"/>
 </part>
+<part name="JP6" library="FormE" deviceset="TWO-WAY-JUMPER" device="-0603" value="0R">
+<attribute name="PARTNO" value="ERJ-3EKF1002V"/>
+</part>
+<part name="JP7" library="FormE" deviceset="TWO-WAY-JUMPER" device="-0603" value="0R">
+<attribute name="PARTNO" value="ERJ-3EKF1002V"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -12128,11 +12134,11 @@ protection</text>
 <text x="-510.54" y="266.7" size="6.4516" layer="97">VEHICLE VOLTAGE CONNECTIONS</text>
 <wire x1="-607.06" y1="279.4" x2="-607.06" y2="119.38" width="1.27" layer="97" style="shortdash"/>
 <wire x1="-607.06" y1="119.38" x2="-607.06" y2="-40.64" width="1.27" layer="97" style="shortdash"/>
-<wire x1="-607.06" y1="279.4" x2="-685.8" y2="279.4" width="2.54" layer="97"/>
-<wire x1="-685.8" y1="279.4" x2="-685.8" y2="119.38" width="2.54" layer="97"/>
-<wire x1="-685.8" y1="119.38" x2="-685.8" y2="-40.64" width="2.54" layer="97"/>
-<wire x1="-685.8" y1="-40.64" x2="-607.06" y2="-40.64" width="2.54" layer="97"/>
-<wire x1="-607.06" y1="119.38" x2="-685.8" y2="119.38" width="2.54" layer="97"/>
+<wire x1="-607.06" y1="279.4" x2="-711.2" y2="279.4" width="2.54" layer="97"/>
+<wire x1="-711.2" y1="279.4" x2="-711.2" y2="119.38" width="2.54" layer="97"/>
+<wire x1="-711.2" y1="119.38" x2="-711.2" y2="-40.64" width="2.54" layer="97"/>
+<wire x1="-711.2" y1="-40.64" x2="-607.06" y2="-40.64" width="2.54" layer="97"/>
+<wire x1="-607.06" y1="119.38" x2="-711.2" y2="119.38" width="2.54" layer="97"/>
 <wire x1="378.46" y1="2.54" x2="622.3" y2="2.54" width="2.54" layer="97"/>
 <text x="-200.66" y="17.78" size="6.4516" layer="97" font="vector" align="bottom-center">Indicator LEDs</text>
 <text x="-220.98" y="12.7" size="3.81" layer="97" font="vector" align="top-left">Indicator LEDs show the status of the system
@@ -12164,16 +12170,15 @@ extra MOSFET to invert the signal for the LEDs</text>
 <wire x1="-553.72" y1="-78.74" x2="-678.18" y2="-78.74" width="0.6096" layer="97" style="longdash"/>
 <wire x1="-678.18" y1="-78.74" x2="-678.18" y2="-152.4" width="0.6096" layer="97" style="longdash"/>
 <text x="-650.24" y="-149.86" size="3.81" layer="97">ISOLATED USB INTERFACE</text>
-<wire x1="-685.8" y1="-40.64" x2="-685.8" y2="-162.56" width="2.54" layer="97"/>
-<wire x1="-685.8" y1="-162.56" x2="-355.6" y2="-162.56" width="2.54" layer="97"/>
+<wire x1="-711.2" y1="-162.56" x2="-355.6" y2="-162.56" width="2.54" layer="97"/>
 <wire x1="-355.6" y1="-162.56" x2="-355.6" y2="-40.64" width="2.54" layer="97"/>
 <text x="-553.72" y="137.16" size="6.4516" layer="97">SOURCE 400v Connectors</text>
 <wire x1="-233.68" y1="109.22" x2="-233.68" y2="30.48" width="2.54" layer="97"/>
 <wire x1="-233.68" y1="30.48" x2="-121.92" y2="30.48" width="2.54" layer="97"/>
 <wire x1="-121.92" y1="30.48" x2="-121.92" y2="109.22" width="2.54" layer="97"/>
 <text x="-457.2" y="414.02" size="6.4516" layer="97">BMS Module Connector</text>
-<wire x1="-685.8" y1="279.4" x2="-685.8" y2="426.72" width="2.54" layer="97"/>
-<wire x1="-685.8" y1="426.72" x2="-355.6" y2="426.72" width="2.54" layer="97"/>
+<wire x1="-711.2" y1="279.4" x2="-711.2" y2="426.72" width="2.54" layer="97"/>
+<wire x1="-711.2" y1="426.72" x2="-355.6" y2="426.72" width="2.54" layer="97"/>
 <wire x1="-355.6" y1="426.72" x2="-355.6" y2="279.4" width="2.54" layer="97"/>
 <wire x1="-607.06" y1="426.72" x2="-607.06" y2="279.4" width="1.27" layer="97" style="shortdash"/>
 <text x="-640.08" y="441.96" size="12.7" layer="97">ISOLATED COMPONENTS</text>
@@ -12191,7 +12196,11 @@ Looks like it can have 55V Back EMF even with Suppression.</text>
 <wire x1="121.92" y1="449.58" x2="378.46" y2="449.58" width="2.54" layer="97"/>
 <wire x1="378.46" y1="449.58" x2="378.46" y2="297.18" width="2.54" layer="97"/>
 <text x="129.54" y="439.42" size="5.08" layer="97">Current Sensor</text>
-<text x="325.12" y="27.94" size="2.54" layer="94" align="bottom-right">Still need to pin out BMS communication</text>
+<wire x1="-711.2" y1="-40.64" x2="-711.2" y2="-162.56" width="2.54" layer="97"/>
+<text x="-464.82" y="213.36" size="1.778" layer="97">@400V outputs 5.263V</text>
+<text x="-467.36" y="55.88" size="1.778" layer="97">@400V outputs 5.263V</text>
+<text x="-403.86" y="73.66" size="1.778" layer="97">Connection after the fuse to offer
+protection to the IMD</text>
 </plain>
 <instances>
 <instance part="U4" gate="P" x="60.96" y="210.82" smashed="yes">
@@ -14052,6 +14061,16 @@ Looks like it can have 55V Back EMF even with Suppression.</text>
 <attribute name="PARTNO" x="-436.88" y="83.82" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="NAME" x="-438.3786" y="87.63" size="1.778" layer="95" rot="MR270"/>
 <attribute name="VALUE" x="-433.578" y="87.63" size="1.778" layer="96" rot="MR270"/>
+</instance>
+<instance part="JP6" gate="G$1" x="-678.18" y="393.7" smashed="yes" rot="MR0">
+<attribute name="PARTNO" x="-678.18" y="393.7" size="1.778" layer="96" rot="MR180" display="off"/>
+<attribute name="NAME" x="-680.72" y="396.24" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="-680.72" y="393.7" size="1.778" layer="96" rot="MR0"/>
+</instance>
+<instance part="JP7" gate="G$1" x="-688.34" y="388.62" smashed="yes" rot="MR0">
+<attribute name="PARTNO" x="-688.34" y="388.62" size="1.778" layer="96" rot="MR180" display="off"/>
+<attribute name="NAME" x="-690.88" y="391.16" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="-690.88" y="388.62" size="1.778" layer="96" rot="MR0"/>
 </instance>
 </instances>
 <busses>
@@ -16240,6 +16259,11 @@ Looks like it can have 55V Back EMF even with Suppression.</text>
 <wire x1="-622.3" y1="195.58" x2="-680.72" y2="195.58" width="0.1524" layer="91"/>
 <label x="-678.18" y="195.58" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U4" gate="IO" pin="MIBSPI1CLK"/>
+<wire x1="251.46" y1="91.44" x2="342.9" y2="91.44" width="0.1524" layer="91"/>
+<label x="342.9" y="91.44" size="1.778" layer="95" rot="MR0"/>
+</segment>
 </net>
 <net name="BATTERY_VOLTAGE_IS_AVAILABLE" class="0">
 <segment>
@@ -16263,6 +16287,11 @@ Looks like it can have 55V Back EMF even with Suppression.</text>
 <pinref part="U4" gate="IO" pin="MIBSPI1NCS[1]/N2HET1[17]/MII_COL/USB1.SUSPEND/EQEP1S"/>
 <wire x1="251.46" y1="86.36" x2="342.9" y2="86.36" width="0.1524" layer="91"/>
 <label x="342.9" y="86.36" size="1.778" layer="95" rot="MR0"/>
+</segment>
+<segment>
+<pinref part="U4" gate="IO" pin="N2HET1[3]/SPI4NCS[0]/USB2.SPEED/USB_FUNC.PUENON/N2HET2[10]/EQEP2B"/>
+<wire x1="251.46" y1="157.48" x2="345.44" y2="157.48" width="0.1524" layer="91"/>
+<label x="345.44" y="157.48" size="1.778" layer="95" rot="MR0"/>
 </segment>
 </net>
 <net name="N$88" class="0">
@@ -16708,12 +16737,10 @@ Looks like it can have 55V Back EMF even with Suppression.</text>
 <wire x1="-680.72" y1="241.3" x2="-622.3" y2="241.3" width="0.1524" layer="91"/>
 <label x="-678.18" y="241.3" size="1.778" layer="95"/>
 </segment>
-</net>
-<net name="BATTERY_VOLTAGE_MISO" class="0">
 <segment>
-<pinref part="U33" gate="G$1" pin="OUTB"/>
-<wire x1="-680.72" y1="81.28" x2="-622.3" y2="81.28" width="0.1524" layer="91"/>
-<label x="-678.18" y="81.28" size="1.778" layer="95"/>
+<pinref part="U4" gate="IO" pin="MIBSPI1SOMI[0]"/>
+<wire x1="251.46" y1="96.52" x2="342.9" y2="96.52" width="0.1524" layer="91"/>
+<label x="342.9" y="96.52" size="1.778" layer="95" rot="MR0"/>
 </segment>
 </net>
 <net name="VEHICLE_VOLTAGE_IS_AVAILABLE" class="0">
@@ -16733,6 +16760,11 @@ Looks like it can have 55V Back EMF even with Suppression.</text>
 <pinref part="U34" gate="G$1" pin="INA"/>
 <wire x1="-622.3" y1="35.56" x2="-680.72" y2="35.56" width="0.1524" layer="91"/>
 <label x="-678.18" y="35.56" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U4" gate="IO" pin="N2HET1[0]/SPI4CLK/EPWM2B"/>
+<wire x1="251.46" y1="165.1" x2="345.44" y2="165.1" width="0.1524" layer="91"/>
+<label x="345.44" y="165.1" size="1.778" layer="95" rot="MR0"/>
 </segment>
 </net>
 <net name="INDICATOR_1" class="0">
@@ -17257,14 +17289,16 @@ Looks like it can have 55V Back EMF even with Suppression.</text>
 <segment>
 <pinref part="U11" gate="G$1" pin="INA"/>
 <wire x1="-622.3" y1="393.7" x2="-675.64" y2="393.7" width="0.1524" layer="91"/>
-<label x="-675.64" y="393.7" size="1.778" layer="95"/>
+<label x="-673.1" y="393.7" size="1.778" layer="95"/>
+<pinref part="JP6" gate="G$1" pin="P$2"/>
 </segment>
 </net>
 <net name="BMS_RX" class="0">
 <segment>
 <pinref part="U11" gate="G$1" pin="OUTB"/>
-<wire x1="-622.3" y1="388.62" x2="-675.64" y2="388.62" width="0.1524" layer="91"/>
-<label x="-675.64" y="388.62" size="1.778" layer="95"/>
+<wire x1="-622.3" y1="388.62" x2="-685.8" y2="388.62" width="0.1524" layer="91"/>
+<label x="-673.1" y="388.62" size="1.778" layer="95"/>
+<pinref part="JP7" gate="G$1" pin="P$2"/>
 </segment>
 </net>
 <net name="WAKEUP" class="0">
@@ -17272,6 +17306,11 @@ Looks like it can have 55V Back EMF even with Suppression.</text>
 <pinref part="U10" gate="G$1" pin="INA"/>
 <wire x1="-622.3" y1="342.9" x2="-675.64" y2="342.9" width="0.1524" layer="91"/>
 <label x="-675.64" y="342.9" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U4" gate="IO" pin="GIOB[3]/USB2.RCV/USB_FUNC.RXDI"/>
+<wire x1="101.6" y1="58.42" x2="40.64" y2="58.42" width="0.1524" layer="91"/>
+<label x="40.64" y="58.42" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="BMS_FAULT" class="0">
@@ -17302,6 +17341,17 @@ Looks like it can have 55V Back EMF even with Suppression.</text>
 <wire x1="-541.02" y1="403.86" x2="-449.58" y2="403.86" width="0.1524" layer="91"/>
 <label x="-515.62" y="403.86" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U4" gate="IO" pin="CAN2TX"/>
+<wire x1="101.6" y1="40.64" x2="83.82" y2="40.64" width="0.1524" layer="91"/>
+<label x="83.82" y="40.64" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="JP6" gate="G$1" pin="P$3"/>
+<wire x1="-678.18" y1="383.54" x2="-678.18" y2="370.84" width="0.1524" layer="91"/>
+<wire x1="-678.18" y1="370.84" x2="-701.04" y2="370.84" width="0.1524" layer="91"/>
+<label x="-701.04" y="370.84" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="BMS_CAN_RX" class="0">
 <segment>
@@ -17311,6 +17361,16 @@ Looks like it can have 55V Back EMF even with Suppression.</text>
 <pinref part="JP1" gate="G$1" pin="P$3"/>
 <wire x1="-520.7" y1="398.78" x2="-454.66" y2="398.78" width="0.1524" layer="91"/>
 <label x="-515.62" y="398.78" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U4" gate="IO" pin="CAN2RX"/>
+<wire x1="101.6" y1="43.18" x2="83.82" y2="43.18" width="0.1524" layer="91"/>
+<label x="83.82" y="43.18" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="JP7" gate="G$1" pin="P$3"/>
+<wire x1="-688.34" y1="378.46" x2="-703.58" y2="378.46" width="0.1524" layer="91"/>
+<label x="-706.12" y="378.46" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="WAKEUP_HV" class="0">
@@ -17444,39 +17504,16 @@ Looks like it can have 55V Back EMF even with Suppression.</text>
 <label x="193.04" y="403.86" size="1.778" layer="95" rot="MR0"/>
 </segment>
 </net>
-<net name="VOLTAGE_MONITOR_MISO" class="0">
-<segment>
-<pinref part="U4" gate="IO" pin="MIBSPI1SOMI[0]"/>
-<wire x1="251.46" y1="96.52" x2="342.9" y2="96.52" width="0.1524" layer="91"/>
-<label x="342.9" y="96.52" size="1.778" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="VOLTAGE_MONITOR_SCLK" class="0">
-<segment>
-<pinref part="U4" gate="IO" pin="MIBSPI1CLK"/>
-<wire x1="251.46" y1="91.44" x2="342.9" y2="91.44" width="0.1524" layer="91"/>
-<label x="342.9" y="91.44" size="1.778" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="OPT_BATTERY_VOLTAGE_MONITOR_SCK" class="0">
-<segment>
-<pinref part="U4" gate="IO" pin="N2HET1[0]/SPI4CLK/EPWM2B"/>
-<wire x1="251.46" y1="165.1" x2="345.44" y2="165.1" width="0.1524" layer="91"/>
-<label x="345.44" y="165.1" size="1.778" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="OPT_BATTERY_VOLTAGE_MONITOR_CS" class="0">
-<segment>
-<pinref part="U4" gate="IO" pin="N2HET1[3]/SPI4NCS[0]/USB2.SPEED/USB_FUNC.PUENON/N2HET2[10]/EQEP2B"/>
-<wire x1="251.46" y1="157.48" x2="345.44" y2="157.48" width="0.1524" layer="91"/>
-<label x="345.44" y="157.48" size="1.778" layer="95" rot="MR0"/>
-</segment>
-</net>
-<net name="OPT_BATTERY_VOLTAGE_MONITOR_MISO" class="0">
+<net name="BATTERY_VOLTAGE_MONITOR_MISO" class="0">
 <segment>
 <pinref part="U4" gate="IO" pin="N2HET1[5]/SPI4SOMI[0]/N2HET2[12]/EPWM3B"/>
 <wire x1="251.46" y1="152.4" x2="345.44" y2="152.4" width="0.1524" layer="91"/>
 <label x="345.44" y="152.4" size="1.778" layer="95" rot="MR0"/>
+</segment>
+<segment>
+<pinref part="U33" gate="G$1" pin="OUTB"/>
+<wire x1="-680.72" y1="81.28" x2="-622.3" y2="81.28" width="0.1524" layer="91"/>
+<label x="-678.18" y="81.28" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$30" class="0">
@@ -17613,6 +17650,30 @@ Looks like it can have 55V Back EMF even with Suppression.</text>
 <pinref part="R103" gate="G$1" pin="1"/>
 <wire x1="-436.88" y1="76.2" x2="-436.88" y2="78.74" width="0.1524" layer="91"/>
 <pinref part="R33" gate="G$1" pin="2"/>
+</segment>
+</net>
+<net name="BMS_UART_TX" class="0">
+<segment>
+<pinref part="JP6" gate="G$1" pin="P$1"/>
+<wire x1="-678.18" y1="403.86" x2="-695.96" y2="403.86" width="0.1524" layer="91"/>
+<label x="-695.96" y="403.86" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U4" gate="IO" pin="N2HET1[13]/SCITX/EPWM5B"/>
+<wire x1="251.46" y1="132.08" x2="345.44" y2="132.08" width="0.1524" layer="91"/>
+<label x="345.44" y="132.08" size="1.778" layer="95" rot="MR0"/>
+</segment>
+</net>
+<net name="BMS_UART_RX" class="0">
+<segment>
+<pinref part="U4" gate="IO" pin="N2HET1[6]/SCIRX/EPWM5A"/>
+<wire x1="251.46" y1="149.86" x2="345.44" y2="149.86" width="0.1524" layer="91"/>
+<label x="345.44" y="149.86" size="1.778" layer="95" rot="MR0"/>
+</segment>
+<segment>
+<pinref part="JP7" gate="G$1" pin="P$1"/>
+<wire x1="-688.34" y1="398.78" x2="-703.58" y2="398.78" width="0.1524" layer="91"/>
+<label x="-703.58" y="398.78" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
