@@ -15793,7 +15793,7 @@ protection to the IMD</text>
 <junction x="330.2" y="-88.9"/>
 </segment>
 </net>
-<net name="N$4" class="0">
+<net name="NEG_FET" class="0">
 <segment>
 <pinref part="U25" gate="A" pin="D"/>
 <wire x1="492.76" y1="-132.08" x2="492.76" y2="-88.9" width="0.1524" layer="91"/>
@@ -15864,7 +15864,7 @@ protection to the IMD</text>
 <pinref part="U23" gate="A" pin="OUT"/>
 </segment>
 </net>
-<net name="N$20" class="0">
+<net name="PRE_FET" class="0">
 <segment>
 <pinref part="U27" gate="A" pin="D"/>
 <wire x1="525.78" y1="-111.76" x2="525.78" y2="-165.1" width="0.1524" layer="91"/>
@@ -15876,14 +15876,14 @@ protection to the IMD</text>
 <junction x="538.48" y="-111.76"/>
 </segment>
 </net>
-<net name="N$1" class="0">
+<net name="NEG_GATE" class="0">
 <segment>
 <pinref part="U22" gate="B" pin="OUT"/>
 <pinref part="U25" gate="A" pin="G"/>
 <wire x1="444.5" y1="-147.32" x2="480.06" y2="-147.32" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$5" class="0">
+<net name="POS_FET" class="0">
 <segment>
 <pinref part="H6" gate="G$1" pin="2"/>
 <wire x1="551.18" y1="-66.04" x2="462.28" y2="-66.04" width="0.1524" layer="91"/>
@@ -15891,7 +15891,7 @@ protection to the IMD</text>
 <wire x1="462.28" y1="-66.04" x2="462.28" y2="-99.06" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$6" class="0">
+<net name="POS_GATE" class="0">
 <segment>
 <pinref part="U24" gate="A" pin="G"/>
 <pinref part="U22" gate="A" pin="OUT"/>
