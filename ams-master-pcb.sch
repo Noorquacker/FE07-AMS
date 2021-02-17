@@ -12191,8 +12191,9 @@ Looks like it can have 55V Back EMF even with Suppression.</text>
 <wire x1="162.56" y1="-279.4" x2="378.46" y2="-279.4" width="2.54" layer="97"/>
 <wire x1="378.46" y1="-279.4" x2="378.46" y2="-205.74" width="2.54" layer="97"/>
 <wire x1="162.56" y1="-170.18" x2="378.46" y2="-170.18" width="2.54" layer="97"/>
-<text x="-759.46" y="104.14" size="2.54" layer="94">LOOK AT HOW OLD AMS DID VOLTAGE SESING (2 SPI OR 1)</text>
-<text x="264.16" y="193.04" size="2.54" layer="94">LOOK AT HOW OLD AMS DID VOLTAGE SESING (2 SPI OR 1)</text>
+<text x="-779.78" y="91.44" size="2.54" layer="94">LOOK AT HOW OLD AMS DID VOLTAGE SESING (2 SPI OR 1)
+Looks like they implemented both muxd into the 1 channel, 2 might be easier to code?
+@Hutch</text>
 <wire x1="121.92" y1="449.58" x2="378.46" y2="449.58" width="2.54" layer="97"/>
 <wire x1="378.46" y1="449.58" x2="378.46" y2="297.18" width="2.54" layer="97"/>
 <text x="129.54" y="439.42" size="5.08" layer="97">Current Sensor</text>
