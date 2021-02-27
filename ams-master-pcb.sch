@@ -12202,6 +12202,10 @@ Looks like they implemented both muxd into the 1 channel, 2 might be easier to c
 <text x="-467.36" y="55.88" size="1.778" layer="97">@400V outputs 5.263V</text>
 <text x="-403.86" y="73.66" size="1.778" layer="97">Connection after the fuse to offer
 protection to the IMD</text>
+<text x="-60.96" y="-78.74" size="1.778" layer="91">Current Short Indicator??</text>
+<text x="170.18" y="368.3" size="1.778" layer="91">If we want to buffer the input from the current sensor board we could use these?</text>
+<text x="538.48" y="-15.24" size="1.778" layer="91">low-side mosfet controller, don't really have a good use for it, 
+unless we want to power the fans?</text>
 </plain>
 <instances>
 <instance part="U4" gate="P" x="60.96" y="210.82" smashed="yes">
