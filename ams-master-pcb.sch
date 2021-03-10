@@ -11742,6 +11742,9 @@ In this library the device names are the same as the pin names of the symbols, t
 <part name="J4" library="FormE" deviceset="MOLEX_43650-0416" device="MOLEX_43650-0416_0_0"/>
 <part name="J6" library="FormE" deviceset="MOLEX_43650-0416" device="MOLEX_43650-0416_0_0"/>
 <part name="J7" library="FormE" deviceset="MOLEX_43650-0616" device="" value="43650-0616"/>
+<part name="C28" library="rcl" deviceset="C-US" device="C0603K" value="4.7uF">
+<attribute name="PARTNO" value="GRM188R61A475KE15D"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -13780,10 +13783,10 @@ unless we want to power the fans?</text>
 <attribute name="NAME" x="-680.72" y="396.24" size="1.778" layer="95" rot="MR0"/>
 <attribute name="VALUE" x="-680.72" y="393.7" size="1.778" layer="96" rot="MR0"/>
 </instance>
-<instance part="JP7" gate="G$1" x="-688.34" y="388.62" smashed="yes" rot="MR0">
-<attribute name="PARTNO" x="-688.34" y="388.62" size="1.778" layer="96" rot="MR180" display="off"/>
-<attribute name="NAME" x="-690.88" y="391.16" size="1.778" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="-690.88" y="388.62" size="1.778" layer="96" rot="MR0"/>
+<instance part="JP7" gate="G$1" x="-685.8" y="337.82" smashed="yes" rot="MR0">
+<attribute name="PARTNO" x="-685.8" y="337.82" size="1.778" layer="96" rot="MR180" display="off"/>
+<attribute name="NAME" x="-688.34" y="340.36" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="-688.34" y="337.82" size="1.778" layer="96" rot="MR0"/>
 </instance>
 <instance part="J4" gate="G$0" x="-373.38" y="233.68" smashed="yes" rot="MR0">
 <attribute name="NAME" x="-373.38" y="238.76" size="2.54" layer="95" rot="MR0" align="top-left"/>
@@ -13793,6 +13796,11 @@ unless we want to power the fans?</text>
 </instance>
 <instance part="J7" gate="G$1" x="-383.54" y="342.9" smashed="yes">
 <attribute name="NAME" x="-388.62" y="353.06" size="1.778" layer="95"/>
+</instance>
+<instance part="C28" gate="G$1" x="-579.12" y="299.72" smashed="yes" rot="MR0">
+<attribute name="PARTNO" x="-579.12" y="299.72" size="1.778" layer="96" display="off"/>
+<attribute name="NAME" x="-580.136" y="300.355" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="-580.136" y="295.529" size="1.778" layer="96" rot="MR0"/>
 </instance>
 </instances>
 <busses>
@@ -16816,6 +16824,9 @@ unless we want to power the fans?</text>
 <pinref part="SUPPLY2" gate="G$1" pin="GND1"/>
 <wire x1="-591.82" y1="292.1" x2="-579.12" y2="292.1" width="0.1524" layer="91"/>
 <wire x1="-579.12" y1="292.1" x2="-579.12" y2="289.56" width="0.1524" layer="91"/>
+<pinref part="C28" gate="G$1" pin="2"/>
+<wire x1="-579.12" y1="294.64" x2="-579.12" y2="292.1" width="0.1524" layer="91"/>
+<junction x="-579.12" y="292.1"/>
 </segment>
 <segment>
 <pinref part="C17" gate="G$1" pin="2"/>
@@ -16879,6 +16890,9 @@ unless we want to power the fans?</text>
 <wire x1="-591.82" y1="307.34" x2="-579.12" y2="307.34" width="0.1524" layer="91"/>
 <wire x1="-579.12" y1="307.34" x2="-579.12" y2="312.42" width="0.1524" layer="91"/>
 <pinref part="SUPPLY3" gate="G$1" pin="+5V/1"/>
+<pinref part="C28" gate="G$1" pin="1"/>
+<wire x1="-579.12" y1="302.26" x2="-579.12" y2="307.34" width="0.1524" layer="91"/>
+<junction x="-579.12" y="307.34"/>
 </segment>
 <segment>
 <wire x1="-591.82" y1="347.98" x2="-591.82" y2="360.68" width="0.1524" layer="91"/>
@@ -16989,14 +17003,6 @@ unless we want to power the fans?</text>
 <pinref part="JP6" gate="G$1" pin="P$2"/>
 </segment>
 </net>
-<net name="BMS_RX" class="0">
-<segment>
-<pinref part="U11" gate="G$1" pin="OUTB"/>
-<wire x1="-622.3" y1="388.62" x2="-685.8" y2="388.62" width="0.1524" layer="91"/>
-<label x="-673.1" y="388.62" size="1.778" layer="95"/>
-<pinref part="JP7" gate="G$1" pin="P$2"/>
-</segment>
-</net>
 <net name="WAKEUP" class="0">
 <segment>
 <pinref part="U10" gate="G$1" pin="INA"/>
@@ -17011,14 +17017,14 @@ unless we want to power the fans?</text>
 </net>
 <net name="BMS_FAULT" class="0">
 <segment>
-<pinref part="U10" gate="G$1" pin="OUTB"/>
-<wire x1="-622.3" y1="337.82" x2="-675.64" y2="337.82" width="0.1524" layer="91"/>
-<label x="-675.64" y="337.82" size="1.778" layer="95"/>
-</segment>
-<segment>
 <wire x1="101.6" y1="83.82" x2="40.64" y2="83.82" width="0.1524" layer="91"/>
 <label x="40.64" y="83.82" size="1.778" layer="95"/>
 <pinref part="U4" gate="IO" pin="GIOA[0]/USB2.VP/USB_FUNC.RXDPI"/>
+</segment>
+<segment>
+<wire x1="-622.3" y1="388.62" x2="-675.64" y2="388.62" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$1" pin="OUTB"/>
+<label x="-675.64" y="388.62" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="CAR_CAN_P1" class="1">
@@ -17029,14 +17035,6 @@ unless we want to power the fans?</text>
 </segment>
 </net>
 <net name="BMS_CAN_TX" class="0">
-<segment>
-<wire x1="-449.58" y1="396.24" x2="-449.58" y2="403.86" width="0.1524" layer="91"/>
-<pinref part="U13" gate="G$1" pin="TXD"/>
-<wire x1="-447.04" y1="396.24" x2="-449.58" y2="396.24" width="0.1524" layer="91"/>
-<pinref part="JP2" gate="G$1" pin="P$3"/>
-<wire x1="-541.02" y1="403.86" x2="-449.58" y2="403.86" width="0.1524" layer="91"/>
-<label x="-515.62" y="403.86" size="1.778" layer="95"/>
-</segment>
 <segment>
 <pinref part="U4" gate="IO" pin="CAN2TX"/>
 <wire x1="101.6" y1="40.64" x2="83.82" y2="40.64" width="0.1524" layer="91"/>
@@ -17051,22 +17049,14 @@ unless we want to power the fans?</text>
 </net>
 <net name="BMS_CAN_RX" class="0">
 <segment>
-<wire x1="-454.66" y1="388.62" x2="-454.66" y2="398.78" width="0.1524" layer="91"/>
-<pinref part="U13" gate="G$1" pin="RXD"/>
-<wire x1="-447.04" y1="388.62" x2="-454.66" y2="388.62" width="0.1524" layer="91"/>
-<pinref part="JP1" gate="G$1" pin="P$3"/>
-<wire x1="-520.7" y1="398.78" x2="-454.66" y2="398.78" width="0.1524" layer="91"/>
-<label x="-515.62" y="398.78" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="U4" gate="IO" pin="CAN2RX"/>
 <wire x1="101.6" y1="43.18" x2="83.82" y2="43.18" width="0.1524" layer="91"/>
 <label x="83.82" y="43.18" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="JP7" gate="G$1" pin="P$3"/>
-<wire x1="-688.34" y1="378.46" x2="-703.58" y2="378.46" width="0.1524" layer="91"/>
-<label x="-706.12" y="378.46" size="1.778" layer="95"/>
+<wire x1="-685.8" y1="327.66" x2="-701.04" y2="327.66" width="0.1524" layer="91"/>
+<label x="-703.58" y="327.66" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="WAKEUP_HV" class="0">
@@ -17083,57 +17073,23 @@ unless we want to power the fans?</text>
 </net>
 <net name="BMS_FAULT_HV" class="0">
 <segment>
-<pinref part="U10" gate="G$1" pin="INB"/>
-<wire x1="-591.82" y1="337.82" x2="-551.18" y2="337.82" width="0.1524" layer="91"/>
-<label x="-551.18" y="337.82" size="1.778" layer="95" rot="MR0"/>
-</segment>
-<segment>
 <label x="-419.1" y="337.82" size="1.778" layer="95"/>
 <wire x1="-386.08" y1="337.82" x2="-419.1" y2="337.82" width="0.1524" layer="91"/>
 <pinref part="J7" gate="G$1" pin="5"/>
 </segment>
-</net>
-<net name="BMS_CAN_N" class="1">
 <segment>
-<pinref part="U13" gate="G$1" pin="CANL"/>
-<wire x1="-396.24" y1="391.16" x2="-416.56" y2="391.16" width="0.1524" layer="91"/>
-<wire x1="-396.24" y1="386.08" x2="-396.24" y2="391.16" width="0.1524" layer="91"/>
-<pinref part="R1" gate="G$1" pin="1"/>
-<wire x1="-393.7" y1="388.62" x2="-393.7" y2="386.08" width="0.1524" layer="91"/>
-<wire x1="-393.7" y1="386.08" x2="-396.24" y2="386.08" width="0.1524" layer="91"/>
-<wire x1="-393.7" y1="386.08" x2="-375.92" y2="386.08" width="0.1524" layer="91"/>
-<junction x="-393.7" y="386.08"/>
-<label x="-388.62" y="386.08" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="JP3" gate="G$1" pin="P$3"/>
-<wire x1="-472.44" y1="337.82" x2="-492.76" y2="337.82" width="0.1524" layer="91"/>
-<label x="-492.76" y="337.82" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="BMS_CAN_P" class="1">
-<segment>
-<pinref part="U13" gate="G$1" pin="CANH"/>
-<pinref part="R1" gate="G$1" pin="2"/>
-<wire x1="-393.7" y1="398.78" x2="-393.7" y2="401.32" width="0.1524" layer="91"/>
-<wire x1="-393.7" y1="401.32" x2="-396.24" y2="401.32" width="0.1524" layer="91"/>
-<wire x1="-396.24" y1="393.7" x2="-396.24" y2="401.32" width="0.1524" layer="91"/>
-<wire x1="-396.24" y1="393.7" x2="-416.56" y2="393.7" width="0.1524" layer="91"/>
-<wire x1="-393.7" y1="401.32" x2="-375.92" y2="401.32" width="0.1524" layer="91"/>
-<junction x="-393.7" y="401.32"/>
-<label x="-388.62" y="401.32" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="JP4" gate="G$1" pin="P$3"/>
-<wire x1="-497.84" y1="332.74" x2="-520.7" y2="332.74" width="0.1524" layer="91"/>
-<label x="-520.7" y="332.74" size="1.778" layer="95"/>
+<wire x1="-591.82" y1="388.62" x2="-551.18" y2="388.62" width="0.1524" layer="91"/>
+<pinref part="U11" gate="G$1" pin="INB"/>
+<label x="-551.18" y="388.62" size="1.778" layer="95" rot="MR0"/>
 </segment>
 </net>
 <net name="N$31" class="0">
 <segment>
-<pinref part="U11" gate="G$1" pin="INB"/>
 <pinref part="JP1" gate="G$1" pin="P$2"/>
-<wire x1="-591.82" y1="388.62" x2="-523.24" y2="388.62" width="0.1524" layer="91"/>
+<wire x1="-525.78" y1="388.62" x2="-523.24" y2="388.62" width="0.1524" layer="91"/>
+<wire x1="-525.78" y1="388.62" x2="-525.78" y2="337.82" width="0.1524" layer="91"/>
+<pinref part="U10" gate="G$1" pin="INB"/>
+<wire x1="-525.78" y1="337.82" x2="-591.82" y2="337.82" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="BMS_TX_HV" class="0">
@@ -17373,8 +17329,72 @@ unless we want to power the fans?</text>
 </segment>
 <segment>
 <pinref part="JP7" gate="G$1" pin="P$1"/>
-<wire x1="-688.34" y1="398.78" x2="-703.58" y2="398.78" width="0.1524" layer="91"/>
-<label x="-703.58" y="398.78" size="1.778" layer="95"/>
+<wire x1="-685.8" y1="347.98" x2="-701.04" y2="347.98" width="0.1524" layer="91"/>
+<label x="-701.04" y="347.98" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="HV_BMS_CAN_P" class="1">
+<segment>
+<pinref part="U13" gate="G$1" pin="CANH"/>
+<pinref part="R1" gate="G$1" pin="2"/>
+<wire x1="-393.7" y1="398.78" x2="-393.7" y2="401.32" width="0.1524" layer="91"/>
+<wire x1="-393.7" y1="401.32" x2="-396.24" y2="401.32" width="0.1524" layer="91"/>
+<wire x1="-396.24" y1="393.7" x2="-396.24" y2="401.32" width="0.1524" layer="91"/>
+<wire x1="-396.24" y1="393.7" x2="-416.56" y2="393.7" width="0.1524" layer="91"/>
+<wire x1="-393.7" y1="401.32" x2="-375.92" y2="401.32" width="0.1524" layer="91"/>
+<junction x="-393.7" y="401.32"/>
+<label x="-388.62" y="401.32" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="JP4" gate="G$1" pin="P$3"/>
+<wire x1="-497.84" y1="332.74" x2="-520.7" y2="332.74" width="0.1524" layer="91"/>
+<label x="-520.7" y="332.74" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="HV_BMS_CAN_N" class="1">
+<segment>
+<pinref part="U13" gate="G$1" pin="CANL"/>
+<wire x1="-396.24" y1="391.16" x2="-416.56" y2="391.16" width="0.1524" layer="91"/>
+<wire x1="-396.24" y1="386.08" x2="-396.24" y2="391.16" width="0.1524" layer="91"/>
+<pinref part="R1" gate="G$1" pin="1"/>
+<wire x1="-393.7" y1="388.62" x2="-393.7" y2="386.08" width="0.1524" layer="91"/>
+<wire x1="-393.7" y1="386.08" x2="-396.24" y2="386.08" width="0.1524" layer="91"/>
+<wire x1="-393.7" y1="386.08" x2="-375.92" y2="386.08" width="0.1524" layer="91"/>
+<junction x="-393.7" y="386.08"/>
+<label x="-388.62" y="386.08" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="JP3" gate="G$1" pin="P$3"/>
+<wire x1="-472.44" y1="337.82" x2="-492.76" y2="337.82" width="0.1524" layer="91"/>
+<label x="-492.76" y="337.82" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="HV_BMS_CAN_TX" class="0">
+<segment>
+<wire x1="-449.58" y1="396.24" x2="-449.58" y2="403.86" width="0.1524" layer="91"/>
+<pinref part="U13" gate="G$1" pin="TXD"/>
+<wire x1="-447.04" y1="396.24" x2="-449.58" y2="396.24" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="G$1" pin="P$3"/>
+<wire x1="-541.02" y1="403.86" x2="-449.58" y2="403.86" width="0.1524" layer="91"/>
+<label x="-515.62" y="403.86" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="HV_BMS_CAN_RX" class="0">
+<segment>
+<wire x1="-454.66" y1="388.62" x2="-454.66" y2="398.78" width="0.1524" layer="91"/>
+<pinref part="U13" gate="G$1" pin="RXD"/>
+<wire x1="-447.04" y1="388.62" x2="-454.66" y2="388.62" width="0.1524" layer="91"/>
+<pinref part="JP1" gate="G$1" pin="P$3"/>
+<wire x1="-520.7" y1="398.78" x2="-454.66" y2="398.78" width="0.1524" layer="91"/>
+<label x="-515.62" y="398.78" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="BMS_RX" class="0">
+<segment>
+<pinref part="U10" gate="G$1" pin="OUTB"/>
+<pinref part="JP7" gate="G$1" pin="P$2"/>
+<wire x1="-622.3" y1="337.82" x2="-683.26" y2="337.82" width="0.1524" layer="91"/>
+<label x="-675.64" y="337.82" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
