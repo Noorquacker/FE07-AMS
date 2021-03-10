@@ -1181,17 +1181,6 @@ Source: http://www.osram.convergy.de/ ... LO_LS_LY L89K.pdf</description>
 <wire x1="3.81" y1="-2.05" x2="3.81" y2="2.05" width="0.127" layer="21"/>
 <wire x1="3.81" y1="2.05" x2="-3.81" y2="2.05" width="0.127" layer="21"/>
 </package>
-<package name="TE-FSM4JSMATR">
-<smd name="1" x="2.25" y="4.55" dx="1.4" dy="2.1" layer="1"/>
-<smd name="2" x="2.25" y="-4.55" dx="1.4" dy="2.1" layer="1"/>
-<smd name="3" x="-2.25" y="4.55" dx="1.4" dy="2.1" layer="1"/>
-<smd name="4" x="-2.25" y="-4.55" dx="1.4" dy="2.1" layer="1"/>
-<wire x1="-3.81" y1="3.81" x2="-3.81" y2="-3.81" width="0.127" layer="21"/>
-<wire x1="-3.81" y1="-3.81" x2="3.81" y2="-3.81" width="0.127" layer="21"/>
-<wire x1="3.81" y1="-3.81" x2="3.81" y2="3.81" width="0.127" layer="21"/>
-<wire x1="3.81" y1="3.81" x2="-3.81" y2="3.81" width="0.127" layer="21"/>
-<text x="-2.54" y="6.35" size="1.27" layer="25">&gt;NAME</text>
-</package>
 <package name="SAMTEC-FTR-DUALROW">
 <smd name="1" x="-2.7051" y="5.715" dx="2.8956" dy="0.7112" layer="1"/>
 <smd name="3" x="-2.7051" y="4.445" dx="2.8956" dy="0.7112" layer="1"/>
@@ -1984,6 +1973,15 @@ Source: http://www.osram.convergy.de/ ... LO_LS_LY L89K.pdf</description>
 <wire x1="-3" y1="3" x2="0" y2="3" width="0.127" layer="21"/>
 <text x="2.54" y="2.54" size="1.27" layer="25">&gt;NAME</text>
 </package>
+<package name="TE-147873-2">
+<smd name="P$1" x="-2.6" y="0" dx="3.2" dy="2.2" layer="1"/>
+<smd name="P$2" x="2.6" y="0" dx="3.2" dy="2.2" layer="1"/>
+<wire x1="-3" y1="1.75" x2="3" y2="1.75" width="0.127" layer="21"/>
+<wire x1="3" y1="1.75" x2="3" y2="-1.75" width="0.127" layer="21"/>
+<wire x1="3" y1="-1.75" x2="-3" y2="-1.75" width="0.127" layer="21"/>
+<wire x1="-3" y1="-1.75" x2="-3" y2="1.75" width="0.127" layer="21"/>
+<text x="-2.54" y="2.54" size="1.27" layer="25">&gt;NAME</text>
+</package>
 </packages>
 <symbols>
 <symbol name="RM46L852_IO">
@@ -2158,36 +2156,6 @@ Source: http://www.osram.convergy.de/ ... LO_LS_LY L89K.pdf</description>
 <text x="2.54" y="0" size="1.778" layer="95">&gt;NAME</text>
 <text x="2.54" y="-2.54" size="1.778" layer="95">&gt;VALUE</text>
 <wire x1="0" y1="-2.54" x2="0" y2="-1.524" width="0.254" layer="94"/>
-</symbol>
-<symbol name="TACT-SWITCH">
-<pin name="4" x="-5.08" y="-2.54" visible="pad" length="short"/>
-<pin name="3" x="-5.08" y="0" visible="pad" length="short"/>
-<pin name="1" x="5.08" y="0" visible="pad" length="short" rot="R180"/>
-<pin name="2" x="5.08" y="-2.54" visible="pad" length="short" rot="R180"/>
-<wire x1="-2.54" y1="-2.54" x2="-2.54" y2="0" width="0.1524" layer="94"/>
-<wire x1="2.54" y1="0" x2="2.54" y2="-2.54" width="0.1524" layer="94"/>
-<wire x1="0" y1="0.635" x2="0" y2="1.27" width="0.1524" layer="94"/>
-<wire x1="0" y1="1.905" x2="0" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="0" y1="3.175" x2="0" y2="3.81" width="0.1524" layer="94"/>
-<wire x1="-1.905" y1="3.81" x2="1.905" y2="3.81" width="0.1524" layer="94"/>
-<wire x1="-1.905" y1="3.81" x2="-1.905" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="1.905" y1="3.81" x2="1.905" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="-2.54" y1="0" x2="-1.905" y2="0" width="0.1524" layer="94"/>
-<wire x1="-1.905" y1="0" x2="1.905" y2="1.27" width="0.1524" layer="94"/>
-<wire x1="2.54" y1="0" x2="1.905" y2="0" width="0.1524" layer="94"/>
-<polygon width="0.1524" layer="94">
-<vertex x="-2.54" y="-0.254" curve="90"/>
-<vertex x="-2.286" y="0" curve="90"/>
-<vertex x="-2.54" y="0.254" curve="90"/>
-<vertex x="-2.794" y="0" curve="90"/>
-</polygon>
-<polygon width="0.1524" layer="94">
-<vertex x="2.54" y="-0.254" curve="90"/>
-<vertex x="2.794" y="0" curve="90"/>
-<vertex x="2.54" y="0.254" curve="90"/>
-<vertex x="2.286" y="0" curve="90"/>
-</polygon>
-<text x="-2.54" y="5.08" size="1.778" layer="95">&gt;NAME</text>
 </symbol>
 <symbol name="J2X10">
 <pin name="1" x="-12.7" y="7.62" length="middle"/>
@@ -2704,6 +2672,13 @@ Source: http://www.osram.convergy.de/ ... LO_LS_LY L89K.pdf</description>
 <wire x1="-5.08" y1="-10.16" x2="-5.08" y2="7.62" width="0.254" layer="94"/>
 <text x="-5.08" y="10.16" size="1.778" layer="95">&gt;NAME</text>
 </symbol>
+<symbol name="SPST">
+<pin name="1" x="-5.08" y="0" visible="off" length="short" swaplevel="1"/>
+<pin name="2" x="5.08" y="0" visible="off" length="short" swaplevel="1" rot="R180"/>
+<wire x1="-2.54" y1="0" x2="2.54" y2="1.778" width="0.254" layer="94"/>
+<text x="0" y="2.54" size="1.778" layer="95" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-3.302" size="1.778" layer="96" align="bottom-center">&gt;VALUE</text>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="RM46L852" prefix="U" uservalue="yes">
@@ -3210,24 +3185,6 @@ Source: http://www.osram.convergy.de/</description>
 <connects>
 <connect gate="G$1" pin="P$1" pad="P$1"/>
 <connect gate="G$1" pin="P$3" pad="P$2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="TE-FSM4JSMATR" prefix="S">
-<gates>
-<gate name="G$1" symbol="TACT-SWITCH" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="TE-FSM4JSMATR">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-<connect gate="G$1" pin="3" pad="3"/>
-<connect gate="G$1" pin="4" pad="4"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -4185,6 +4142,24 @@ Source: http://www.osram.convergy.de/</description>
 <technologies>
 <technology name="">
 <attribute name="VALUE" value="43650-0616" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TE-147873-2" prefix="S">
+<gates>
+<gate name="G$1" symbol="SPST" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="TE-147873-2">
+<connects>
+<connect gate="G$1" pin="1" pad="P$1"/>
+<connect gate="G$1" pin="2" pad="P$2"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="VALUE" value="147873-2" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -10858,9 +10833,6 @@ In this library the device names are the same as the pin names of the symbols, t
 <part name="R32" library="rcl" deviceset="R-US_" device="R0603" value="2.2K">
 <attribute name="PARTNO" value="ERJ-3EKF2201V"/>
 </part>
-<part name="S3" library="FormE" deviceset="TE-FSM4JSMATR" device="">
-<attribute name="PARTNO" value="FSM4JSMATR"/>
-</part>
 <part name="LED4" library="FormE" deviceset="LED" device="CHIP-LED0805" value="RED">
 <attribute name="PARTNO" value="5988110107F"/>
 </part>
@@ -11745,6 +11717,9 @@ In this library the device names are the same as the pin names of the symbols, t
 <part name="C28" library="rcl" deviceset="C-US" device="C0603K" value="4.7uF">
 <attribute name="PARTNO" value="GRM188R61A475KE15D"/>
 </part>
+<part name="S2" library="FormE" deviceset="TE-147873-2" device="" value="147873-2">
+<attribute name="PARTNO" value="147873-2"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -11979,10 +11954,6 @@ unless we want to power the fans?</text>
 <attribute name="PARTNO" x="129.54" y="276.86" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="NAME" x="128.0414" y="280.67" size="1.778" layer="95" rot="MR270"/>
 <attribute name="VALUE" x="132.842" y="280.67" size="1.778" layer="96" rot="MR270"/>
-</instance>
-<instance part="S3" gate="G$1" x="152.4" y="269.24" smashed="yes" rot="MR0">
-<attribute name="PARTNO" x="152.4" y="269.24" size="1.778" layer="96" rot="MR0" display="off"/>
-<attribute name="NAME" x="154.94" y="274.32" size="1.778" layer="95" rot="MR0"/>
 </instance>
 <instance part="LED4" gate="G$1" x="149.86" y="251.46" smashed="yes" rot="R270">
 <attribute name="PARTNO" x="149.86" y="251.46" size="1.778" layer="96" rot="R180" display="off"/>
@@ -13802,6 +13773,11 @@ unless we want to power the fans?</text>
 <attribute name="NAME" x="-580.136" y="300.355" size="1.778" layer="95" rot="MR0"/>
 <attribute name="VALUE" x="-580.136" y="295.529" size="1.778" layer="96" rot="MR0"/>
 </instance>
+<instance part="S2" gate="G$1" x="152.4" y="269.24" smashed="yes">
+<attribute name="PARTNO" x="152.4" y="269.24" size="1.778" layer="96" display="off"/>
+<attribute name="NAME" x="152.4" y="271.78" size="1.778" layer="95" align="bottom-center"/>
+<attribute name="VALUE" x="152.4" y="265.938" size="1.778" layer="96" align="bottom-center"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -13809,13 +13785,9 @@ unless we want to power the fans?</text>
 <net name="GND" class="0">
 <segment>
 <pinref part="GND18" gate="1" pin="GND"/>
-<wire x1="160.02" y1="261.62" x2="160.02" y2="266.7" width="0.1524" layer="91"/>
-<wire x1="160.02" y1="266.7" x2="157.48" y2="266.7" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="261.62" x2="160.02" y2="269.24" width="0.1524" layer="91"/>
 <wire x1="157.48" y1="269.24" x2="160.02" y2="269.24" width="0.1524" layer="91"/>
-<wire x1="160.02" y1="269.24" x2="160.02" y2="266.7" width="0.1524" layer="91"/>
-<junction x="160.02" y="266.7"/>
-<pinref part="S3" gate="G$1" pin="4"/>
-<pinref part="S3" gate="G$1" pin="3"/>
+<pinref part="S2" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="C52" gate="G$1" pin="2"/>
@@ -15012,14 +14984,9 @@ unless we want to power the fans?</text>
 </net>
 <net name="N$63" class="0">
 <segment>
-<wire x1="147.32" y1="266.7" x2="144.78" y2="266.7" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="266.7" x2="144.78" y2="269.24" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="269.24" x2="147.32" y2="269.24" width="0.1524" layer="91"/>
 <pinref part="R31" gate="G$1" pin="2"/>
-<wire x1="142.24" y1="269.24" x2="144.78" y2="269.24" width="0.1524" layer="91"/>
-<junction x="144.78" y="269.24"/>
-<pinref part="S3" gate="G$1" pin="1"/>
-<pinref part="S3" gate="G$1" pin="2"/>
+<wire x1="142.24" y1="269.24" x2="147.32" y2="269.24" width="0.1524" layer="91"/>
+<pinref part="S2" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$50" class="0">
