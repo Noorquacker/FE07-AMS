@@ -16456,11 +16456,6 @@ unless we want to power the fans?</text>
 <label x="-124.46" y="-121.92" size="1.778" layer="95"/>
 <pinref part="U14" gate="F" pin="IN"/>
 </segment>
-<segment>
-<pinref part="U4" gate="IO" pin="N2HET1[30]/MII_RX_DV/USB1.SPEED/EQEP2S"/>
-<wire x1="251.46" y1="106.68" x2="345.44" y2="106.68" width="0.1524" layer="91"/>
-<label x="345.44" y="106.68" size="1.778" layer="95" rot="MR0"/>
-</segment>
 </net>
 <net name="N$3" class="0">
 <segment>
@@ -16568,11 +16563,6 @@ unless we want to power the fans?</text>
 </segment>
 </net>
 <net name="INDICATOR_3" class="0">
-<segment>
-<pinref part="U14" gate="A" pin="IN"/>
-<wire x1="-83.82" y1="-81.28" x2="-124.46" y2="-81.28" width="0.1524" layer="91"/>
-<label x="-124.46" y="-81.28" size="1.778" layer="95"/>
-</segment>
 <segment>
 <pinref part="U4" gate="IO" pin="N2HET1[12]/MII_CRS/RMII_CRS_DV"/>
 <wire x1="251.46" y1="134.62" x2="345.44" y2="134.62" width="0.1524" layer="91"/>
@@ -17106,9 +17096,9 @@ unless we want to power the fans?</text>
 <label x="40.64" y="144.78" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="H3" gate="G$1" pin="4"/>
-<wire x1="144.78" y1="406.4" x2="193.04" y2="406.4" width="0.1524" layer="91"/>
-<label x="193.04" y="406.4" size="1.778" layer="95" rot="MR0"/>
+<wire x1="144.78" y1="403.86" x2="193.04" y2="403.86" width="0.1524" layer="91"/>
+<pinref part="H3" gate="G$1" pin="5"/>
+<label x="193.04" y="403.86" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="CURRENT_SENSE_-750_TO_750A" class="0">
@@ -17118,9 +17108,9 @@ unless we want to power the fans?</text>
 <label x="40.64" y="142.24" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="H3" gate="G$1" pin="5"/>
-<wire x1="144.78" y1="403.86" x2="193.04" y2="403.86" width="0.1524" layer="91"/>
-<label x="193.04" y="403.86" size="1.778" layer="95" rot="MR0"/>
+<wire x1="144.78" y1="406.4" x2="193.04" y2="406.4" width="0.1524" layer="91"/>
+<pinref part="H3" gate="G$1" pin="4"/>
+<label x="193.04" y="406.4" size="1.778" layer="95" rot="MR0"/>
 </segment>
 </net>
 <net name="VOLTAGE_MONITOR_MISO" class="0">
@@ -17177,6 +17167,11 @@ unless we want to power the fans?</text>
 <pinref part="U4" gate="IO" pin="GIOB[1]/USB1.PORTPOWER"/>
 <wire x1="101.6" y1="63.5" x2="40.64" y2="63.5" width="0.1524" layer="91"/>
 <label x="40.64" y="63.5" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U14" gate="A" pin="IN"/>
+<wire x1="-83.82" y1="-81.28" x2="-114.3" y2="-81.28" width="0.1524" layer="91"/>
+<label x="-114.3" y="-81.28" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$36" class="0">
