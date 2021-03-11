@@ -5316,8 +5316,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <wire x1="66.36" y1="10.475" x2="66.04" y2="10.795" width="0.254" layer="1"/>
 <via x="66.04" y="10.795" extent="1-16" drill="0.5"/>
 <wire x1="69.215" y1="47.625" x2="69.215" y2="33.02" width="0.254" layer="2"/>
-<wire x1="69.215" y1="33.02" x2="69.215" y2="13.97" width="0.254" layer="2"/>
-<wire x1="66.04" y1="10.795" x2="69.215" y2="13.97" width="0.254" layer="2"/>
+<wire x1="69.215" y1="15.875" x2="69.215" y2="33.02" width="0.254" layer="2"/>
 <via x="69.215" y="47.625" extent="1-16" drill="0.5"/>
 <wire x1="85.725" y1="47.625" x2="86.36" y2="46.99" width="0.254" layer="1"/>
 <wire x1="85.725" y1="47.625" x2="69.215" y2="47.625" width="0.254" layer="1"/>
@@ -5340,6 +5339,8 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <wire x1="56.56184375" y1="32.6084" x2="60.78815625" y2="32.6084" width="0.2032" layer="16"/>
 <wire x1="60.78815625" y1="32.6084" x2="61.19975625" y2="33.02" width="0.2032" layer="16"/>
 <wire x1="61.19975625" y1="33.02" x2="69.215" y2="33.02" width="0.2032" layer="16"/>
+<wire x1="66.04" y1="10.795" x2="66.04" y2="12.7" width="0.2032" layer="2"/>
+<wire x1="66.04" y1="12.7" x2="69.215" y2="15.875" width="0.2032" layer="2"/>
 </signal>
 <signal name="N$47">
 <contactref element="U2" pad="4"/>
