@@ -2,7 +2,7 @@
 *.b#*
 *.l#*
 *.epf
-*.zip
+#*.zip
 *.lck*
 *.scr*
 *.lck
