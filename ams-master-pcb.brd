@@ -186,8 +186,23 @@
 <text x="35.56" y="99.06" size="1.27" layer="21" rot="R90">TX</text>
 <text x="37.465" y="99.06" size="1.27" layer="21" rot="R90">RX</text>
 <text x="41.275" y="99.06" size="1.016" layer="21" rot="R90">3v3</text>
-<text x="43.18" y="99.06" size="1.016" layer="21" rot="R90">5V</text>
+<text x="43.18" y="99.695" size="1.016" layer="21" rot="R90">5V</text>
 <wire x1="19.05" y1="100.965" x2="19.05" y2="74.295" width="12.7" layer="49"/>
+<wire x1="53.34" y1="99.06" x2="53.34" y2="93.345" width="0.1016" layer="25"/>
+<wire x1="59.69" y1="93.345" x2="59.69" y2="99.06" width="0.1016" layer="25"/>
+<wire x1="59.69" y1="99.06" x2="53.34" y2="99.06" width="0.1016" layer="25"/>
+<wire x1="53.34" y1="93.345" x2="59.69" y2="93.345" width="0.1016" layer="25"/>
+<text x="63.5" y="99.695" size="0.6096" layer="25" rot="R90">5KW</text>
+<text x="65.405" y="99.695" size="0.6096" layer="25" rot="R90">AMS</text>
+<text x="67.31" y="99.695" size="0.6096" layer="25" rot="R90">PRE</text>
+<text x="69.215" y="99.695" size="0.6096" layer="25" rot="R90">NEG</text>
+<text x="71.12" y="99.695" size="0.6096" layer="25" rot="R90">POS</text>
+<text x="73.025" y="100.33" size="0.6096" layer="25" rot="R90">1</text>
+<text x="74.93" y="100.33" size="0.6096" layer="25" rot="R90">2</text>
+<text x="76.835" y="99.695" size="0.6096" layer="25" rot="R90">IMD</text>
+<wire x1="59.69" y1="96.52" x2="62.23" y2="96.52" width="0.1524" layer="112"/>
+<wire x1="62.23" y1="96.52" x2="61.595" y2="97.155" width="0.1524" layer="112"/>
+<wire x1="62.23" y1="96.52" x2="61.595" y2="95.885" width="0.1524" layer="112"/>
 </plain>
 <libraries>
 <library name="rcl">
@@ -2537,7 +2552,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 </autorouter>
 <elements>
 <element name="C1" library="rcl" package="C0603K" value="0.1uF" x="113.03" y="66.04" smashed="yes" rot="R315">
-<attribute name="NAME" x="112.92393125" y="67.06530625" size="0.6096" layer="25" rot="R315"/>
+<attribute name="NAME" x="114.82893125" y="63.89030625" size="0.6096" layer="25" rot="R315"/>
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="88.78330625" y="-74.95001875" size="1.778" layer="27" rot="R315" display="off"/>
 </element>
 <element name="C10" library="rcl" package="C0603K" value="0.1uF" x="31.75" y="88.5825" smashed="yes" rot="R180">
@@ -2549,11 +2564,11 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="GRM188R61A106KE69D" x="5.08" y="191.77" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="C11" library="rcl" package="C0603K" value="0.1uF" x="30.48" y="86.36" smashed="yes" rot="R270">
-<attribute name="NAME" x="33.035" y="87.16" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="31.13" y="87.16" size="0.6096" layer="25" rot="R270"/>
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="-86.36" y="-41.91" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="C12" library="rcl" package="C0603K" value="4.7uF" x="29.21" y="86.36" smashed="yes" rot="R270">
-<attribute name="NAME" x="29.86" y="87.16" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="27.955" y="87.16" size="0.6096" layer="25" rot="R270"/>
 <attribute name="PARTNO" value="GRM188R61A475KE15D" x="-92.71" y="69.85" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="C13" library="rcl" package="C0603K" value="0.1uF" x="43.815" y="85.725" smashed="yes" rot="R90">
@@ -2569,11 +2584,11 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="154.305" y="-88.9" size="1.778" layer="27" display="off"/>
 </element>
 <element name="C16" library="rcl" package="C0603K" value="0.1uF" x="112.395" y="29.21" smashed="yes" rot="R180">
-<attribute name="NAME" x="113.195" y="28.56" size="0.6096" layer="25" rot="R180"/>
+<attribute name="NAME" x="113.195" y="30.465" size="0.6096" layer="25" rot="R180"/>
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="75.565" y="151.13" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="C17" library="rcl" package="C0603K" value="0.1uF" x="119.38" y="12.7" smashed="yes" rot="R270">
-<attribute name="NAME" x="120.03" y="13.5" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="118.125" y="13.5" size="0.6096" layer="25" rot="R270"/>
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="-2.54" y="-29.21" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="C18" library="rcl" package="C0603K" value="0.1uF" x="113.03" y="12.7" smashed="yes" rot="R270">
@@ -2597,7 +2612,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="10.795" y="140.335" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="C22" library="rcl" package="C0603K" value="0.1uF" x="75.565" y="12.065" smashed="yes">
-<attribute name="NAME" x="74.765" y="12.715" size="0.6096" layer="25"/>
+<attribute name="NAME" x="75.4" y="12.715" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="142.875" y="-109.855" size="1.778" layer="27" display="off"/>
 </element>
 <element name="C23" library="rcl" package="C0603K" value="0.1uF" x="69.215" y="12.065" smashed="yes">
@@ -2624,15 +2639,15 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="NAME" x="142.405" y="25.385" size="0.6096" layer="25" rot="R180"/>
 </element>
 <element name="C31" library="rcl" package="C0603K" value="4.7uF" x="109.22" y="62.23" smashed="yes" rot="R315">
-<attribute name="NAME" x="109.11393125" y="63.25530625" size="0.6096" layer="25" rot="R315"/>
+<attribute name="NAME" x="111.01893125" y="60.08030625" size="0.6096" layer="25" rot="R315"/>
 <attribute name="PARTNO" value="GRM188R61A475KE15D" x="92.1575125" y="-93.128428125" size="1.778" layer="27" rot="R315" display="off"/>
 </element>
 <element name="C32" library="rcl" package="C0603K" value="0.1uF" x="111.76" y="64.77" smashed="yes" rot="R315">
-<attribute name="NAME" x="111.65393125" y="65.79530625" size="0.6096" layer="25" rot="R315"/>
+<attribute name="NAME" x="113.55893125" y="62.62030625" size="0.6096" layer="25" rot="R315"/>
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="98.289615625" y="-94.18053125" size="1.778" layer="27" rot="R315" display="off"/>
 </element>
 <element name="C33" library="rcl" package="C0603K" value="0.1uF" x="107.315" y="60.325" smashed="yes" rot="R315">
-<attribute name="NAME" x="107.20893125" y="61.35030625" size="0.6096" layer="25" rot="R315"/>
+<attribute name="NAME" x="107.84393125" y="60.71530625" size="0.6096" layer="25" rot="R315"/>
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="97.436715625" y="-102.217634375" size="1.778" layer="27" rot="R315" display="off"/>
 </element>
 <element name="C34" library="rcl" package="C0603K" value="0.1uF" x="107.315" y="80.01" smashed="yes" rot="R45">
@@ -2652,7 +2667,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="81.234875" y="259.46104375" size="1.778" layer="27" rot="R135" display="off"/>
 </element>
 <element name="C38" library="rcl" package="C0603K" value="10uF" x="80.9625" y="80.9625" smashed="yes" rot="R135">
-<attribute name="NAME" x="81.06856875" y="79.93719375" size="0.6096" layer="25" rot="R135"/>
+<attribute name="NAME" x="81.70356875" y="81.84219375" size="0.6096" layer="25" rot="R135"/>
 <attribute name="PARTNO" value="GRM188R61A106KE69D" x="137.538115625" y="211.1762125" size="1.778" layer="27" rot="R135" display="off"/>
 </element>
 <element name="C39" library="rcl" package="C0603K" value="0.1uF" x="87.63" y="86.995" smashed="yes" rot="R135">
@@ -2660,7 +2675,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="165.758228125" y="188.47189375" size="1.778" layer="27" rot="R135" display="off"/>
 </element>
 <element name="C4" library="rcl" package="C0603K" value="0.1uF" x="27.305" y="88.265" smashed="yes" rot="R270">
-<attribute name="NAME" x="27.955" y="89.065" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="26.05" y="89.7" size="0.6096" layer="25" rot="R270"/>
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="-89.535" y="-4.445" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="C40" library="rcl" package="C0603K" value="4.7uF" x="46.99" y="84.455" smashed="yes">
@@ -2692,7 +2707,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="139.9785125" y="210.441609375" size="1.778" layer="27" rot="R135" display="off"/>
 </element>
 <element name="C49" library="rcl" package="C0603K" value="0.1uF" x="104.14" y="57.785" smashed="yes" rot="R315">
-<attribute name="NAME" x="104.03393125" y="58.81030625" size="0.6096" layer="25" rot="R315"/>
+<attribute name="NAME" x="105.93893125" y="56.27030625" size="0.6096" layer="25" rot="R315"/>
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="54.748590625" y="-72.4287125" size="1.778" layer="27" rot="R315" display="off"/>
 </element>
 <element name="C5" library="rcl" package="C0603K" value="4.7uF" x="145.415" y="31.75" smashed="yes" rot="R180">
@@ -2700,35 +2715,35 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="GRM188R61A475KE15D" x="47.625" y="148.59" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="C50" library="rcl" package="C0603K" value="22pF" x="83.5025" y="59.3725" smashed="yes" rot="R45">
-<attribute name="NAME" x="82.47719375" y="59.26643125" size="0.6096" layer="25" rot="R45"/>
+<attribute name="NAME" x="85.01719375" y="60.53643125" size="0.6096" layer="25" rot="R45"/>
 <attribute name="PARTNO" value="C1608C0G1H220J080AA" x="217.308315625" y="6.3889875" size="1.778" layer="27" rot="R45" display="off"/>
 </element>
 <element name="C51" library="rcl" package="C0603K" value="22pF" x="84.455" y="58.42" smashed="yes" rot="R45">
-<attribute name="NAME" x="83.42969375" y="58.31393125" size="0.6096" layer="25" rot="R45"/>
+<attribute name="NAME" x="85.96969375" y="59.58393125" size="0.6096" layer="25" rot="R45"/>
 <attribute name="PARTNO" value="C1608C0G1H220J080AA" x="221.852915625" y="9.028590625" size="1.778" layer="27" rot="R45" display="off"/>
 </element>
 <element name="C52" library="rcl" package="C0603K" value="1uF" x="102.87" y="90.805" smashed="yes">
-<attribute name="NAME" x="102.07" y="91.455" size="0.6096" layer="25"/>
+<attribute name="NAME" x="103.67" y="92.06" size="0.6096" layer="25" rot="R180"/>
 <attribute name="PARTNO" value="GRM188R61E105KA12D" x="199.39" y="-41.275" size="1.778" layer="27" display="off"/>
 </element>
 <element name="C53" library="rcl" package="C0603K" value="0.1uF" x="102.87" y="56.515" smashed="yes" rot="R315">
-<attribute name="NAME" x="102.76393125" y="57.54030625" size="0.6096" layer="25" rot="R315"/>
+<attribute name="NAME" x="103.08143125" y="57.22280625" size="0.6096" layer="25" rot="R315"/>
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="57.07069375" y="-77.290815625" size="1.778" layer="27" rot="R315" display="off"/>
 </element>
 <element name="C54" library="rcl" package="C0603K" value="0.1uF" x="80.01" y="80.01" smashed="yes" rot="R135">
-<attribute name="NAME" x="80.11606875" y="78.98469375" size="0.6096" layer="25" rot="R135"/>
+<attribute name="NAME" x="79.48106875" y="79.61969375" size="0.6096" layer="25" rot="R135"/>
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="122.21720625" y="217.407915625" size="1.778" layer="27" rot="R135" display="off"/>
 </element>
 <element name="C55" library="rcl" package="C0603K" value="10uF" x="105.0925" y="58.7375" smashed="yes" rot="R315">
-<attribute name="NAME" x="104.98643125" y="59.76280625" size="0.6096" layer="25" rot="R315"/>
+<attribute name="NAME" x="105.62143125" y="59.12780625" size="0.6096" layer="25" rot="R315"/>
 <attribute name="PARTNO" value="GRM188R61A106KE69D" x="59.29319375" y="-82.25251875" size="1.778" layer="27" rot="R315" display="off"/>
 </element>
 <element name="C56" library="rcl" package="C0603K" value="0.1uF" x="64.135" y="90.805" smashed="yes" rot="R270">
-<attribute name="NAME" x="64.785" y="91.605" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="63.485" y="90.64" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="-62.865" y="18.415" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="C6" library="rcl" package="C0603K" value="0.1uF" x="22.86" y="26.035" smashed="yes">
-<attribute name="NAME" x="22.06" y="26.685" size="0.6096" layer="25"/>
+<attribute name="NAME" x="22.695" y="24.78" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="125.73" y="-90.805" size="1.778" layer="27" display="off"/>
 </element>
 <element name="C64" library="rcl" package="C0603K" value="4.7uF" x="78.105" y="5.715" smashed="yes">
@@ -2740,7 +2755,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="GRM188R61A475KE15D" x="153.035" y="-121.285" size="1.778" layer="27" display="off"/>
 </element>
 <element name="C7" library="rcl" package="C0603K" value="0.1uF" x="19.05" y="33.02" smashed="yes">
-<attribute name="NAME" x="18.25" y="33.67" size="0.6096" layer="25"/>
+<attribute name="NAME" x="18.885" y="33.67" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="127" y="-83.82" size="1.778" layer="27" display="off"/>
 </element>
 <element name="C70" library="rcl" package="C0603K" value="10uF" x="49.53" y="88.9" smashed="yes" rot="R270">
@@ -2752,7 +2767,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="GRM188R61E475KE11D" x="177.8" y="170.18" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="C72" library="rcl" package="C0603K" value="10uF" x="59.69" y="78.74" smashed="yes" rot="R270">
-<attribute name="NAME" x="60.34" y="79.54" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="60.34" y="78.905" size="0.6096" layer="25" rot="R270"/>
 <attribute name="PARTNO" value="GRM188R61A106KE69D" x="-72.39" y="1.27" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="C75" library="rcl" package="C0603K" value="0.1uF" x="181.61" y="58.42" smashed="yes" rot="R90">
@@ -2784,15 +2799,15 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="GRM188R61A475KE15D" x="257.81" y="-80.645" size="1.778" layer="27" display="off"/>
 </element>
 <element name="C81" library="rcl" package="C0603K" value="4.7uF" x="196.85" y="41.91" smashed="yes" rot="R180">
-<attribute name="NAME" x="197.65" y="41.26" size="0.6096" layer="25" rot="R180"/>
+<attribute name="NAME" x="197.65" y="43.165" size="0.6096" layer="25" rot="R180"/>
 <attribute name="PARTNO" value="GRM188R61A475KE15D" x="73.66" y="168.91" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="C82" library="rcl" package="C0603K" value="0.012uF" x="46.99" y="62.23" smashed="yes">
-<attribute name="NAME" x="46.19" y="62.88" size="0.6096" layer="25"/>
+<attribute name="NAME" x="46.19" y="60.975" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="GRM188R71H123KA01D" x="124.46" y="-54.61" size="1.778" layer="27" display="off"/>
 </element>
 <element name="C87" library="rcl" package="C0603K" value="0.1uF" x="176.53" y="40.005" smashed="yes" rot="R270">
-<attribute name="NAME" x="177.18" y="40.805" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="177.18" y="40.17" size="0.6096" layer="25" rot="R270"/>
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="49.53" y="-88.265" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="C88" library="rcl" package="C0603K" value="0.1uF" x="182.88" y="41.275" smashed="yes">
@@ -2808,7 +2823,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="127.635" y="-33.02" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="C90" library="rcl" package="C0603K" value="0.1uF" x="160.02" y="30.48" smashed="yes" rot="R270">
-<attribute name="NAME" x="160.67" y="31.28" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="160.67" y="30.645" size="0.6096" layer="25" rot="R270"/>
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="27.94" y="3.81" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="C91" library="rcl" package="C0603K" value="0.1uF" x="180.975" y="29.21" smashed="yes">
@@ -2827,19 +2842,19 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="GRM1885C1H9R0DA01D" x="-83.82" y="-35.56" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="C95" library="rcl" package="C0603K" value="0.1uF" x="40.005" y="70.485" smashed="yes">
-<attribute name="NAME" x="39.205" y="71.135" size="0.6096" layer="25"/>
+<attribute name="NAME" x="39.205" y="69.23" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="GRM188R71E104KA01D" x="81.915" y="-61.595" size="1.778" layer="27" display="off"/>
 </element>
 <element name="C96" library="rcl" package="C1206" value="4.7uF 50v" x="33.655" y="69.215" smashed="yes" rot="R90">
-<attribute name="NAME" x="32.385" y="67.945" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="35.56" y="68.58" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="GRM31CR71H475KA12L" x="121.285" y="137.795" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="C97" library="rcl" package="C1206" value="4.7uF 50v" x="31.115" y="69.215" smashed="yes" rot="R90">
-<attribute name="NAME" x="29.845" y="67.945" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="29.845" y="68.58" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="GRM31CR71H475KA12L" x="118.745" y="147.955" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="C98" library="rcl" package="C1206" value="47uF" x="52.07" y="61.595" smashed="yes" rot="R180">
-<attribute name="NAME" x="53.34" y="60.325" size="0.6096" layer="25" rot="R180"/>
+<attribute name="NAME" x="52.07" y="63.5" size="0.6096" layer="25" rot="R180"/>
 <attribute name="PARTNO" value="GRM31CR61A476ME15L" x="15.24" y="156.845" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="C99" library="rcl" package="C0603K" value="10uF" x="52.07" y="57.785" smashed="yes" rot="R180">
@@ -2847,47 +2862,47 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="GRM188R61A106KE69D" x="-30.48" y="189.865" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="D1" library="FormE" package="SOD323F" value="MM3Z12VB" x="30.48" y="64.135" smashed="yes" rot="R270">
-<attribute name="NAME" x="31.75" y="66.675" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="31.75" y="64.135" size="0.6096" layer="25" rot="R270"/>
 <attribute name="PARTNO" value="MM3Z12VB" x="-105.41" y="36.195" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="D11" library="FormE" package="SOD-323" value="MM3Z18VT1G" x="19.05" y="21.59" smashed="yes">
-<attribute name="NAME" x="16.51" y="22.86" size="0.6096" layer="25"/>
+<attribute name="NAME" x="18.415" y="22.86" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="MM3Z18VT1G" x="52.07" y="-114.3" size="1.778" layer="27" display="off"/>
 </element>
 <element name="D13" library="FormE" package="BAV21W" value="BAV21W" x="13.97" y="15.24" smashed="yes" rot="R270">
-<attribute name="NAME" x="15.24" y="17.78" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="15.24" y="15.875" size="0.6096" layer="25" rot="R270"/>
 <attribute name="PARTNO" value="BAV21WS-TP" x="-121.92" y="-7.62" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="D17" library="FormE" package="ES1D" value="ES1D" x="48.895" y="7.62" smashed="yes" rot="R90">
-<attribute name="NAME" x="46.355" y="5.08" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="47.625" y="6.985" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ES1D" x="142.875" y="76.2" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="D18" library="FormE" package="CMZ59" value="CMZ5928B" x="196.85" y="25.4" smashed="yes">
-<attribute name="NAME" x="196.85" y="27.305" size="0.6096" layer="25"/>
+<attribute name="NAME" x="196.215" y="25.4" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="CMZ5928B TR13" x="273.05" y="-68.58" size="1.778" layer="27" display="off"/>
 </element>
 <element name="D19" library="FormE" package="CMZ59" value="CMZ5928B" x="158.115" y="22.86" smashed="yes">
-<attribute name="NAME" x="155.575" y="25.4" size="0.6096" layer="25"/>
+<attribute name="NAME" x="157.48" y="23.495" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="CMZ5928B TR13" x="241.935" y="-71.12" size="1.778" layer="27" display="off"/>
 </element>
 <element name="D2" library="FormE" package="BAV21W" value="BAV21W" x="19.685" y="48.26" smashed="yes" rot="MR180">
-<attribute name="NAME" x="17.145" y="46.99" size="0.6096" layer="26" rot="MR180"/>
+<attribute name="NAME" x="19.685" y="46.99" size="0.6096" layer="26" rot="MR180"/>
 <attribute name="PARTNO" value="BAV21WS-TP" x="125.095" y="179.07" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
 <element name="D3" library="FormE" package="BAV21W" value="BAV21W" x="20.32" y="39.37" smashed="yes" rot="MR180">
-<attribute name="NAME" x="17.78" y="38.1" size="0.6096" layer="26" rot="MR180"/>
+<attribute name="NAME" x="20.32" y="38.1" size="0.6096" layer="26" rot="MR180"/>
 <attribute name="PARTNO" value="BAV21WS-TP" x="132.08" y="170.18" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
 <element name="D4" library="FormE" package="BAV21W" value="BAV21W" x="20.32" y="35.56" smashed="yes" rot="MR180">
-<attribute name="NAME" x="17.78" y="34.29" size="0.6096" layer="26" rot="MR180"/>
+<attribute name="NAME" x="20.32" y="34.29" size="0.6096" layer="26" rot="MR180"/>
 <attribute name="PARTNO" value="BAV21WS-TP" x="138.43" y="166.37" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
 <element name="D5" library="FormE" package="BAV21W" value="BAV21W" x="20.32" y="52.07" smashed="yes" rot="MR180">
-<attribute name="NAME" x="17.78" y="50.8" size="0.6096" layer="26" rot="MR180"/>
+<attribute name="NAME" x="20.32" y="50.8" size="0.6096" layer="26" rot="MR180"/>
 <attribute name="PARTNO" value="BAV21WS-TP" x="144.78" y="182.88" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
 <element name="D6" library="FormE" package="BAV21W" value="BAV21W" x="20.32" y="55.88" smashed="yes" rot="MR180">
-<attribute name="NAME" x="17.78" y="54.61" size="0.6096" layer="26" rot="MR180"/>
+<attribute name="NAME" x="23.495" y="55.88" size="0.6096" layer="26" rot="MR180"/>
 <attribute name="PARTNO" value="BAV21WS-TP" x="151.13" y="186.69" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
 <element name="D7" library="FormE" package="DPAK" value="50WQ10FNPBF" x="42.545" y="74.93" smashed="yes" rot="R180">
@@ -2895,23 +2910,23 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="VS-50WQ10FNPBF" x="-81.915" y="154.94" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="D8" library="FormE" package="BAV21W" value="BAV21W" x="20.32" y="53.975" smashed="yes" rot="MR180">
-<attribute name="NAME" x="17.78" y="52.705" size="0.6096" layer="26" rot="MR180"/>
+<attribute name="NAME" x="23.495" y="53.975" size="0.6096" layer="26" rot="MR180"/>
 <attribute name="PARTNO" value="BAV21WS-TP" x="36.83" y="189.865" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
 <element name="F1" library="FormE" package="FUSE_GENERIC_1206" value="0458005.DR" x="14.605" y="64.135" smashed="yes" rot="R180">
-<attribute name="NAME" x="17.145" y="62.611" size="1.27" layer="21" rot="R180"/>
+<attribute name="NAME" x="15.875" y="62.611" size="1.27" layer="21" rot="R180"/>
 <attribute name="PARTNO" value="0458005.DR" x="-37.465" y="179.705" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="F2" library="FormE" package="LITTELFUSE_485" value="0485001.DR" x="185.42" y="15.24" smashed="yes">
-<attribute name="NAME" x="185.42" y="16.51" size="0.6096" layer="25"/>
+<attribute name="NAME" x="185.42" y="15.24" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="0485001.DR" x="280.67" y="-44.45" size="1.778" layer="27" display="off"/>
 </element>
 <element name="F3" library="FormE" package="LITTELFUSE_485" value="0485001.DR" x="146.685" y="13.335" smashed="yes">
-<attribute name="NAME" x="144.145" y="17.145" size="0.6096" layer="25"/>
+<attribute name="NAME" x="146.685" y="13.335" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="0485001.DR" x="257.175" y="-46.355" size="1.778" layer="27" display="off"/>
 </element>
 <element name="H1" library="FormE" package="MOLEX_5024430470" value="502443-0470" x="57.15" y="8.89" smashed="yes" rot="R180">
-<attribute name="NAME" x="57.15" y="2.54" size="0.6096" layer="25" rot="R180"/>
+<attribute name="NAME" x="57.15" y="3.175" size="0.6096" layer="25" rot="R180"/>
 <attribute name="PARTNO" value="5024430470" x="-6.35" y="55.88" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="H16" library="FormE" package="EMPTY_FOOTPRINT" value="MUSB2D11004BP" x="49.53" y="60.325" smashed="yes" rot="R90">
@@ -2923,15 +2938,15 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="5024430870" x="125.73" y="144.145" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="H4" library="FormE" package="MOLEX_5024430870" value="502443-0870" x="24.765" y="43.18" smashed="yes" rot="R90">
-<attribute name="NAME" x="18.415" y="43.18" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="24.765" y="43.18" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="5024430870" x="71.755" y="88.9" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="H6" library="FormE" package="MOLEX_5024430470" value="502443-0470" x="39.37" y="8.89" smashed="yes" rot="R180">
-<attribute name="NAME" x="39.37" y="2.54" size="0.6096" layer="25" rot="R180"/>
+<attribute name="NAME" x="39.37" y="3.175" size="0.6096" layer="25" rot="R180"/>
 <attribute name="PARTNO" value="5024430470" x="-38.1" y="55.88" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="H7" library="FormE" package="MOLEX_5024430470" value="502443-0470" x="24.765" y="8.89" smashed="yes" rot="R180">
-<attribute name="NAME" x="24.765" y="2.54" size="0.6096" layer="25" rot="R180"/>
+<attribute name="NAME" x="24.765" y="3.175" size="0.6096" layer="25" rot="R180"/>
 <attribute name="PARTNO" value="5024430470" x="-66.675" y="55.88" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="J1" library="FormE" package="SAMTEC-FTR-DUALROW" value="M50-3601042" x="90.17" y="95.885" smashed="yes" rot="R270">
@@ -2939,7 +2954,6 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="M50-3601042" x="55.88" y="76.835" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="J2" library="FormE" package="TE-776087" value="TE-776087" x="0" y="41.91" locked="yes" smashed="yes" rot="R270">
-<attribute name="NAME" x="17.01" y="36.45" locked="yes" size="1.27" layer="21" rot="R270"/>
 <attribute name="PARTNO" value="776087-1" x="-3.81" y="-27.94" locked="yes" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="J3" library="FormE" package="MUSBD111XX" value="MUSBD11130" x="-0.79883125" y="87.63" locked="yes" smashed="yes" rot="R270">
@@ -2947,22 +2961,23 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="MUSBD11130" x="-7.14883125" y="-27.94" locked="yes" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="JP1" library="FormE" package="0603-TWO-WAY-JUMPER" value="0R" x="116.84" y="10.16" smashed="yes" rot="R90">
+<attribute name="NAME" x="116.84" y="6.135" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="218.44" y="111.76" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="JP12" library="FormE" package="0603-TWO-WAY-JUMPER" value="10k" x="13.97" y="19.05" smashed="yes">
-<attribute name="NAME" x="12.485" y="19.685" size="0.6096" layer="25"/>
+<attribute name="NAME" x="11.85" y="20.32" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="90.17" y="-82.55" size="1.778" layer="27" display="off"/>
 </element>
 <element name="JP2" library="FormE" package="0603-TWO-WAY-JUMPER" value="0R" x="121.285" y="10.795" smashed="yes" rot="R90">
-<attribute name="NAME" x="120.65" y="9.31" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="121.285" y="6.77" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="222.885" y="118.745" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="JP3" library="FormE" package="0603-TWO-WAY-JUMPER" value="0R" x="114.935" y="8.255" smashed="yes" rot="R270">
-<attribute name="NAME" x="115.57" y="9.74" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="114.935" y="11.215" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="13.335" y="-106.045" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="JP4" library="FormE" package="0603-TWO-WAY-JUMPER" value="0R" x="119.38" y="8.255" smashed="yes" rot="R270">
-<attribute name="NAME" x="119.38" y="12.28" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="118.11" y="5.295" size="0.6096" layer="25" rot="R270"/>
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="17.78" y="-112.395" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="JP6" library="FormE" package="0603-TWO-WAY-JUMPER" value="0R" x="122.555" y="30.48" smashed="yes">
@@ -2970,15 +2985,15 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="249.555" y="-71.12" size="1.778" layer="27" display="off"/>
 </element>
 <element name="JP7" library="FormE" package="0603-TWO-WAY-JUMPER" value="0R" x="116.84" y="30.48" smashed="yes">
-<attribute name="NAME" x="115.355" y="31.115" size="0.6096" layer="25"/>
+<attribute name="NAME" x="114.085" y="31.115" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="133.35" y="-76.2" size="1.778" layer="27" display="off"/>
 </element>
 <element name="L1" library="FormE" package="WURTH-744325XXXX" value="10uH" x="54.61" y="69.215" smashed="yes" rot="R270">
-<attribute name="NAME" x="60.96" y="71.755" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="60.325" y="70.485" size="0.6096" layer="25" rot="R270"/>
 <attribute name="PARTNO" value="7443251000" x="24.13" y="28.575" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="L4" library="launchpad" package="0805" value="220R @ 100M" x="110.49" y="63.5" smashed="yes" rot="R135">
-<attribute name="NAME" x="112.187059375" y="60.388728125" size="0.6096" layer="25" rot="R135"/>
+<attribute name="NAME" x="113.457059375" y="61.023728125" size="0.6096" layer="25" rot="R135"/>
 <attribute name="PARTNO" value="BLM21PG221SN1D" x="179.637971875" y="186.52950625" size="1.778" layer="27" rot="R135" display="off"/>
 </element>
 <element name="L5" library="FormE" package="0805" value="2.2uH" x="46.99" y="92.075" smashed="yes">
@@ -2990,19 +3005,19 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="74479775222" x="-29.845" y="-13.335" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="LED1" library="FormE" package="CHIP-LED0805" value="BLUE" x="63.5" y="97.79" smashed="yes">
-<attribute name="NAME" x="62.23" y="96.52" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="54.61" y="95.885" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="5988110107F" x="80.01" y="10.16" size="1.778" layer="27" display="off"/>
 </element>
 <element name="LED10" library="FormE" package="CHIP-LED0805" value="ORANGE" x="73.025" y="97.79" smashed="yes">
-<attribute name="NAME" x="71.755" y="96.52" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="57.785" y="95.885" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="598-8130-107F" x="118.745" y="39.37" size="1.778" layer="27" display="off"/>
 </element>
 <element name="LED11" library="FormE" package="CHIP-LED0805" value="RED" x="65.405" y="97.79" smashed="yes" rot="R180">
-<attribute name="NAME" x="66.675" y="99.06" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="55.245" y="95.885" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="5988110107F" x="-19.685" y="167.64" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="LED12" library="FormE" package="CHIP-LED0805" value="RED" x="76.835" y="97.79" smashed="yes" rot="R180">
-<attribute name="NAME" x="78.105" y="99.06" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="59.055" y="95.885" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="5988110107F" x="-1.905" y="167.64" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="LED13" library="FormE" package="CHIP-LED0805" value="ORANGE" x="34.925" y="97.155" smashed="yes" rot="R180">
@@ -3014,11 +3029,11 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="598-8170-107F" x="215.265" y="71.755" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="LED15" library="FormE" package="CHIP-LED0805" value="GREEN" x="196.85" y="40.005" smashed="yes" rot="R90">
-<attribute name="NAME" x="198.12" y="38.735" size="0.6096" layer="25" rot="R180"/>
+<attribute name="NAME" x="201.295" y="40.005" size="0.6096" layer="25" rot="R180"/>
 <attribute name="PARTNO" value="598-8170-107F" x="266.7" y="88.265" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="LED16" library="FormE" package="CHIP-LED0805" value="GREEN" x="102.235" y="5.08" smashed="yes" rot="R180">
-<attribute name="NAME" x="103.505" y="6.35" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="100.965" y="6.35" size="0.6096" layer="25" rot="R270"/>
 <attribute name="PARTNO" value="598-8170-107F" x="47.625" y="74.93" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="LED2" library="FormE" package="CHIP-LED0805" value="GREEN" x="40.64" y="97.155" smashed="yes" rot="R180">
@@ -3030,7 +3045,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="598-8170-107F" x="-85.725" y="155.575" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="LED4" library="FormE" package="CHIP-LED0805" value="RED" x="83.185" y="85.09" smashed="yes" rot="R270">
-<attribute name="NAME" x="81.915" y="86.36" size="0.6096" layer="25"/>
+<attribute name="NAME" x="81.915" y="83.82" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="5988110107F" x="-4.445" y="50.8" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="LED5" library="FormE" package="CHIP-LED0805" value="ORANGE" x="36.83" y="97.155" smashed="yes" rot="R180">
@@ -3038,45 +3053,45 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="598-8130-107F" x="-2.54" y="155.575" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="LED6" library="FormE" package="CHIP-LED0805" value="GREEN" x="71.12" y="97.79" smashed="yes">
-<attribute name="NAME" x="69.85" y="96.52" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="57.15" y="95.885" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="598-8170-107F" x="87.63" y="27.94" size="1.778" layer="27" display="off"/>
 </element>
 <element name="LED7" library="FormE" package="CHIP-LED0805" value="GREEN" x="69.215" y="97.79" smashed="yes">
-<attribute name="NAME" x="67.945" y="96.52" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="56.515" y="95.885" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="598-8170-107F" x="92.075" y="27.94" size="1.778" layer="27" display="off"/>
 </element>
 <element name="LED8" library="FormE" package="CHIP-LED0805" value="GREEN" x="67.31" y="97.79" smashed="yes">
-<attribute name="NAME" x="66.04" y="96.52" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="55.88" y="95.885" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="598-8170-107F" x="96.52" y="27.94" size="1.778" layer="27" display="off"/>
 </element>
 <element name="LED9" library="FormE" package="CHIP-LED0805" value="GREEN" x="74.93" y="97.79" smashed="yes">
-<attribute name="NAME" x="73.66" y="96.52" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="58.42" y="95.885" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="598-8170-107F" x="110.49" y="27.94" size="1.778" layer="27" display="off"/>
 </element>
 <element name="MP1" library="FormE" package="MOUNT-HOLE-3.8MM" value="MOUNT-HOLE3.8MM" x="6.35" y="6.35" smashed="yes"/>
 <element name="MP2" library="FormE" package="MOUNT-HOLE-3.8MM" value="MOUNT-HOLE3.8MM" x="196.85" y="95.25" smashed="yes"/>
 <element name="Q1" library="FormE" package="STD45P4LLF6AG" value="STD45P4LLF6AG" x="23.495" y="64.135" smashed="yes" rot="R90">
-<attribute name="NAME" x="25.4" y="60.325" size="1.27" layer="21" font="vector" rot="R180"/>
+<attribute name="NAME" x="24.13" y="60.325" size="1.27" layer="21" font="vector" rot="R180"/>
 <attribute name="PARTNO" value="STD45P4LLF6AG" x="55.245" y="179.705" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="Q2" library="FormE" package="BSS138" value="BSS138" x="35.56" y="38.1" smashed="yes" rot="MR270">
-<attribute name="NAME" x="38.1" y="40.64" size="0.6096" layer="26" rot="MR0"/>
+<attribute name="NAME" x="34.925" y="39.37" size="0.6096" layer="26" rot="MR0"/>
 <attribute name="PARTNO" value="BSS138" x="105.41" y="-55.88" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="Q3" library="FormE" package="BSS138" value="BSS138" x="35.56" y="34.29" smashed="yes" rot="MR270">
-<attribute name="NAME" x="38.1" y="36.83" size="0.6096" layer="26" rot="MR0"/>
+<attribute name="NAME" x="34.925" y="35.56" size="0.6096" layer="26" rot="MR0"/>
 <attribute name="PARTNO" value="BSS138" x="105.41" y="-69.85" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="Q4" library="FormE" package="BSS138" value="BSS138" x="35.56" y="41.91" smashed="yes" rot="MR270">
-<attribute name="NAME" x="38.1" y="44.45" size="0.6096" layer="26" rot="MR0"/>
+<attribute name="NAME" x="34.925" y="43.18" size="0.6096" layer="26" rot="MR0"/>
 <attribute name="PARTNO" value="BSS138" x="105.41" y="-72.39" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="Q5" library="FormE" package="BSS138" value="BSS138" x="35.56" y="45.72" smashed="yes" rot="MR270">
-<attribute name="NAME" x="38.1" y="48.26" size="0.6096" layer="26" rot="MR0"/>
+<attribute name="NAME" x="34.925" y="46.99" size="0.6096" layer="26" rot="MR0"/>
 <attribute name="PARTNO" value="BSS138" x="105.41" y="-78.74" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="Q6" library="FormE" package="BSS138" value="BSS138" x="35.56" y="49.53" smashed="yes" rot="MR270">
-<attribute name="NAME" x="38.1" y="52.07" size="0.6096" layer="26" rot="MR0"/>
+<attribute name="NAME" x="34.925" y="50.8" size="0.6096" layer="26" rot="MR0"/>
 <attribute name="PARTNO" value="BSS138" x="114.3" y="30.48" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="Q7" library="FormE" package="FQD3P50" value="FQD3P50" x="196.85" y="17.78" smashed="yes" rot="R180">
@@ -3088,7 +3103,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="FQD3P50TM" x="47.625" y="65.405" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="R1" library="rcl" package="R0603" value="120" x="110.49" y="9.525" smashed="yes" rot="R90">
-<attribute name="NAME" x="109.855" y="8.89" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="110.49" y="6.985" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ERJ-3EKF1200V" x="222.25" y="117.475" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="R10" library="rcl" package="R0603" value="24R" x="10.16" y="92.075" smashed="yes" rot="MR180">
@@ -3108,23 +3123,23 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="101.6" y="127" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="R103" library="rcl" package="R0805" value="150k" x="148.59" y="20.32" smashed="yes">
-<attribute name="NAME" x="147.955" y="21.59" size="0.6096" layer="25"/>
+<attribute name="NAME" x="153.035" y="20.32" size="0.6096" layer="25" rot="R180"/>
 <attribute name="PARTNO" value="ERJ-6ENF1503V" x="261.62" y="-67.31" size="1.778" layer="27" display="off"/>
 </element>
 <element name="R104" library="rcl" package="R0805" value="150k" x="148.59" y="17.78" smashed="yes" rot="R180">
-<attribute name="NAME" x="149.86" y="19.685" size="0.6096" layer="25" rot="R180"/>
+<attribute name="NAME" x="153.035" y="17.78" size="0.6096" layer="25" rot="R180"/>
 <attribute name="PARTNO" value="ERJ-6ENF1503V" x="29.21" y="105.41" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="R105" library="rcl" package="R0805" value="150k" x="143.51" y="17.78" smashed="yes" rot="R180">
-<attribute name="NAME" x="144.145" y="16.51" size="0.6096" layer="25" rot="R180"/>
+<attribute name="NAME" x="139.7" y="17.78" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="ERJ-6ENF1503V" x="17.78" y="105.41" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="R106" library="rcl" package="R0805" value="150k" x="143.51" y="20.32" smashed="yes">
-<attribute name="NAME" x="142.875" y="21.59" size="0.6096" layer="25"/>
+<attribute name="NAME" x="139.7" y="20.32" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="ERJ-6ENF1503V" x="161.29" y="-74.93" size="1.778" layer="27" display="off"/>
 </element>
 <element name="R107" library="rcl" package="R0603" value="10k" x="143.51" y="22.86" smashed="yes" rot="R180">
-<attribute name="NAME" x="144.145" y="22.225" size="0.6096" layer="25" rot="R180"/>
+<attribute name="NAME" x="139.065" y="22.86" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="53.34" y="124.46" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="R108" library="rcl" package="R0805" value="1M" x="198.12" y="28.575" smashed="yes">
@@ -3136,62 +3151,62 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="ERJ-6ENF1004V" x="189.23" y="-69.85" size="1.778" layer="27" display="off"/>
 </element>
 <element name="R11" library="rcl" package="R0603" value="10k" x="39.37" y="45.72" smashed="yes" rot="MR90">
-<attribute name="NAME" x="40.64" y="45.085" size="0.6096" layer="26" rot="MR90"/>
+<attribute name="NAME" x="40.64" y="46.99" size="0.6096" layer="26" rot="MR270"/>
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="-72.39" y="148.59" size="1.778" layer="28" rot="MR90" display="off"/>
 </element>
 <element name="R12" library="rcl" package="R0603" value="DNP/10k" x="15.875" y="46.99" smashed="yes" rot="MR90">
-<attribute name="NAME" x="16.51" y="46.355" size="0.6096" layer="26" rot="MR90"/>
+<attribute name="NAME" x="16.51" y="45.72" size="0.6096" layer="26" rot="MR90"/>
 </element>
 <element name="R13" library="rcl" package="R0603" value="DNP/10k" x="15.875" y="40.64" smashed="yes" rot="MR270">
-<attribute name="NAME" x="15.24" y="41.275" size="0.6096" layer="26" rot="MR270"/>
+<attribute name="NAME" x="16.51" y="39.37" size="0.6096" layer="26" rot="MR90"/>
 </element>
 <element name="R14" library="rcl" package="R0603" value="DNP/10k" x="15.875" y="36.83" smashed="yes" rot="MR270">
-<attribute name="NAME" x="15.24" y="37.465" size="0.6096" layer="26" rot="MR270"/>
+<attribute name="NAME" x="16.51" y="35.56" size="0.6096" layer="26" rot="MR90"/>
 </element>
 <element name="R15" library="rcl" package="R0603" value="DNP/10k" x="15.875" y="51.1175" smashed="yes" rot="MR90">
-<attribute name="NAME" x="16.51" y="50.4825" size="0.6096" layer="26" rot="MR90"/>
+<attribute name="NAME" x="16.51" y="49.8475" size="0.6096" layer="26" rot="MR90"/>
 </element>
 <element name="R16" library="rcl" package="R0603" value="DNP/10k" x="15.875" y="58.42" smashed="yes" rot="MR270">
-<attribute name="NAME" x="15.24" y="59.055" size="0.6096" layer="26" rot="MR270"/>
+<attribute name="NAME" x="16.51" y="57.15" size="0.6096" layer="26" rot="MR90"/>
 </element>
 <element name="R17" library="rcl" package="R0603" value="100k" x="31.115" y="38.735" smashed="yes" rot="MR270">
-<attribute name="NAME" x="30.48" y="39.37" size="0.6096" layer="26" rot="MR270"/>
+<attribute name="NAME" x="32.385" y="40.005" size="0.6096" layer="26" rot="MR270"/>
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="137.795" y="15.875" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="R18" library="rcl" package="R0603" value="10k" x="31.115" y="34.925" smashed="yes" rot="MR270">
-<attribute name="NAME" x="30.48" y="35.56" size="0.6096" layer="26" rot="MR270"/>
+<attribute name="NAME" x="32.385" y="36.195" size="0.6096" layer="26" rot="MR270"/>
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="137.795" y="-52.705" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="R19" library="rcl" package="R0603" value="10k" x="31.115" y="42.545" smashed="yes" rot="MR270">
-<attribute name="NAME" x="30.48" y="43.18" size="0.6096" layer="26" rot="MR270"/>
+<attribute name="NAME" x="32.385" y="43.815" size="0.6096" layer="26" rot="MR270"/>
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="137.795" y="-50.165" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="R2" library="rcl" package="R0603" value="120" x="15.875" y="29.845" smashed="yes" rot="R270">
-<attribute name="NAME" x="16.51" y="30.48" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="13.97" y="30.48" size="0.6096" layer="25" rot="R270"/>
 <attribute name="PARTNO" value="ERJ-3EKF1200V" x="-95.885" y="-83.185" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="R20" library="rcl" package="R0603" value="10k" x="39.37" y="38.1" smashed="yes" rot="MR270">
-<attribute name="NAME" x="38.735" y="38.735" size="0.6096" layer="26" rot="MR270"/>
+<attribute name="NAME" x="40.64" y="39.37" size="0.6096" layer="26" rot="MR270"/>
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="146.05" y="-59.69" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="R21" library="rcl" package="R0603" value="10k" x="39.37" y="34.29" smashed="yes" rot="MR270">
-<attribute name="NAME" x="38.735" y="34.925" size="0.6096" layer="26" rot="MR270"/>
+<attribute name="NAME" x="40.64" y="35.56" size="0.6096" layer="26" rot="MR270"/>
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="146.05" y="-68.58" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="R22" library="rcl" package="R0603" value="10k" x="39.37" y="41.91" smashed="yes" rot="MR270">
-<attribute name="NAME" x="38.735" y="41.91" size="0.6096" layer="26" rot="MR270"/>
+<attribute name="NAME" x="40.64" y="43.18" size="0.6096" layer="26" rot="MR270"/>
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="146.05" y="-66.04" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="R23" library="rcl" package="R0603" value="10k" x="31.115" y="51.435" smashed="yes" rot="MR270">
-<attribute name="NAME" x="29.845" y="52.07" size="0.6096" layer="26" rot="MR270"/>
+<attribute name="NAME" x="32.385" y="52.705" size="0.6096" layer="26" rot="MR270"/>
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="137.795" y="-61.595" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="R24" library="rcl" package="R0603" value="10k" x="39.37" y="49.53" smashed="yes" rot="MR90">
-<attribute name="NAME" x="40.005" y="48.895" size="0.6096" layer="26" rot="MR90"/>
+<attribute name="NAME" x="40.64" y="50.8" size="0.6096" layer="26" rot="MR270"/>
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="-67.31" y="167.64" size="1.778" layer="28" rot="MR90" display="off"/>
 </element>
 <element name="R25" library="rcl" package="R0603" value="DNP/10k" x="15.875" y="54.61" smashed="yes" rot="MR270">
-<attribute name="NAME" x="15.24" y="55.245" size="0.6096" layer="26" rot="MR270"/>
+<attribute name="NAME" x="16.51" y="53.34" size="0.6096" layer="26" rot="MR90"/>
 </element>
 <element name="R26" library="rcl" package="R0603" value="1k" x="141.605" y="28.575" smashed="yes">
 <attribute name="NAME" x="140.97" y="29.21" size="0.6096" layer="25"/>
@@ -3210,7 +3225,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="ERJ-6ENF1503V" x="147.32" y="120.65" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="R3" library="rcl" package="R0603" value="1k" x="76.835" y="94.615" smashed="yes" rot="R270">
-<attribute name="NAME" x="78.105" y="94.615" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="59.055" y="93.98" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ERJ-3EKF1001V" x="-34.925" y="-37.465" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="R30" library="rcl" package="R0603" value="1k" x="42.545" y="93.98" smashed="yes" rot="R90">
@@ -3222,15 +3237,15 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="ERJ-3EKF1000V" x="129.54" y="-22.86" size="1.778" layer="27" display="off"/>
 </element>
 <element name="R32" library="rcl" package="R0603" value="2.2K" x="102.87" y="92.71" smashed="yes" rot="R180">
-<attribute name="NAME" x="103.505" y="92.075" size="0.6096" layer="25" rot="R180"/>
+<attribute name="NAME" x="103.505" y="93.98" size="0.6096" layer="25" rot="R180"/>
 <attribute name="PARTNO" value="ERJ-3EKF2201V" x="55.88" y="199.39" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="R33" library="rcl" package="R0805" value="150k" x="148.59" y="22.86" smashed="yes" rot="R180">
-<attribute name="NAME" x="149.225" y="21.59" size="0.6096" layer="25" rot="R180"/>
+<attribute name="NAME" x="153.035" y="22.86" size="0.6096" layer="25" rot="R180"/>
 <attribute name="PARTNO" value="ERJ-6ENF1503V" x="99.06" y="118.11" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="R35" library="rcl" package="R0603" value="2.2K" x="83.185" y="86.995" smashed="yes" rot="R180">
-<attribute name="NAME" x="83.82" y="86.36" size="0.6096" layer="25" rot="R180"/>
+<attribute name="NAME" x="83.82" y="88.265" size="0.6096" layer="25" rot="R180"/>
 <attribute name="PARTNO" value="ERJ-3EKF2201V" x="31.115" y="193.675" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="R36" library="rcl" package="R0603" value="1k" x="40.64" y="93.98" smashed="yes" rot="R90">
@@ -3238,31 +3253,31 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="ERJ-3EKF1001V" x="152.4" y="125.73" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="R4" library="rcl" package="R0603" value="10k" x="31.115" y="46.99" smashed="yes" rot="MR270">
-<attribute name="NAME" x="30.48" y="47.625" size="0.6096" layer="26" rot="MR270"/>
+<attribute name="NAME" x="32.385" y="48.26" size="0.6096" layer="26" rot="MR270"/>
 <attribute name="PARTNO" value="ERJ-3EKF1002V" x="142.875" y="-81.28" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="R41" library="rcl" package="R0603" value="1k" x="71.12" y="94.615" smashed="yes" rot="R90">
-<attribute name="NAME" x="70.485" y="94.615" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="57.15" y="93.98" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ERJ-3EKF1001V" x="182.88" y="131.445" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="R42" library="rcl" package="R0603" value="1k" x="69.215" y="94.615" smashed="yes" rot="R90">
-<attribute name="NAME" x="68.58" y="93.98" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="56.515" y="93.98" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ERJ-3EKF1001V" x="180.975" y="136.525" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="R43" library="rcl" package="R0603" value="1k" x="67.31" y="94.615" smashed="yes" rot="R90">
-<attribute name="NAME" x="66.675" y="93.98" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="55.88" y="93.98" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ERJ-3EKF1001V" x="179.07" y="141.605" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="R44" library="rcl" package="R0603" value="1k" x="74.93" y="94.615" smashed="yes" rot="R90">
-<attribute name="NAME" x="74.295" y="93.98" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="58.42" y="93.98" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ERJ-3EKF1001V" x="186.69" y="146.685" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="R45" library="rcl" package="R0603" value="1k" x="73.025" y="94.615" smashed="yes" rot="R90">
-<attribute name="NAME" x="72.39" y="93.98" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="57.785" y="93.98" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ERJ-3EKF1001V" x="184.785" y="151.765" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="R46" library="rcl" package="R0603" value="1k" x="65.405" y="94.615" smashed="yes" rot="R270">
-<attribute name="NAME" x="66.675" y="94.615" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="55.245" y="93.98" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ERJ-3EKF1001V" x="-46.355" y="32.385" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="R47" library="rcl" package="R0603" value="162k" x="37.465" y="62.865" smashed="yes" rot="R90">
@@ -3270,7 +3285,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="ERJ-3EKF1623V" x="144.145" y="92.075" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="R48" library="rcl" package="R0603" value="15k" x="46.355" y="64.77" smashed="yes" rot="R90">
-<attribute name="NAME" x="45.72" y="64.135" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="45.72" y="63.5" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ERJ-3EKF1502V" x="158.115" y="132.08" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="R5" library="rcl" package="R0603" value="1.5k" x="26.67" y="59.055" smashed="yes">
@@ -3290,7 +3305,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="*" x="140.335" y="99.695" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="R53" library="rcl" package="R0603" value="DNP" x="33.02" y="61.595" smashed="yes">
-<attribute name="NAME" x="32.385" y="62.23" size="0.6096" layer="25"/>
+<attribute name="NAME" x="32.385" y="60.325" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="*" x="74.93" y="-45.085" size="1.778" layer="27" display="off"/>
 </element>
 <element name="R57" library="rcl" package="R0603" value="1.5k" x="15.24" y="21.59" smashed="yes">
@@ -3298,7 +3313,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="ERJ-3EKF1501V" x="77.47" y="-85.09" size="1.778" layer="27" display="off"/>
 </element>
 <element name="R6" library="rcl" package="R0603" value="1k" x="63.5" y="94.615" smashed="yes" rot="R90">
-<attribute name="NAME" x="62.865" y="93.98" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="54.61" y="93.98" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ERJ-3EKF1001V" x="180.34" y="109.855" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="R62" library="rcl" package="R0603" value="20k" x="74.93" y="4.445" smashed="yes" rot="R270">
@@ -3322,7 +3337,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="ERJ-3EKF2700V" x="148.59" y="212.09" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="R72" library="rcl" package="R0603" value="2.2k" x="17.78" y="40.005" smashed="yes">
-<attribute name="NAME" x="17.145" y="40.64" size="0.6096" layer="25"/>
+<attribute name="NAME" x="18.415" y="38.735" size="0.6096" layer="25" rot="R180"/>
 <attribute name="PARTNO" value="ERJ-3EKF2201V" x="85.09" y="-66.675" size="1.778" layer="27" display="off"/>
 </element>
 <element name="R8" library="rcl" package="R0603" value="270" x="34.925" y="93.98" smashed="yes" rot="R90">
@@ -3330,7 +3345,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="ERJ-3EKF2700V" x="146.685" y="217.17" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="R81" library="rcl" package="R0603" value="2.2k" x="24.13" y="38.1" smashed="yes" rot="MR90">
-<attribute name="NAME" x="24.765" y="37.465" size="0.6096" layer="26" rot="MR90"/>
+<attribute name="NAME" x="25.4" y="39.37" size="0.6096" layer="26" rot="MR270"/>
 <attribute name="PARTNO" value="ERJ-3EKF2201V" x="-82.55" y="110.49" size="1.778" layer="28" rot="MR90" display="off"/>
 </element>
 <element name="R9" library="rcl" package="R0603" value="24R" x="10.795" y="88.9" smashed="yes" rot="MR90">
@@ -3342,7 +3357,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="ERJ-3GEY0R00V" x="92.71" y="139.7" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="R97" library="rcl" package="R0603" value="0R" x="144.145" y="25.4" smashed="yes" rot="R90">
-<attribute name="NAME" x="143.51" y="24.765" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="145.415" y="26.035" size="0.6096" layer="25" rot="R270"/>
 <attribute name="PARTNO" value="ERJ-3GEY0R00V" x="255.905" y="123.19" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="R98" library="rcl" package="R0805" value="150k" x="190.5" y="22.86" smashed="yes">
@@ -3354,27 +3369,27 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="ERJ-6ENF1503V" x="128.27" y="115.57" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="U1" library="FormE" package="PDS1-M" value="PDS1-S5-S5-M-TR" x="107.315" y="22.225" smashed="yes" rot="R270">
-<attribute name="NAME" x="103.505" y="29.845" size="0.6096" layer="25"/>
+<attribute name="NAME" x="107.315" y="22.225" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="PDS1-S5-S5-M-TR" x="75.565" y="-46.355" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="U10" library="FormE" package="ISO722X" value="ISO7221" x="117.475" y="22.225" smashed="yes">
-<attribute name="NAME" x="114.3" y="20.955" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="117.475" y="21.59" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ISO7221CDR" x="192.405" y="-57.785" size="1.778" layer="27" display="off"/>
 </element>
 <element name="U11" library="FormE" package="ISO722X" value="ISO7221" x="123.19" y="22.225" smashed="yes">
-<attribute name="NAME" x="120.015" y="20.955" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="123.19" y="21.59" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ISO7221CDR" x="205.74" y="-57.785" size="1.778" layer="27" display="off"/>
 </element>
 <element name="U13" library="FormE" package="SOIC8-N_MC" value="MCP2562FD" x="105.41" y="9.525" smashed="yes">
-<attribute name="NAME" x="104.14" y="13.335" size="0.6096" layer="25" ratio="6" rot="SR0"/>
+<attribute name="NAME" x="104.775" y="9.525" size="0.6096" layer="25" ratio="6" rot="SR0"/>
 <attribute name="PARTNO" value="MCP2562FD-E/SN" x="176.53" y="-60.325" size="1.778" layer="27" display="off"/>
 </element>
 <element name="U14" library="FormE" package="TSSOP20_MC" value="SN74LVC541A" x="68.58" y="87.63" smashed="yes" rot="R90">
-<attribute name="NAME" x="62.865" y="84.1248" size="0.6096" layer="25" ratio="6" rot="SR90"/>
+<attribute name="NAME" x="64.77" y="86.0298" size="0.6096" layer="25" ratio="6" rot="SR90"/>
 <attribute name="PARTNO" value="SN74LVC541APWR" x="115.57" y="213.36" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="U16" library="FormE" package="SOT23-5" value="LM3671MF-3.3/NOPB" x="46.99" y="88.265" smashed="yes">
-<attribute name="NAME" x="44.45" y="86.995" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="45.085" y="87.63" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="LM3671MF-3.3/NOPB" x="66.04" y="-28.575" size="1.778" layer="27" display="off"/>
 </element>
 <element name="U17" library="FormE" package="SOT23-5" value="SN74LVC1G02DBV" x="73.025" y="15.875" smashed="yes" rot="R270">
@@ -3382,7 +3397,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="SN74LVC1G02DBVR" x="-43.815" y="-9.525" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="U18" library="FormE" package="SOT23-5" value="LM3671MF-1.2/NOPB" x="53.975" y="80.645" smashed="yes" rot="R270">
-<attribute name="NAME" x="52.705" y="83.185" size="0.6096" layer="25"/>
+<attribute name="NAME" x="53.34" y="82.55" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="LM3671MF-1.2/NOPB" x="-62.865" y="48.895" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="U2" library="FormE" package="SOT23-5" value="SN74LVC1G32DBV" x="75.565" y="9.525" smashed="yes" rot="R90">
@@ -3414,35 +3429,35 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="SN74LVC1G08DBVR" x="186.055" y="53.975" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="U30" library="FormE" package="ISO722X" value="ISO7221" x="177.8" y="48.895" smashed="yes">
-<attribute name="NAME" x="174.625" y="47.625" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="177.8" y="48.26" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ISO7221CDR" x="267.97" y="-31.115" size="1.778" layer="27" display="off"/>
 </element>
 <element name="U31" library="FormE" package="ISO722X" value="ISO7221" x="183.515" y="48.895" smashed="yes">
-<attribute name="NAME" x="180.34" y="47.625" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="183.515" y="48.26" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ISO7221CDR" x="281.305" y="-31.115" size="1.778" layer="27" display="off"/>
 </element>
 <element name="U32" library="FormE" package="PDS1-M" value="PDS1-S5-S5-M-TR" x="196.215" y="49.53" smashed="yes" rot="R270">
-<attribute name="NAME" x="192.405" y="57.15" size="0.6096" layer="25"/>
+<attribute name="NAME" x="196.215" y="49.53" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="PDS1-S5-S5-M-TR" x="164.465" y="-35.56" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="U33" library="FormE" package="ISO722X" value="ISO7221" x="154.305" y="38.735" smashed="yes">
-<attribute name="NAME" x="151.13" y="37.465" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="154.305" y="38.1" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ISO7221CDR" x="259.715" y="-41.275" size="1.778" layer="27" display="off"/>
 </element>
 <element name="U34" library="FormE" package="ISO722X" value="ISO7221" x="160.02" y="38.735" smashed="yes">
-<attribute name="NAME" x="156.845" y="37.465" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="160.02" y="38.1" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ISO7221CDR" x="273.05" y="-41.275" size="1.778" layer="27" display="off"/>
 </element>
 <element name="U35" library="FormE" package="PDS1-M" value="PDS1-S5-S5-M-TR" x="145.415" y="38.735" smashed="yes" rot="R270">
-<attribute name="NAME" x="141.605" y="46.355" size="0.6096" layer="25"/>
+<attribute name="NAME" x="145.415" y="38.735" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="PDS1-S5-S5-M-TR" x="113.665" y="-62.865" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="U36" library="FormE" package="ADC121S021" value="ADC121S021" x="182.245" y="32.385" smashed="yes">
-<attribute name="NAME" x="179.705" y="32.385" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="180.34" y="32.385" size="0.6096" layer="25" rot="R90"/>
 <attribute name="PARTNO" value="ADC121S021CIMF/NOPB" x="272.415" y="-61.595" size="1.778" layer="27" display="off"/>
 </element>
 <element name="U37" library="FormE" package="ADC121S021" value="ADC121S021" x="149.225" y="26.035" smashed="yes" rot="R270">
-<attribute name="NAME" x="149.225" y="28.575" size="0.6096" layer="25" rot="R90"/>
+<attribute name="NAME" x="152.4" y="24.765" size="0.6096" layer="25" rot="R180"/>
 <attribute name="PARTNO" value="ADC121S021CIMF/NOPB" x="55.245" y="-70.485" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="U38" library="ftdichip" package="SSOP28" value="FT232RL" x="38.1" y="86.995" smashed="yes" rot="R90">
@@ -3457,19 +3472,19 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="NAME" x="79.9835625" y="70.485" size="0.6096" layer="25" rot="R135"/>
 </element>
 <element name="U42" library="FormE" package="TPS54540" value="TPS54540DDARQ1" x="40.64" y="66.675" smashed="yes" rot="R270">
-<attribute name="NAME" x="39.37" y="70.485" size="0.6096" layer="25"/>
+<attribute name="NAME" x="38.735" y="63.5" size="0.6096" layer="25"/>
 <attribute name="PARTNO" value="TPS54540DDAR" x="-21.59" y="8.255" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="U5" library="FormE" package="SOIC-16" value="CD4050BD" x="43.815" y="48.895" smashed="yes" rot="R180">
-<attribute name="NAME" x="52.07" y="51.435" size="0.6096" layer="25" rot="R270"/>
+<attribute name="NAME" x="37.465" y="51.435" size="0.6096" layer="25" rot="R270"/>
 <attribute name="PARTNO" value="CD4050BDR" x="-1.905" y="128.905" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="U6" library="FormE" package="SOIC-16" value="CD4050BD" x="26.035" y="46.355" smashed="yes" rot="MR270">
-<attribute name="NAME" x="28.575" y="54.61" size="0.6096" layer="26" rot="MR0"/>
+<attribute name="NAME" x="26.035" y="52.705" size="0.6096" layer="26" rot="MR0"/>
 <attribute name="PARTNO" value="CD4050BDR" x="106.045" y="-15.875" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="U7" library="FormE" package="SOIC8-N_MC" value="MCP2562FD" x="20.955" y="29.845" smashed="yes" rot="R180">
-<attribute name="NAME" x="22.225" y="26.035" size="0.6096" layer="25" ratio="6" rot="SR180"/>
+<attribute name="NAME" x="19.685" y="26.67" size="0.6096" layer="25" ratio="6" rot="SR0"/>
 <attribute name="PARTNO" value="MCP2562FD-E/SN" x="-41.275" y="99.695" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="U8" library="FormE" package="ADUM3160" value="ADUM3160BRWZ-RL" x="19.05" y="87.63" smashed="yes" rot="MR90">
@@ -3477,7 +3492,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PARTNO" value="ADUM3160BRWZ-RL" x="-12.7" y="140.97" size="1.778" layer="28" rot="MR90" display="off"/>
 </element>
 <element name="Y2" library="FormE" package="CSM-3X" value="16MHz" x="81.28" y="55.88" smashed="yes" rot="R135">
-<attribute name="NAME" x="81.28" y="51.63735625" size="0.6096" layer="25" rot="R135"/>
+<attribute name="NAME" x="81.28" y="55.44735625" size="0.6096" layer="25" rot="R135"/>
 <attribute name="PARTNO" value="ECS-160-20-3X-TR" x="124.38523125" y="134.906253125" size="1.778" layer="27" rot="R135" display="off"/>
 </element>
 <element name="J4" library="FormE" package="MOLEX_43650-0416_0" value="MOLEX_43650-0416MOLEX_43650-0416_0_0" x="183.515" y="3.175" smashed="yes" rot="R180">
@@ -3555,16 +3570,14 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="VOLTAGE_RATING" value="600V" x="147.32" y="3.175" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="J7" library="FormE" package="MOLEX_43650-0616" value="43650-0616" x="114.935" y="2.54" smashed="yes" rot="R180">
-<attribute name="NAME" x="112.395" y="0" size="0.6096" layer="25" rot="R180"/>
+<attribute name="NAME" x="114.935" y="1.27" size="0.6096" layer="25" rot="R180"/>
 </element>
 <element name="U$1" library="FormE" package="BENDER-ISOMETER" value="" x="193.675" y="92.71" smashed="yes" rot="R180"/>
 <element name="C28" library="rcl" package="C0603K" value="4.7uF" x="107.315" y="15.24" smashed="yes" rot="R180">
-<attribute name="NAME" x="108.115" y="14.59" size="1.016" layer="25" rot="R180"/>
+<attribute name="NAME" x="108.115" y="14.59" size="0.6096" layer="25" rot="R180"/>
 <attribute name="PARTNO" value="GRM188R61A475KE15D" x="107.315" y="15.24" size="0.6096" layer="27" rot="R180" display="off"/>
-<attribute name="VALUE" x="108.115" y="16.89" size="1.016" layer="27" rot="R180"/>
 </element>
 <element name="S2" library="FormE" package="TE-147873-2" value="147873-2" x="104.14" y="95.885" smashed="yes" rot="R180">
-<attribute name="NAME" x="106.68" y="93.345" size="1.27" layer="25" rot="R180"/>
 <attribute name="PARTNO" value="147873-2" x="104.14" y="95.885" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 </elements>
@@ -3858,18 +3871,18 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <wire x1="66.304996875" y1="89.364053125" x2="66.257971875" y2="89.317028125" width="0.2032" layer="1"/>
 <via x="66.257971875" y="89.317028125" extent="1-16" drill="0.5"/>
 <contactref element="S2" pad="P$2"/>
-<wire x1="63.5" y1="98.84" x2="63.5" y2="99.695" width="0.2032" layer="1"/>
-<via x="63.5" y="99.695" extent="1-16" drill="0.5"/>
-<wire x1="67.31" y1="98.84" x2="67.31" y2="99.695" width="0.2032" layer="1"/>
-<via x="67.31" y="99.695" extent="1-16" drill="0.5"/>
-<wire x1="69.215" y1="98.84" x2="69.215" y2="99.695" width="0.2032" layer="1"/>
-<via x="69.215" y="99.695" extent="1-16" drill="0.5"/>
-<wire x1="71.12" y1="98.84" x2="71.12" y2="99.695" width="0.2032" layer="1"/>
-<via x="71.12" y="99.695" extent="1-16" drill="0.5"/>
-<wire x1="73.025" y1="98.84" x2="73.025" y2="99.695" width="0.2032" layer="1"/>
-<via x="73.025" y="99.695" extent="1-16" drill="0.5"/>
-<wire x1="74.93" y1="98.84" x2="74.93" y2="99.695" width="0.2032" layer="1"/>
-<via x="74.93" y="99.695" extent="1-16" drill="0.5"/>
+<wire x1="63.5" y1="98.84" x2="63.5" y2="99.06" width="0.2032" layer="1"/>
+<via x="63.5" y="99.06" extent="1-16" drill="0.5"/>
+<wire x1="67.31" y1="99.06" x2="67.31" y2="98.84" width="0.2032" layer="1"/>
+<via x="67.31" y="99.06" extent="1-16" drill="0.5"/>
+<wire x1="69.215" y1="98.84" x2="69.215" y2="99.06" width="0.2032" layer="1"/>
+<via x="69.215" y="99.06" extent="1-16" drill="0.5"/>
+<wire x1="71.12" y1="98.84" x2="71.12" y2="99.06" width="0.2032" layer="1"/>
+<via x="71.12" y="99.06" extent="1-16" drill="0.5"/>
+<wire x1="73.025" y1="98.84" x2="73.025" y2="99.06" width="0.2032" layer="1"/>
+<via x="73.025" y="99.06" extent="1-16" drill="0.5"/>
+<wire x1="74.93" y1="98.84" x2="74.93" y2="99.06" width="0.2032" layer="1"/>
+<via x="74.93" y="99.06" extent="1-16" drill="0.5"/>
 <wire x1="71.5049875" y1="84.81100625" x2="71.5049875" y2="85.4749875" width="0.2032" layer="1"/>
 <wire x1="71.5049875" y1="85.4749875" x2="71.755" y2="85.725" width="0.2032" layer="1"/>
 <via x="71.755" y="85.725" extent="1-16" drill="0.5"/>
@@ -4181,10 +4194,10 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <wire x1="65.6550125" y1="90.44899375" x2="65.6550125" y2="91.1899875" width="0.2032" layer="1"/>
 <wire x1="65.6550125" y1="91.1899875" x2="65.405" y2="91.44" width="0.2032" layer="1"/>
 <via x="65.405" y="91.44" extent="1-16" drill="0.5"/>
-<wire x1="76.835" y1="98.84" x2="76.835" y2="99.695" width="0.2032" layer="1"/>
-<via x="76.835" y="99.695" extent="1-16" drill="0.5"/>
-<wire x1="65.405" y1="98.84" x2="65.405" y2="99.695" width="0.2032" layer="1"/>
-<via x="65.405" y="99.695" extent="1-16" drill="0.5"/>
+<wire x1="76.835" y1="98.84" x2="76.835" y2="99.06" width="0.2032" layer="1"/>
+<via x="76.835" y="99.06" extent="1-16" drill="0.5"/>
+<wire x1="65.405" y1="98.84" x2="65.405" y2="99.06" width="0.2032" layer="1"/>
+<via x="65.405" y="99.06" extent="1-16" drill="0.5"/>
 <wire x1="93.345" y1="98.5901" x2="93.345" y2="96.52" width="0.2032" layer="1"/>
 <via x="93.345" y="96.52" extent="1-16" drill="0.5"/>
 <wire x1="103.72" y1="92.71" x2="104.775" y2="92.71" width="0.2032" layer="1"/>
@@ -6714,8 +6727,10 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <signal name="N$32">
 <contactref element="JP1" pad="1"/>
 <contactref element="JP3" pad="1"/>
-<wire x1="116.84" y1="8.46" x2="116.43" y2="8.46" width="0.254" layer="1"/>
-<wire x1="116.43" y1="8.46" x2="114.935" y2="9.955" width="0.254" layer="1"/>
+<wire x1="115.14" y1="9.935" x2="115.02795625" y2="9.86204375" width="0.254" layer="1"/>
+<wire x1="114.935" y1="9.955" x2="116.43" y2="8.46" width="0.2032" layer="1"/>
+<wire x1="116.43" y1="8.46" x2="116.84" y2="8.46" width="0.2032" layer="1"/>
+<wire x1="114.935" y1="9.955" x2="115.02795625" y2="9.86204375" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$33">
 <contactref element="JP2" pad="1"/>
