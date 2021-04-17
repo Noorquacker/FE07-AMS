@@ -7,6 +7,7 @@
 
 // INCLUDES
 #include "gio.h"
+#include "het.h"
 
 
 // GIO PORT A PIN DEFINITIONS
@@ -49,6 +50,32 @@
 #define HET1_POSITIVE_CONTACT_CTRL 20
 
 
+//uint8_t buffer[64];
+
+//AMS_getVoltageData(uint16_t &buffer){
+//    mibspiGetData(mibspiREG1, 0, buffer);
+// //       uint32 mibspiGetData(mibspiBASE_t *mibspi, uint32 group, uint16 * data)
+//
+//}
+
+void AMS_start_HV(void){
+    // Engage Negative Contactor
+    gioSetBit(hetPORT1,HET1_NEGATIVE_CONTACT_CTRL,1);
+    // Wait Until Negative Contactor Close is Sensed
+    while(!gioGetBit(gioPORTA, GIOA_NEG_CONTACT_SENSE_FILTERED));
+    // Engage Precharge Contactor
+    gioSetBit(hetPORT1,HET1_PRECHARGE_CONTACT_CTRL,1);
+    // Wait until Delta between Vehicle Voltage and Battery Voltage is greater than 5
+    while(getDelta()<5);
+    // Engage Positive Contactor
+    gioSetBit(hetPORT1,HET1_POSITIVE_CONTACT_CTRL,1);
+    // Disengage Precharge Contactor
+    gioSetBit(hetPORT1,HET1_PRECHARGE_CONTACT_CTRL,0);
+
+    return;
+}
+
+/*
 AMS_switchState(int AMS_STATE){
 	switch(AMS_STATE)
 	{
@@ -117,3 +144,4 @@ uint32 AMS_getCurrentShortFaultState(void){
 	return gioGetBit(gioPORTA, GIOB_CURRENT_SHORT_FAULT);
 }
 
+*/

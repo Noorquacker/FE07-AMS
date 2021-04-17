@@ -10,12 +10,14 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./source/FE_AMS.obj" \
 "./source/adc.obj" \
 "./source/can.obj" \
 "./source/crc.obj" \
 "./source/dabort.obj" \
 "./source/dcc.obj" \
 "./source/emac.obj" \
+"./source/errata_SSWF021_45.obj" \
 "./source/esm.obj" \
 "./source/gio.obj" \
 "./source/het.obj" \
@@ -42,6 +44,15 @@ ORDERED_OBJS += \
 "./source/sys_startup.obj" \
 "./source/sys_vim.obj" \
 "./source/system.obj" \
+"./source/usb.obj" \
+"./source/usb_serial_structs.obj" \
+"./source/usbbuffer.obj" \
+"./source/usbdcdc.obj" \
+"./source/usbdcdesc.obj" \
+"./source/usbdconfig.obj" \
+"./source/usbdenum.obj" \
+"./source/usbdesc.obj" \
+"./source/usbringbuf.obj" \
 "../source/sys_link.cmd" \
 $(GEN_CMDS__FLAG) \
 -lrtsv7R4_T_le_v3D16_eabi.lib \
@@ -185,8 +196,8 @@ FE07_AMS.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "source\adc.obj" "source\can.obj" "source\crc.obj" "source\dabort.obj" "source\dcc.obj" "source\emac.obj" "source\esm.obj" "source\gio.obj" "source\het.obj" "source\i2c.obj" "source\lin.obj" "source\mdio.obj" "source\mibspi.obj" "source\notification.obj" "source\phy_dp83640.obj" "source\pinmux.obj" "source\rti.obj" "source\sci.obj" "source\spi.obj" "source\sys_core.obj" "source\sys_dma.obj" "source\sys_intvecs.obj" "source\sys_main.obj" "source\sys_mpu.obj" "source\sys_pcr.obj" "source\sys_phantom.obj" "source\sys_pmm.obj" "source\sys_pmu.obj" "source\sys_selftest.obj" "source\sys_startup.obj" "source\sys_vim.obj" "source\system.obj" 
-	-$(RM) "source\adc.d" "source\can.d" "source\crc.d" "source\dcc.d" "source\emac.d" "source\esm.d" "source\gio.d" "source\het.d" "source\i2c.d" "source\lin.d" "source\mdio.d" "source\mibspi.d" "source\notification.d" "source\phy_dp83640.d" "source\pinmux.d" "source\rti.d" "source\sci.d" "source\spi.d" "source\sys_dma.d" "source\sys_main.d" "source\sys_pcr.d" "source\sys_phantom.d" "source\sys_pmm.d" "source\sys_selftest.d" "source\sys_startup.d" "source\sys_vim.d" "source\system.d" 
+	-$(RM) "source\FE_AMS.obj" "source\adc.obj" "source\can.obj" "source\crc.obj" "source\dabort.obj" "source\dcc.obj" "source\emac.obj" "source\errata_SSWF021_45.obj" "source\esm.obj" "source\gio.obj" "source\het.obj" "source\i2c.obj" "source\lin.obj" "source\mdio.obj" "source\mibspi.obj" "source\notification.obj" "source\phy_dp83640.obj" "source\pinmux.obj" "source\rti.obj" "source\sci.obj" "source\spi.obj" "source\sys_core.obj" "source\sys_dma.obj" "source\sys_intvecs.obj" "source\sys_main.obj" "source\sys_mpu.obj" "source\sys_pcr.obj" "source\sys_phantom.obj" "source\sys_pmm.obj" "source\sys_pmu.obj" "source\sys_selftest.obj" "source\sys_startup.obj" "source\sys_vim.obj" "source\system.obj" "source\usb.obj" "source\usb_serial_structs.obj" "source\usbbuffer.obj" "source\usbdcdc.obj" "source\usbdcdesc.obj" "source\usbdconfig.obj" "source\usbdenum.obj" "source\usbdesc.obj" "source\usbringbuf.obj" 
+	-$(RM) "source\FE_AMS.d" "source\adc.d" "source\can.d" "source\crc.d" "source\dcc.d" "source\emac.d" "source\errata_SSWF021_45.d" "source\esm.d" "source\gio.d" "source\het.d" "source\i2c.d" "source\lin.d" "source\mdio.d" "source\mibspi.d" "source\notification.d" "source\phy_dp83640.d" "source\pinmux.d" "source\rti.d" "source\sci.d" "source\spi.d" "source\sys_dma.d" "source\sys_main.d" "source\sys_pcr.d" "source\sys_phantom.d" "source\sys_pmm.d" "source\sys_selftest.d" "source\sys_startup.d" "source\sys_vim.d" "source\system.d" "source\usb.d" "source\usb_serial_structs.d" "source\usbbuffer.d" "source\usbdcdc.d" "source\usbdcdesc.d" "source\usbdconfig.d" "source\usbdenum.d" "source\usbdesc.d" "source\usbringbuf.d" 
 	-$(RM) "source\dabort.d" "source\sys_core.d" "source\sys_intvecs.d" "source\sys_mpu.d" "source\sys_pmu.d" 
 	-@echo 'Finished clean'
 	-@echo ' '

@@ -16,11 +16,13 @@ ASM_SRCS += \
 ../source/sys_pmu.asm 
 
 C_SRCS += \
+../source/FE_AMS.c \
 ../source/adc.c \
 ../source/can.c \
 ../source/crc.c \
 ../source/dcc.c \
 ../source/emac.c \
+../source/errata_SSWF021_45.c \
 ../source/esm.c \
 ../source/gio.c \
 ../source/het.c \
@@ -42,14 +44,25 @@ C_SRCS += \
 ../source/sys_selftest.c \
 ../source/sys_startup.c \
 ../source/sys_vim.c \
-../source/system.c 
+../source/system.c \
+../source/usb.c \
+../source/usb_serial_structs.c \
+../source/usbbuffer.c \
+../source/usbdcdc.c \
+../source/usbdcdesc.c \
+../source/usbdconfig.c \
+../source/usbdenum.c \
+../source/usbdesc.c \
+../source/usbringbuf.c 
 
 C_DEPS += \
+./source/FE_AMS.d \
 ./source/adc.d \
 ./source/can.d \
 ./source/crc.d \
 ./source/dcc.d \
 ./source/emac.d \
+./source/errata_SSWF021_45.d \
 ./source/esm.d \
 ./source/gio.d \
 ./source/het.d \
@@ -71,15 +84,26 @@ C_DEPS += \
 ./source/sys_selftest.d \
 ./source/sys_startup.d \
 ./source/sys_vim.d \
-./source/system.d 
+./source/system.d \
+./source/usb.d \
+./source/usb_serial_structs.d \
+./source/usbbuffer.d \
+./source/usbdcdc.d \
+./source/usbdcdesc.d \
+./source/usbdconfig.d \
+./source/usbdenum.d \
+./source/usbdesc.d \
+./source/usbringbuf.d 
 
 OBJS += \
+./source/FE_AMS.obj \
 ./source/adc.obj \
 ./source/can.obj \
 ./source/crc.obj \
 ./source/dabort.obj \
 ./source/dcc.obj \
 ./source/emac.obj \
+./source/errata_SSWF021_45.obj \
 ./source/esm.obj \
 ./source/gio.obj \
 ./source/het.obj \
@@ -105,7 +129,16 @@ OBJS += \
 ./source/sys_selftest.obj \
 ./source/sys_startup.obj \
 ./source/sys_vim.obj \
-./source/system.obj 
+./source/system.obj \
+./source/usb.obj \
+./source/usb_serial_structs.obj \
+./source/usbbuffer.obj \
+./source/usbdcdc.obj \
+./source/usbdcdesc.obj \
+./source/usbdconfig.obj \
+./source/usbdenum.obj \
+./source/usbdesc.obj \
+./source/usbringbuf.obj 
 
 ASM_DEPS += \
 ./source/dabort.d \
@@ -115,12 +148,14 @@ ASM_DEPS += \
 ./source/sys_pmu.d 
 
 OBJS__QUOTED += \
+"source\FE_AMS.obj" \
 "source\adc.obj" \
 "source\can.obj" \
 "source\crc.obj" \
 "source\dabort.obj" \
 "source\dcc.obj" \
 "source\emac.obj" \
+"source\errata_SSWF021_45.obj" \
 "source\esm.obj" \
 "source\gio.obj" \
 "source\het.obj" \
@@ -146,14 +181,25 @@ OBJS__QUOTED += \
 "source\sys_selftest.obj" \
 "source\sys_startup.obj" \
 "source\sys_vim.obj" \
-"source\system.obj" 
+"source\system.obj" \
+"source\usb.obj" \
+"source\usb_serial_structs.obj" \
+"source\usbbuffer.obj" \
+"source\usbdcdc.obj" \
+"source\usbdcdesc.obj" \
+"source\usbdconfig.obj" \
+"source\usbdenum.obj" \
+"source\usbdesc.obj" \
+"source\usbringbuf.obj" 
 
 C_DEPS__QUOTED += \
+"source\FE_AMS.d" \
 "source\adc.d" \
 "source\can.d" \
 "source\crc.d" \
 "source\dcc.d" \
 "source\emac.d" \
+"source\errata_SSWF021_45.d" \
 "source\esm.d" \
 "source\gio.d" \
 "source\het.d" \
@@ -175,7 +221,16 @@ C_DEPS__QUOTED += \
 "source\sys_selftest.d" \
 "source\sys_startup.d" \
 "source\sys_vim.d" \
-"source\system.d" 
+"source\system.d" \
+"source\usb.d" \
+"source\usb_serial_structs.d" \
+"source\usbbuffer.d" \
+"source\usbdcdc.d" \
+"source\usbdcdesc.d" \
+"source\usbdconfig.d" \
+"source\usbdenum.d" \
+"source\usbdesc.d" \
+"source\usbringbuf.d" 
 
 ASM_DEPS__QUOTED += \
 "source\dabort.d" \
@@ -185,11 +240,13 @@ ASM_DEPS__QUOTED += \
 "source\sys_pmu.d" 
 
 C_SRCS__QUOTED += \
+"../source/FE_AMS.c" \
 "../source/adc.c" \
 "../source/can.c" \
 "../source/crc.c" \
 "../source/dcc.c" \
 "../source/emac.c" \
+"../source/errata_SSWF021_45.c" \
 "../source/esm.c" \
 "../source/gio.c" \
 "../source/het.c" \
@@ -211,7 +268,16 @@ C_SRCS__QUOTED += \
 "../source/sys_selftest.c" \
 "../source/sys_startup.c" \
 "../source/sys_vim.c" \
-"../source/system.c" 
+"../source/system.c" \
+"../source/usb.c" \
+"../source/usb_serial_structs.c" \
+"../source/usbbuffer.c" \
+"../source/usbdcdc.c" \
+"../source/usbdcdesc.c" \
+"../source/usbdconfig.c" \
+"../source/usbdenum.c" \
+"../source/usbdesc.c" \
+"../source/usbringbuf.c" 
 
 ASM_SRCS__QUOTED += \
 "../source/dabort.asm" \

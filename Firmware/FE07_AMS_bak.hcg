@@ -7,7 +7,7 @@
     <tools>ti</tools>
   </DEVICE>
   <VERSION>
-    <version>04.06.00</version>
+    <version>04.07.01</version>
   </VERSION>
   <HET1>
     <FILENAME>
@@ -225,8 +225,7 @@
         <NAME>lin.h</NAME>
       </HDRLIN>
       <SRCLIN>
-        <NAME>lin.c</NAME>
-      </SRCLIN>
+        </SRCLIN>
       <HDRMIBSPI_R>
         <NAME>reg_mibspi.h</NAME>
       </HDRMIBSPI_R>
@@ -377,15 +376,33 @@
       <HDR9USB>
         <NAME>hw_usb.h</NAME>
       </HDR9USB>
-      <SRC1USB/>
-      <SRC2USB/>
-      <SRC3USB/>
-      <SRC5USB/>
-      <SRC6USB/>
-      <SRC7USB/>
-      <SRC8USB/>
-      <SRC9USB/>
-      <SRC10USB/>
+      <SRC1USB>
+        <NAME>usbdcdc.c</NAME>
+      </SRC1USB>
+      <SRC2USB>
+        <NAME>usb_serial_structs.c</NAME>
+      </SRC2USB>
+      <SRC3USB>
+        <NAME>usbbuffer.c</NAME>
+      </SRC3USB>
+      <SRC5USB>
+        <NAME>usbdcdesc.c</NAME>
+      </SRC5USB>
+      <SRC6USB>
+        <NAME>usbdconfig.c</NAME>
+      </SRC6USB>
+      <SRC7USB>
+        <NAME>usbdenum.c</NAME>
+      </SRC7USB>
+      <SRC8USB>
+        <NAME>usbdesc.c</NAME>
+      </SRC8USB>
+      <SRC9USB>
+        <NAME>usbringbuf.c</NAME>
+      </SRC9USB>
+      <SRC10USB>
+        <NAME>usb.c</NAME>
+      </SRC10USB>
       <HDRCRC_R>
         <NAME>reg_crc.h</NAME>
       </HDRCRC_R>
@@ -435,6 +452,18 @@
       <SRC14FEE/>
       <SRC15FEE/>
       <SRC16FEE/>
+      <SSWFHDRERRATA>
+        <NAME>errata_SSWF021_45.h</NAME>
+        <PATH>include\errata_SSWF021_45.h</PATH>
+      </SSWFHDRERRATA>
+      <SSWFHDREGERRATA>
+        <NAME>errata_SSWF021_45_defs.h</NAME>
+        <PATH>include\errata_SSWF021_45_defs.h</PATH>
+      </SSWFHDREGERRATA>
+      <SSWFSRCERRATA>
+        <NAME>errata_SSWF021_45.c</NAME>
+        <PATH>source\errata_SSWF021_45.c</PATH>
+      </SSWFSRCERRATA>
     </FILENAMES>
   </SYSTEM>
   <PINMUX>
@@ -498,7 +527,7 @@
         <PATH>include\lin.h</PATH>
       </HDRLIN>
       <SRCLIN>
-        <PATH>source\lin.c</PATH>
+        <PATH></PATH>
       </SRCLIN>
     </FILENAMES>
   </LIN>
@@ -679,31 +708,31 @@
         <PATH>include\hw_usb.h</PATH>
       </HDR9USB>
       <SRC1USB>
-        <PATH/>
+        <PATH>source\usbdcdc.c</PATH>
       </SRC1USB>
       <SRC2USB>
-        <PATH/>
+        <PATH>source\usb_serial_structs.c</PATH>
       </SRC2USB>
       <SRC3USB>
-        <PATH/>
+        <PATH>source\usbbuffer.c</PATH>
       </SRC3USB>
       <SRC5USB>
-        <PATH/>
+        <PATH>source\usbdcdesc.c</PATH>
       </SRC5USB>
       <SRC6USB>
-        <PATH/>
+        <PATH>source\usbdconfig.c</PATH>
       </SRC6USB>
       <SRC7USB>
-        <PATH/>
+        <PATH>source\usbdenum.c</PATH>
       </SRC7USB>
       <SRC8USB>
-        <PATH/>
+        <PATH>source\usbdesc.c</PATH>
       </SRC8USB>
       <SRC9USB>
-        <PATH/>
+        <PATH>source\usbringbuf.c</PATH>
       </SRC9USB>
       <SRC10USB>
-        <PATH/>
+        <PATH>source\usb.c</PATH>
       </SRC10USB>
     </FILENAMES>
   </USB>
