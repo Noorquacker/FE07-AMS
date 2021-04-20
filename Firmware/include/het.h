@@ -343,11 +343,11 @@ typedef struct het_config_reg
                                 | (uint32)0x00000000U \
                                 | (uint32)0x00000000U \
                                 | (uint32)0x00000000U \
+								| (uint32)0x00100000U \
 								| (uint32)0x00000000U \
+								| (uint32)0x00040000U \
 								| (uint32)0x00000000U \
-								| (uint32)0x00000000U \
-								| (uint32)0x00000000U \
-								| (uint32)0x00000000U \
+								| (uint32)0x00010000U \
 								| (uint32)0x00000000U \
 								| (uint32)0x00004000U \
 								| (uint32)0x00000000U \

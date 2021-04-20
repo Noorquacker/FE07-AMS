@@ -47,6 +47,8 @@
 #include "sys_vim.h"
 
 /* USER CODE BEGIN (1) */
+#include "het.h"
+#include "FE_AMS.h"
 /* USER CODE END */
 
 /** @fn void gioInit(void)
@@ -133,7 +135,7 @@ void gioInit(void)
                    | (uint32)((uint32)0U << 7U); /* Bit 7 */
 
     /** - Port B direction */
-    gioPORTB->DIR  = (uint32)((uint32)0U << 0U)  /* Bit 0 */
+    gioPORTB->DIR  = (uint32)((uint32)1U << 0U)  /* Bit 0 */
                    | (uint32)((uint32)0U << 1U)  /* Bit 1 */
                    | (uint32)((uint32)0U << 2U)  /* Bit 2 */
                    | (uint32)((uint32)0U << 3U)  /* Bit 3 */
@@ -206,7 +208,7 @@ void gioInit(void)
                    | (uint32)((uint32)0U << 6U)   /* Bit 6 */
                    | (uint32)((uint32)0U << 7U)   /* Bit 7 */
                    | (uint32)((uint32)0U << 8U)   /* Bit 8  */
-                   | (uint32)((uint32)0U << 9U)   /* Bit 9  */
+                   | (uint32)((uint32)1U << 9U)   /* Bit 9  */
                    | (uint32)((uint32)1U << 10U)  /* Bit 10 */
                    | (uint32)((uint32)0U << 11U)  /* Bit 11 */
                    | (uint32)((uint32)0U << 12U)  /* Bit 12 */
@@ -230,7 +232,7 @@ void gioInit(void)
                    | (uint32)((uint32)0U << 6U)   /* Bit 6 */
                    | (uint32)((uint32)0U << 7U)   /* Bit 7 */
                    | (uint32)((uint32)0U << 8U)   /* Bit 8  */
-                   | (uint32)((uint32)0U << 9U)   /* Bit 9  */
+                   | (uint32)((uint32)1U << 9U)   /* Bit 9  */
                    | (uint32)((uint32)1U << 10U)  /* Bit 10 */
                    | (uint32)((uint32)0U << 11U)  /* Bit 11 */
                    | (uint32)((uint32)0U << 12U)  /* Bit 12 */
@@ -533,6 +535,13 @@ void gioHighLevelInterrupt(void)
 
 /* USER CODE BEGIN (14) */
    // gioGetBit(hetPORT1, )
+    //gioGetBit()
+    gioToggleBit(hetPORT1, 14);
+
+    if(gioGetBit(gioPORTB, 1) != 1){
+
+        AMS_start_HV();
+    }
 /* USER CODE END */
     
     if (offset != 0U)

@@ -6,8 +6,10 @@
  */
 
 // INCLUDES
-#include "gio.h"
 #include "het.h"
+#include "gio.h"
+#include "mibspi.h"
+#include "spi.h"
 
 
 // GIO PORT A PIN DEFINITIONS
@@ -58,7 +60,30 @@
 //
 //}
 
+uint16 currentVehicleVoltage = 0;
+uint16 currentBatteryVoltage = 0;
+
+uint16 RX_Data_M[16] = { 0 };
+uint16 RX_Data_S[16]  = { 0 };
+
+spiDAT1_t dataconfig00_t;
+
+void dataConfigFnct(){
+    dataconfig00_t.CS_HOLD = TRUE;
+    dataconfig00_t.WDEL    = TRUE;
+    dataconfig00_t.DFSEL   = SPI_FMT_0;
+    dataconfig00_t.CSNR    = 0xFE;
+}
+
+uint16 getDelta() {
+    uint16 x = currentBatteryVoltage - currentVehicleVoltage;
+    x = x*(-1);
+    return x;
+}
+
 void AMS_start_HV(void){
+    dataConfigFnct();
+    uint16 x = getDelta();
     // Engage Negative Contactor
     gioSetBit(hetPORT1,HET1_NEGATIVE_CONTACT_CTRL,1);
     // Wait Until Negative Contactor Close is Sensed
@@ -66,7 +91,13 @@ void AMS_start_HV(void){
     // Engage Precharge Contactor
     gioSetBit(hetPORT1,HET1_PRECHARGE_CONTACT_CTRL,1);
     // Wait until Delta between Vehicle Voltage and Battery Voltage is greater than 5
-    while(getDelta()<5);
+    while(x<5){
+        x = getDelta();
+        spiReceiveData(spiREG1, &dataconfig00_t, 1, RX_Data_M);
+        spiReceiveData(spiREG3, &dataconfig00_t, 1, RX_Data_S);
+        setCurrentBatteryVoltage(RX_Data_S[0]);
+        setCurrentVehicleVoltage(RX_Data_M[0]);
+    }
     // Engage Positive Contactor
     gioSetBit(hetPORT1,HET1_POSITIVE_CONTACT_CTRL,1);
     // Disengage Precharge Contactor
@@ -75,6 +106,19 @@ void AMS_start_HV(void){
     return;
 }
 
+
+
+
+
+void setCurrentVehicleVoltage(uint16 x){
+    currentVehicleVoltage = x;
+    return;
+}
+
+void setCurrentBatteryVoltage(uint16 x){
+    currentBatteryVoltage = x;
+    return;
+}
 /*
 AMS_switchState(int AMS_STATE){
 	switch(AMS_STATE)

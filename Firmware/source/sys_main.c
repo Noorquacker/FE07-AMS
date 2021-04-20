@@ -66,7 +66,7 @@
 */
 
 /* USER CODE BEGIN (2) */
-uint16 TX_Data_Master[16] = { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10 };
+uint16 TX_Data_Master[16] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 uint16 TX_Data_Slave[16]  = { 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F, 0x20 };
 uint16 RX_Data_Master[16] = { 0 };
 uint16 RX_Data_Slave[16]  = { 0 };
@@ -80,36 +80,55 @@ int main(void)
 {
 /* USER CODE BEGIN (3) */
     gioInit();
+    gioEnableNotification(gioPORTB,1);
+    _enable_IRQ();
+
     hetInit();
     mibspiInit();
-//    spiInit();
+    spiInit();
     gioSetBit(hetPORT1,14,1);
     gioSetBit(hetPORT1,12,1);
-    mibspiSetData(mibspiREG1, 0, TX_Data_Master);
-    mibspiSetData(mibspiREG1, 1, TX_Data_Master);
-//    spiDAT1_t dataconfig1_t;
-//
-//        dataconfig1_t.CS_HOLD = TRUE;
-//        dataconfig1_t.WDEL    = TRUE;
-//        dataconfig1_t.DFSEL   = SPI_FMT_0;
-//        dataconfig1_t.CSNR    = 0xFE;
-//    mibspiTransfer(mibspiREG1, 0);
+//    mibspiSetData(mibspiREG1, 0, TX_Data_Master);
+//    mibspiSetData(mibspiREG1, 1, TX_Data_Master);
+    spiDAT1_t dataconfig1_t;
+
+        dataconfig1_t.CS_HOLD = TRUE;
+        dataconfig1_t.WDEL    = TRUE;
+        dataconfig1_t.DFSEL   = SPI_FMT_0;
+        dataconfig1_t.CSNR    = 0xFE;
+
+    spiDAT1_t dataconfig2_t;
+            dataconfig2_t.CS_HOLD = TRUE;
+            dataconfig2_t.WDEL    = TRUE;
+            dataconfig2_t.DFSEL   = SPI_FMT_0;
+            dataconfig2_t.CSNR    = 0xFE;
+
+
+        //    mibspiTransfer(mibspiREG1, 0);
 //    while(!(mibspiIsTransferComplete(mibspiREG1,0)));
 //    mibspiTransfer(mibspiREG1, 1);
 //    while(!(mibspiIsTransferComplete(mibspiREG1,1)));
       //  spiTransmitAndReceiveData(spiREG1, &dataconfig1_t, 1, TX_Data_Master, RX_Data_Master);
 
+
     while(1){
-        //spiTransmitAndReceiveData(spiREG1, &dataconfig1_t, 1, TX_Data_Master, RX_Data_Master);
+        spiReceiveData(spiREG1, &dataconfig1_t, 1, RX_Data_Master);
+        spiReceiveData(spiREG3, &dataconfig2_t, 1, RX_Data_Slave);
+        setCurrentBatteryVoltage(RX_Data_Slave[0]);
+        setCurrentVehicleVoltage(RX_Data_Master[0]);
+        //  spiReceiveData(spiREG1, &dataconfig2_t, 1, RX_Data_Slave);
+//        spiTransmitAndReceiveData(spiREG1, &dataconfig1_t, 1, TX_Data_Master, RX_Data_Master);
+//
+//        spiTransmitAndReceiveData(spiREG1, &dataconfig2_t, 1, TX_Data_Slave, RX_Data_Slave);
 
-        mibspiTransfer(mibspiREG1, 0);
-            while(!(mibspiIsTransferComplete(mibspiREG1,0)));
-            mibspiTransfer(mibspiREG1, 1);
-            while(!(mibspiIsTransferComplete(mibspiREG1,1)));
-        mibspiGetData(mibspiREG1, 0, RX_Data_Master);
-        mibspiGetData(mibspiREG1, 1, RX_Data_Slave);
+//        mibspiTransfer(mibspiREG1, 0);
+//            while(!(mibspiIsTransferComplete(mibspiREG1,0)));
+//            mibspiTransfer(mibspiREG1, 1);
+//            while(!(mibspiIsTransferComplete(mibspiREG1,1)));
+//        mibspiGetData(mibspiREG1, 0, RX_Data_Master);
+//        mibspiGetData(mibspiREG1, 1, RX_Data_Slave);
 
-        gioSetBit(hetPORT1,14,1);
+      //  gioSetBit(hetPORT1,14,1);
 
     }
 /* USER CODE END */
