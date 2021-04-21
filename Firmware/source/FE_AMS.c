@@ -107,6 +107,16 @@ void AMS_start_HV(void){
 }
 
 
+uint8 AMS_checkForFaults(){
+	uint8 x = 0xFF;
+	x |= ~((gioGetBit(gioPORTA, GIOA_BMS_FAULT))<<0);
+	x |= ~((gioGetBit(gioPORTA, GIOA_IMD_FAULT))<<1);
+	x |= ~((gioGetBit(gioPORTB, GIOB_CURRENT_SHORT_FAULT))<<2);
+	x |= ~((gioGetBit(gioPORTB, GIOB_CURRENT_SHORT_FAULT))<<3);
+	x |= ~((gioGetBit(hetPORT1, HET1_SC_OUTSIDE_SENSE))<<4);
+
+	return x;
+}
 
 
 
@@ -119,6 +129,39 @@ void setCurrentBatteryVoltage(uint16 x){
     currentBatteryVoltage = x;
     return;
 }
+
+
+void AMS_process() {
+	// Read Inputs
+	AMS_readADC();
+	AMS_readGIO();
+	AMS_readHET();
+
+	// Check Fault State
+	AMS_checkForFaults();
+
+	// Process the Current State of the AMS
+	AMS_processState();
+
+	// Write CAN Outputs
+	AMS_canTX_Car();
+//	AMS_canTX_BMS();  // Disabled by default, BMS currently communicates through UART
+
+	// Write Digital Outputs
+	AMS_writeGIO();
+	AMS_writeHET();
+
+
+
+	timeoutCAR++;
+	timeoutBMS++;
+
+
+
+
+}
+
+
 /*
 AMS_switchState(int AMS_STATE){
 	switch(AMS_STATE)
