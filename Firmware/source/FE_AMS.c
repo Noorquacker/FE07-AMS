@@ -6,6 +6,7 @@
  */
 
 // INCLUDES
+#include "adc.h"
 #include "het.h"
 #include "gio.h"
 #include "mibspi.h"
@@ -31,25 +32,32 @@
 
 
 // CAN PORT DEFINITIONS
-#define CAR_CAN_PORT canREG1
-#define BMS_CAN_PORT canREG2 // NOT CURRENTLY USED
+#define CAR_CAN_PORT 					canREG1
+#define BMS_CAN_PORT 					canREG2 // NOT CURRENTLY USED
 
 
 // SPI PORT DEFINITIONS
-#define VOLTAGE_MONITOR_SPI_PORT mibspiREG1
+#define VOLTAGE_MONITOR_SPI_PORT 		mibspiREG1
 
 
 // HET PORT 1 PIN DEFINITIONS
 // INPUTS
-#define HET1_IMD_PWM_INPUT 2 // PWM
-#define HET1_SC_OUTSIDE_SENSE 4
+#define HET1_IMD_PWM_INPUT 				2 // PWM
+#define HET1_SC_OUTSIDE_SENSE 			4
 #define HET1_SC_OUTSIDE_SENSE_DUPLICATE 15 // DUPLICATE - UNUSED
 // OUTPUTS
-#define HET1_LED_INDICATOR_1 12 // This is switched with Indicator 2 due to incorrect silk screen
-#define HET1_LED_INDICATOR_2 14 // This is switched with Indicator 1 due to incorrect silk screen
-#define HET1_PRECHARGE_CONTACT_CTRL 16
-#define HET1_NEGATIVE_CONTACT_CTRL 18
-#define HET1_POSITIVE_CONTACT_CTRL 20
+#define HET1_LED_INDICATOR_1 			12 // This is switched with Indicator 2 due to incorrect silk screen
+#define HET1_LED_INDICATOR_2 			14 // This is switched with Indicator 1 due to incorrect silk screen
+#define HET1_PRECHARGE_CONTACT_CTRL		16
+#define HET1_NEGATIVE_CONTACT_CTRL		18
+#define HET1_POSITIVE_CONTACT_CTRL 		20
+
+// CAR CAN Message Boxes	    NUMBER  TX/RX
+#define CANBOX_AMS_STATUS       1U      //RX
+#define CANBOX_AMS_VOLTS        2U      //RX
+#define CANBOX_AMS_AMPS         3U      //RX
+
+
 
 
 //uint8_t buffer[64];
@@ -60,11 +68,19 @@
 //
 //}
 
+uint32 timeoutBMS = 0;
+uint32 timeoutCAR = 0;
+
+uint16 currentSense_75 = 0;
+uint16 currentSense_750 = 0;
+
 uint16 currentVehicleVoltage = 0;
 uint16 currentBatteryVoltage = 0;
 
 uint16 RX_Data_M[16] = { 0 };
 uint16 RX_Data_S[16]  = { 0 };
+
+
 
 spiDAT1_t dataconfig00_t;
 
@@ -109,11 +125,11 @@ void AMS_start_HV(void){
 
 uint8 AMS_checkForFaults(){
 	uint8 x = 0xFF;
-	x |= ~((gioGetBit(gioPORTA, GIOA_BMS_FAULT))<<0);
-	x |= ~((gioGetBit(gioPORTA, GIOA_IMD_FAULT))<<1);
-	x |= ~((gioGetBit(gioPORTB, GIOB_CURRENT_SHORT_FAULT))<<2);
-	x |= ~((gioGetBit(gioPORTB, GIOB_CURRENT_SHORT_FAULT))<<3);
-	x |= ~((gioGetBit(hetPORT1, HET1_SC_OUTSIDE_SENSE))<<4);
+	x |= ~(()<<0);
+	x |= ~(()<<1);
+	x |= ~(()<<2);
+	x |= ~(()<<3);
+	x |= ~(()<<4);
 
 	return x;
 }
@@ -128,6 +144,58 @@ void setCurrentVehicleVoltage(uint16 x){
 void setCurrentBatteryVoltage(uint16 x){
     currentBatteryVoltage = x;
     return;
+}
+
+void AMS_readADC() {
+	adcData_t adc_data[2];
+
+	adcStartConversion(adcREG1, adcGROUP1);
+	while(!adcIsConversionComplete(adcREG1,adcGROUP1));
+	adcGetData(adcREG1,adcGROUP1,&adc_data[0]);
+
+	currentSense_75 = adc_data[0].value;
+	currentSense_750 = adc_data[1].value ;
+
+	return;
+}
+
+
+void AMS_readGIO() {
+	//PORT A
+	bmsFault = gioGetBit(gioPORTA, GIOA_BMS_FAULT);
+	imdFault = gioGetBit(gioPORTA, GIOA_IMD_FAULT);
+	filtered_neg_contact_sense = gioGetBit(gioPORTA, GIOA_NEG_CONTACT_SENSE_FILTERED);
+	filtered_pos_contact_sense = gioGetBit(gioPORTA, GIOA_POS_CONTACT_SENSE_FILTERED);
+	contactor_open = gioGetBit(gioPORTA, GIOA_CONTACT_OPEN_INPUT);
+	contactor_closed = gioGetBit(gioPORTA, GIOA_CONTACT_CLOSED_INPUT);
+
+	// PORT B
+	fiveKWActive = gioGetBit(gioPORTB, GIOB_5KW_INPUT);
+	currentShortFault = gioGetBit(gioPORTB, GIOB_CURRENT_SHORT_FAULT);
+
+	return;
+}
+
+void AMS_readHET(){
+	hetSIGNAL_t imd_data[1];
+
+	scOutsideSense = gioGetBit(hetPORT1, HET1_SC_OUTSIDE_SENSE);
+
+
+	// READ IMD PWM
+	capGetSignal(hetRAM1, cap0, &imd_data[0]);
+
+	imdDutyCycle = imd_data[0].duty;
+	imdPeriod = imd_data[0].period;
+}
+
+void AMS_canTX_Car(){
+	uint8 tx_data1[8] = {0};
+	uint8 tx_data2[8] = {0};
+	uint8 tx_data3[8] = {0};
+
+	tx_data1[
+
 }
 
 
@@ -156,11 +224,12 @@ void AMS_process() {
 	timeoutCAR++;
 	timeoutBMS++;
 
-
-
-
 }
 
+
+
+
+//void AMS_
 
 /*
 AMS_switchState(int AMS_STATE){

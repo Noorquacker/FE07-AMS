@@ -1,14 +1,14 @@
 /** @file sys_main.c 
 *   @brief Application main file
-*   @date 07-July-2017
-*   @version 04.07.00
+*   @date 11-Dec-2018
+*   @version 04.07.01
 *
 *   This file contains an empty main function,
 *   which can be used for the application.
 */
 
 /* 
-* Copyright (C) 2009-2016 Texas Instruments Incorporated - www.ti.com 
+* Copyright (C) 2009-2018 Texas Instruments Incorporated - www.ti.com 
 * 
 * 
 *  Redistribution and use in source and binary forms, with or without 
@@ -50,6 +50,7 @@
 #include "sys_common.h"
 
 /* USER CODE BEGIN (1) */
+#include "adc.h"
 #include "het.h"
 #include "gio.h"
 #include "mibspi.h"
@@ -82,7 +83,7 @@ int main(void)
     gioInit();
     gioEnableNotification(gioPORTB,1);
     _enable_IRQ();
-
+    adcInit();
     hetInit();
     mibspiInit();
     spiInit();
