@@ -51,6 +51,7 @@
 
 /* USER CODE BEGIN (1) */
 #include "adc.h"
+#include "can.h"
 #include "het.h"
 #include "gio.h"
 #include "mibspi.h"
@@ -81,6 +82,7 @@ int main(void)
 {
 /* USER CODE BEGIN (3) */
     gioInit();
+    canInit();
     gioEnableNotification(gioPORTB,1);
     _enable_IRQ();
     adcInit();

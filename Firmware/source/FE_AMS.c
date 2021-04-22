@@ -7,6 +7,7 @@
 
 // INCLUDES
 #include "adc.h"
+#include "can.h"
 #include "het.h"
 #include "gio.h"
 #include "mibspi.h"
@@ -80,6 +81,7 @@ uint16 currentBatteryVoltage = 0;
 uint16 RX_Data_M[16] = { 0 };
 uint16 RX_Data_S[16]  = { 0 };
 
+Faults_t AMS_Faults;
 
 
 spiDAT1_t dataconfig00_t;
@@ -106,6 +108,7 @@ void AMS_start_HV(void){
     while(!gioGetBit(gioPORTA, GIOA_NEG_CONTACT_SENSE_FILTERED));
     // Engage Precharge Contactor
     gioSetBit(hetPORT1,HET1_PRECHARGE_CONTACT_CTRL,1);
+    prechargeContactorState = 1;
     // Wait until Delta between Vehicle Voltage and Battery Voltage is greater than 5
     while(x<5){
         x = getDelta();
@@ -118,6 +121,7 @@ void AMS_start_HV(void){
     gioSetBit(hetPORT1,HET1_POSITIVE_CONTACT_CTRL,1);
     // Disengage Precharge Contactor
     gioSetBit(hetPORT1,HET1_PRECHARGE_CONTACT_CTRL,0);
+    prechargeContactorState = 0;
 
     return;
 }
@@ -194,7 +198,15 @@ void AMS_canTX_Car(){
 	uint8 tx_data2[8] = {0};
 	uint8 tx_data3[8] = {0};
 
-	tx_data1[
+//	tx_data1[7] = StateOfCharge :sunglasses:
+//	tx_data1[6] = StateOfCharge :sunglasses:
+	tx_data1[5] = minCellTemperature_Scaled;
+	tx_data1[4] = minCellTemperature_Scaled<<8;
+	tx_data1[3] = maxCellTemperature_Scaled;
+	tx_data1[2] = maxCellTemperature_Scaled<<8;
+//	tx_data1[1] = 0xFF | prechargeContactorState<<4 | filtered_neg_contact_sense <<5 | filtered_pos_contact_sense << 6 | ;
+//    tx_data1[0] = AMS_Faults;
+
 
 }
 
