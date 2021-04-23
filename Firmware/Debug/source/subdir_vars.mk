@@ -33,6 +33,7 @@ C_SRCS += \
 ../source/notification.c \
 ../source/phy_dp83640.c \
 ../source/pinmux.c \
+../source/pl455.c \
 ../source/rti.c \
 ../source/sci.c \
 ../source/spi.c \
@@ -73,6 +74,7 @@ C_DEPS += \
 ./source/notification.d \
 ./source/phy_dp83640.d \
 ./source/pinmux.d \
+./source/pl455.d \
 ./source/rti.d \
 ./source/sci.d \
 ./source/spi.d \
@@ -114,6 +116,7 @@ OBJS += \
 ./source/notification.obj \
 ./source/phy_dp83640.obj \
 ./source/pinmux.obj \
+./source/pl455.obj \
 ./source/rti.obj \
 ./source/sci.obj \
 ./source/spi.obj \
@@ -166,6 +169,7 @@ OBJS__QUOTED += \
 "source\notification.obj" \
 "source\phy_dp83640.obj" \
 "source\pinmux.obj" \
+"source\pl455.obj" \
 "source\rti.obj" \
 "source\sci.obj" \
 "source\spi.obj" \
@@ -210,6 +214,7 @@ C_DEPS__QUOTED += \
 "source\notification.d" \
 "source\phy_dp83640.d" \
 "source\pinmux.d" \
+"source\pl455.d" \
 "source\rti.d" \
 "source\sci.d" \
 "source\spi.d" \
@@ -257,6 +262,7 @@ C_SRCS__QUOTED += \
 "../source/notification.c" \
 "../source/phy_dp83640.c" \
 "../source/pinmux.c" \
+"../source/pl455.c" \
 "../source/rti.c" \
 "../source/sci.c" \
 "../source/spi.c" \

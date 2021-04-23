@@ -55,6 +55,7 @@
 #include "het.h"
 #include "gio.h"
 #include "mibspi.h"
+#include "sci.h"
 #include "spi.h"
 #include "FE_AMS.h"
 /* USER CODE END */
@@ -88,6 +89,7 @@ int main(void)
     adcInit();
     hetInit();
     mibspiInit();
+    sciInit();
     spiInit();
     gioSetBit(hetPORT1,14,1);
     gioSetBit(hetPORT1,12,1);

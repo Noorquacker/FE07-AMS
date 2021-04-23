@@ -16,6 +16,8 @@ source/sys_main.obj: C:/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/incl
 source/sys_main.obj: C:/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/stdbool.h
 source/sys_main.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/adc.h
 source/sys_main.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_adc.h
+source/sys_main.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/can.h
+source/sys_main.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_can.h
 source/sys_main.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/het.h
 source/sys_main.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_het.h
 source/sys_main.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_gio.h
@@ -23,6 +25,8 @@ source/sys_main.obj: C:/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/incl
 source/sys_main.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/gio.h
 source/sys_main.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/mibspi.h
 source/sys_main.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_mibspi.h
+source/sys_main.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/sci.h
+source/sys_main.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_sci.h
 source/sys_main.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/spi.h
 source/sys_main.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_spi.h
 source/sys_main.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/FE_AMS.h
@@ -43,6 +47,8 @@ C:/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/sys/_stdint.h:
 C:/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/stdbool.h: 
 C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/adc.h: 
 C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_adc.h: 
+C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/can.h: 
+C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_can.h: 
 C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/het.h: 
 C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_het.h: 
 C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_gio.h: 
@@ -50,6 +56,8 @@ C:/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/string.h:
 C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/gio.h: 
 C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/mibspi.h: 
 C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_mibspi.h: 
+C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/sci.h: 
+C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_sci.h: 
 C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/spi.h: 
 C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_spi.h: 
 C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/FE_AMS.h: 

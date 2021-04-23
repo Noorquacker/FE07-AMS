@@ -6,68 +6,19 @@
  */
 
 // INCLUDES
+#include <stdbool.h>
 #include "adc.h"
 #include "can.h"
 #include "het.h"
 #include "gio.h"
 #include "mibspi.h"
+#include "pl455.h"
 #include "spi.h"
+#include "AMS_common.h"
 
 
-// GIO PORT A PIN DEFINITIONS
-#define GIOA_BMS_FAULT 0
-#define GIOA_NEG_CONTACT_SENSE_FILTERED 1
-#define GIOA_POS_CONTACT_SENSE_FILTERED 2
-#define GIOA_IMD_FAULT 5
-#define GIOA_CONTACT_OPEN_INPUT 6
-#define GIOA_CONTACT_CLOSED_INPUT 7
-
-
-// GIO PORT B PIN DEFINITIONS
-// INPUTS
-#define GIOB_5KW_INPUT 1
-#define GIOB_CURRENT_SHORT_FAULT 2
-// OUTPUTS
-#define GIOB_AMS_FAULT_OUTPUT 0
-#define GIOB_BMS_WAKEUP 3
-
-
-// CAN PORT DEFINITIONS
-#define CAR_CAN_PORT 					canREG1
-#define BMS_CAN_PORT 					canREG2 // NOT CURRENTLY USED
-
-
-// SPI PORT DEFINITIONS
-#define VOLTAGE_MONITOR_SPI_PORT 		mibspiREG1
-
-
-// HET PORT 1 PIN DEFINITIONS
-// INPUTS
-#define HET1_IMD_PWM_INPUT 				2 // PWM
-#define HET1_SC_OUTSIDE_SENSE 			4
-#define HET1_SC_OUTSIDE_SENSE_DUPLICATE 15 // DUPLICATE - UNUSED
-// OUTPUTS
-#define HET1_LED_INDICATOR_1 			12 // This is switched with Indicator 2 due to incorrect silk screen
-#define HET1_LED_INDICATOR_2 			14 // This is switched with Indicator 1 due to incorrect silk screen
-#define HET1_PRECHARGE_CONTACT_CTRL		16
-#define HET1_NEGATIVE_CONTACT_CTRL		18
-#define HET1_POSITIVE_CONTACT_CTRL 		20
-
-// CAR CAN Message Boxes	    NUMBER  TX/RX
-#define CANBOX_AMS_STATUS       1U      //RX
-#define CANBOX_AMS_VOLTS        2U      //RX
-#define CANBOX_AMS_AMPS         3U      //RX
-
-
-
-
-//uint8_t buffer[64];
-
-//AMS_getVoltageData(uint16_t &buffer){
-//    mibspiGetData(mibspiREG1, 0, buffer);
-// //       uint32 mibspiGetData(mibspiBASE_t *mibspi, uint32 group, uint16 * data)
-//
-//}
+float64 imdPeriod = 0;
+uint32 imdDutyCycle = 0;
 
 uint32 timeoutBMS = 0;
 uint32 timeoutCAR = 0;
@@ -78,20 +29,52 @@ uint16 currentSense_750 = 0;
 uint16 currentVehicleVoltage = 0;
 uint16 currentBatteryVoltage = 0;
 
-uint16 RX_Data_M[16] = { 0 };
-uint16 RX_Data_S[16]  = { 0 };
+uint16 stateOfCharge = 0;
+uint16 minCellTemperature_Scaled = 0;
+uint16 maxCellTemperature_Scaled = 0;
 
-Faults_t AMS_Faults;
+uint16 minCellVoltage_Scaled = 0;
+uint16 maxCellVoltage_Scaled = 0;
+uint16 vehicleVoltage_Scaled = 0;
+uint16 batteryVoltage_Scaled = 0;
 
+uint16 peakCurrent_Scaled = 0;
+uint16 chargeCurrentLimit_Scaled = 0;
+uint16 dischargeCurrentLimit_Scaled = 0;
+uint16 packCurrent_Scaled = 0;
 
-spiDAT1_t dataconfig00_t;
+uint16 AMS_faults = 0xFFFF;
 
-void dataConfigFnct(){
-    dataconfig00_t.CS_HOLD = TRUE;
-    dataconfig00_t.WDEL    = TRUE;
-    dataconfig00_t.DFSEL   = SPI_FMT_0;
-    dataconfig00_t.CSNR    = 0xFE;
-}
+uint8 AMS_DATA[132];
+
+bool negativeContactorState  = 0;
+bool positiveContactorState  = 0;
+bool prechargeContactorState = 0;
+
+bool contactorOpen = 0;
+bool contactorClosed = 0;
+
+bool fiveKWActive = 0;
+bool currentShortFault = 0;
+
+bool cellOverVoltage = 0;        // A cell voltage is too high
+bool cellUnderVoltage = 0;       // A cell voltage is too low
+bool cellOverTemp = 0;           // A cell temperature is too high
+bool cellUnderTemp = 0;          // A cell temperature is too low
+bool overDischargeCurrent = 0;   // Too much discharge current
+bool overChargeCurrent = 0;      // Too much charge current
+bool contactorFault = 0;         // A contactor failed to close or open
+bool bmsFault = 0;      		 // Failed to get voltage or temperature from cell
+bool imdFault = 0;          	 // IMD Detected an isolation fault
+
+spiDAT1_t dataconfig00_t = {TRUE, TRUE, SPI_FMT_0, 0xFE};
+
+//void dataConfigFnct(){
+//    dataconfig00_t.CS_HOLD = TRUE;
+//    dataconfig00_t.WDEL    = TRUE;
+//    dataconfig00_t.DFSEL   = SPI_FMT_0;
+//    dataconfig00_t.CSNR    = 0xFE;
+//}
 
 uint16 getDelta() {
     uint16 x = currentBatteryVoltage - currentVehicleVoltage;
@@ -100,7 +83,7 @@ uint16 getDelta() {
 }
 
 void AMS_start_HV(void){
-    dataConfigFnct();
+//    dataConfigFnct();
     uint16 x = getDelta();
     // Engage Negative Contactor
     gioSetBit(hetPORT1,HET1_NEGATIVE_CONTACT_CTRL,1);
@@ -112,10 +95,10 @@ void AMS_start_HV(void){
     // Wait until Delta between Vehicle Voltage and Battery Voltage is greater than 5
     while(x<5){
         x = getDelta();
-        spiReceiveData(spiREG1, &dataconfig00_t, 1, RX_Data_M);
-        spiReceiveData(spiREG3, &dataconfig00_t, 1, RX_Data_S);
-        setCurrentBatteryVoltage(RX_Data_S[0]);
-        setCurrentVehicleVoltage(RX_Data_M[0]);
+//        spiReceiveData(spiREG1, &dataconfig00_t, 1, RX_Data_M);
+//        spiReceiveData(spiREG3, &dataconfig00_t, 1, RX_Data_S);
+//        setCurrentBatteryVoltage(RX_Data_S[0]);
+//        setCurrentVehicleVoltage(RX_Data_M[0]);
     }
     // Engage Positive Contactor
     gioSetBit(hetPORT1,HET1_POSITIVE_CONTACT_CTRL,1);
@@ -127,15 +110,39 @@ void AMS_start_HV(void){
 }
 
 
-uint8 AMS_checkForFaults(){
-	uint8 x = 0xFF;
-	x |= ~(()<<0);
-	x |= ~(()<<1);
-	x |= ~(()<<2);
-	x |= ~(()<<3);
-	x |= ~(()<<4);
+uint16 AMS_checkForFaults(){
+	AMS_faults = 0xFFFF;
+	if(!cellOverVoltage)
+		AMS_faults &= ~FAULT_CELL_OVR_VOLT;
 
-	return x;
+	if(!cellUnderVoltage)
+		AMS_faults &= ~FAULT_CELL_UND_VOLT;
+
+	if(!cellOverTemp)
+		AMS_faults &= ~FAULT_CELL_OVR_TEMP;
+
+	if(!cellUnderTemp)
+		AMS_faults &= ~FAULT_CELL_UND_TEMP;
+
+	if(!overDischargeCurrent)
+		AMS_faults &= ~FAULT_OVER_DCG_CURRENT;
+
+	if(!overChargeCurrent)
+		AMS_faults &= ~FAULT_OVER_CHG_CURRENT;
+
+	if(!contactorFault)
+		AMS_faults &= ~FAULT_CONTACTOR;
+
+	if(!bmsFault)
+		AMS_faults &= ~FAULT_BMS;
+
+	if(!bmsCommFault)
+		AMS_faults &= ~FAULT_BMS_COMM:
+
+	if(!imdFault)
+		AMS_faults &= ~FAULT_ISOLATION;
+
+	return AMS_faults;
 }
 
 
@@ -168,10 +175,10 @@ void AMS_readGIO() {
 	//PORT A
 	bmsFault = gioGetBit(gioPORTA, GIOA_BMS_FAULT);
 	imdFault = gioGetBit(gioPORTA, GIOA_IMD_FAULT);
-	filtered_neg_contact_sense = gioGetBit(gioPORTA, GIOA_NEG_CONTACT_SENSE_FILTERED);
-	filtered_pos_contact_sense = gioGetBit(gioPORTA, GIOA_POS_CONTACT_SENSE_FILTERED);
-	contactor_open = gioGetBit(gioPORTA, GIOA_CONTACT_OPEN_INPUT);
-	contactor_closed = gioGetBit(gioPORTA, GIOA_CONTACT_CLOSED_INPUT);
+	negativeContactorState = gioGetBit(gioPORTA, GIOA_NEG_CONTACT_SENSE_FILTERED);
+	positiveContactorState = gioGetBit(gioPORTA, GIOA_POS_CONTACT_SENSE_FILTERED);
+	contactorOpen = gioGetBit(gioPORTA, GIOA_CONTACT_OPEN_INPUT);
+	contactorClosed = gioGetBit(gioPORTA, GIOA_CONTACT_CLOSED_INPUT);
 
 	// PORT B
 	fiveKWActive = gioGetBit(gioPORTB, GIOB_5KW_INPUT);
@@ -198,24 +205,83 @@ void AMS_canTX_Car(){
 	uint8 tx_data2[8] = {0};
 	uint8 tx_data3[8] = {0};
 
-//	tx_data1[7] = StateOfCharge :sunglasses:
-//	tx_data1[6] = StateOfCharge :sunglasses:
-	tx_data1[5] = minCellTemperature_Scaled;
-	tx_data1[4] = minCellTemperature_Scaled<<8;
-	tx_data1[3] = maxCellTemperature_Scaled;
-	tx_data1[2] = maxCellTemperature_Scaled<<8;
-//	tx_data1[1] = 0xFF | prechargeContactorState<<4 | filtered_neg_contact_sense <<5 | filtered_pos_contact_sense << 6 | ;
-//    tx_data1[0] = AMS_Faults;
+	tx_data1[7] = stateOfCharge & 0xFF;
+	tx_data1[6] = stateOfCharge >> 8;
+	tx_data1[5] = minCellTemperature_Scaled & 0xFF;
+	tx_data1[4] = minCellTemperature_Scaled >> 8;
+	tx_data1[3] = maxCellTemperature_Scaled & 0xFF;
+	tx_data1[2] = maxCellTemperature_Scaled >> 8;
+	tx_data1[1] = 0x00 |
+				  ((AMS_faults & 0x01) <<7)	  |
+				  prechargeContactorState <<4 |
+				  negativeContactorState  <<5 |
+				  positiveContactorState  << 6;
+    tx_data1[0] = (AMS_faults >> 1) & 0xFF;
 
+	tx_data2[7] = minCellVoltage_Scaled & 0xFF;
+	tx_data2[6] = minCellVoltage_Scaled >> 8;
+	tx_data2[5] = maxCellVoltage_Scaled & 0xFF;
+	tx_data2[4]	= maxCellVoltage_Scaled >> 8;
+	tx_data2[3] = vehicleVoltage_Scaled & 0xFF;
+ 	tx_data2[2] = vehicleVoltage_Scaled >> 8;
+	tx_data2[1] = batteryVoltage_Scaled & 0xFF;
+	tx_data2[0] = batteryVoltage_Scaled >> 8;
 
+	tx_data3[7] = peakCurrent_Scaled & 0xFF;
+	tx_data3[6] = peakCurrent_Scaled >> 8;
+	tx_data3[5] = chargeCurrentLimit_Scaled & 0xFF;
+	tx_data3[4]	= chargeCurrentLimit_Scaled >> 8;
+	tx_data3[3] = dischargeCurrentLimit_Scaled & 0xFF;
+ 	tx_data3[2] = dischargeCurrentLimit_Scaled >> 8;
+	tx_data3[1] = packCurrent_Scaled & 0xFF;
+	tx_data3[0] = packCurrent_Scaled >> 8;
+
+    canTransmit(canREG1, CANBOX_AMS_STATUS, tx_data1);
+    canTransmit(canREG1, CANBOX_AMS_VOLTS, tx_data2);
+    canTransmit(canREG1, CANBOX_AMS_AMPS, tx_data3);
+
+    return;
 }
 
+void AMS_readSPI() {
+	uint16 spiBatteryRX[1] = { 0 };
+	uint16 spiVehicleRX[1] = { 0 };
+
+	spiReceiveData(spiREG3, &dataconfig00_t, 1, spiBatteryRX);
+	spiReceiveData(spiREG1, &dataconfig00_t, 1, spiVehicleRX);
+
+	currentVehicleVoltage = spiVehicleRX[0];
+	currentBatteryVoltage = spiBatteryRX[0];
+
+	return;
+}
+
+void AMS_readSCI() {
+	WaitRespFrame(AMS_DATA, 81, 0); // 24 bytes data (x3) + packet header (x3) + CRC (x3), 0ms timeout
+
+	return;
+}
+
+void AMS_checkPreContactorState() {
+	if(contactorOpen != 0 && positiveContactorState == 0){
+		prechargeContactorState = 1;
+	} else {
+		prechargeContactorState = 0;
+	}
+
+	return;
+}
 
 void AMS_process() {
 	// Read Inputs
-	AMS_readADC();
-	AMS_readGIO();
-	AMS_readHET();
+	AMS_readADC(); // Current Sensing
+	AMS_readGIO(); //
+	AMS_readHET(); //
+	AMS_readSPI(); // Voltage Sensing
+	AMS_readSCI(); // BMS
+
+	AMS_parseBMSData();
+	AMS_checkPreContactorState(); // Checks Precharge Contactor State
 
 	// Check Fault State
 	AMS_checkForFaults();
@@ -225,9 +291,9 @@ void AMS_process() {
 
 	// Write CAN Outputs
 	AMS_canTX_Car();
-//	AMS_canTX_BMS();  // Disabled by default, BMS currently communicates through UART
+//  	AMS_canTX_BMS();  // Disabled by default, BMS currently communicates through UART
 
-	// Write Digital Outputs
+	// Write Digital Outputs`1
 	AMS_writeGIO();
 	AMS_writeHET();
 
