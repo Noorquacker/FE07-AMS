@@ -4,7 +4,6 @@ source/FE_AMS.obj: ../source/FE_AMS.c
 source/FE_AMS.obj: C:/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/stdbool.h
 source/FE_AMS.obj: C:/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/_ti_config.h
 source/FE_AMS.obj: C:/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/linkage.h
-source/FE_AMS.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/AMS_Types.h
 source/FE_AMS.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/adc.h
 source/FE_AMS.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_adc.h
 source/FE_AMS.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/sys_common.h
@@ -27,12 +26,14 @@ source/FE_AMS.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Fi
 source/FE_AMS.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/mibspi.h
 source/FE_AMS.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_mibspi.h
 source/FE_AMS.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/pl455.h
+source/FE_AMS.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/spi.h
+source/FE_AMS.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_spi.h
+source/FE_AMS.obj: C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/AMS_common.h
 
 ../source/FE_AMS.c: 
 C:/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/stdbool.h: 
 C:/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/_ti_config.h: 
 C:/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/linkage.h: 
-C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/AMS_Types.h: 
 C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/adc.h: 
 C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_adc.h: 
 C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/sys_common.h: 
@@ -55,3 +56,6 @@ C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/gio.
 C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/mibspi.h: 
 C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_mibspi.h: 
 C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/pl455.h: 
+C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/spi.h: 
+C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/reg_spi.h: 
+C:/Users/Mikel/Documents/Formula\ Electric/fe07-ams_master/Firmware/include/AMS_common.h: 

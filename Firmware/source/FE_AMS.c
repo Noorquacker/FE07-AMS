@@ -13,6 +13,7 @@
 #include "gio.h"
 #include "mibspi.h"
 #include "pl455.h"
+#include "sci.h"
 #include "spi.h"
 #include "AMS_common.h"
 
@@ -45,7 +46,7 @@ uint16 packCurrent_Scaled = 0;
 
 uint16 AMS_faults = 0xFFFF;
 
-uint8 AMS_DATA[132];
+uint8 AMS_DATA[164];
 
 bool negativeContactorState  = 0;
 bool positiveContactorState  = 0;
@@ -57,6 +58,8 @@ bool contactorClosed = 0;
 bool fiveKWActive = 0;
 bool currentShortFault = 0;
 
+bool scOutsideSense = 0;
+
 bool cellOverVoltage = 0;        // A cell voltage is too high
 bool cellUnderVoltage = 0;       // A cell voltage is too low
 bool cellOverTemp = 0;           // A cell temperature is too high
@@ -66,6 +69,7 @@ bool overChargeCurrent = 0;      // Too much charge current
 bool contactorFault = 0;         // A contactor failed to close or open
 bool bmsFault = 0;      		 // Failed to get voltage or temperature from cell
 bool imdFault = 0;          	 // IMD Detected an isolation fault
+bool bmsCommFault= 0;
 
 spiDAT1_t dataconfig00_t = {TRUE, TRUE, SPI_FMT_0, 0xFE};
 
@@ -137,7 +141,7 @@ uint16 AMS_checkForFaults(){
 		AMS_faults &= ~FAULT_BMS;
 
 	if(!bmsCommFault)
-		AMS_faults &= ~FAULT_BMS_COMM:
+		AMS_faults &= ~FAULT_BMS_COMM;
 
 	if(!imdFault)
 		AMS_faults &= ~FAULT_ISOLATION;
@@ -257,7 +261,8 @@ void AMS_readSPI() {
 }
 
 void AMS_readSCI() {
-	WaitRespFrame(AMS_DATA, 81, 0); // 24 bytes data (x3) + packet header (x3) + CRC (x3), 0ms timeout
+	WriteReg(0, 2, 0x02, 1, FRMWRT_ALL_NR); // send sync sample command
+	WaitRespFrame(AMS_DATA, 195, 0); // 39? bytes data (x5) + packet header (x5) + CRC (2bytes) (x5), 0ms timeout
 
 	return;
 }
@@ -272,6 +277,8 @@ void AMS_checkPreContactorState() {
 	return;
 }
 
+
+
 void AMS_process() {
 	// Read Inputs
 	AMS_readADC(); // Current Sensing
@@ -280,22 +287,22 @@ void AMS_process() {
 	AMS_readSPI(); // Voltage Sensing
 	AMS_readSCI(); // BMS
 
-	AMS_parseBMSData();
+	//AMS_parseBMSData();
 	AMS_checkPreContactorState(); // Checks Precharge Contactor State
 
 	// Check Fault State
 	AMS_checkForFaults();
 
 	// Process the Current State of the AMS
-	AMS_processState();
+	//AMS_processState();
 
 	// Write CAN Outputs
 	AMS_canTX_Car();
 //  	AMS_canTX_BMS();  // Disabled by default, BMS currently communicates through UART
 
 	// Write Digital Outputs`1
-	AMS_writeGIO();
-	AMS_writeHET();
+	//AMS_writeGIO();
+	//AMS_writeHET();
 
 
 

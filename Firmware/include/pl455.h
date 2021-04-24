@@ -19,7 +19,7 @@
 
 #include <stdbool.h>
 
-#include "datatypes.h"
+//#include "datatypes.h"
 
 // User defines
 #define FRMWRT_SGL_R	0x00 // single device write with response

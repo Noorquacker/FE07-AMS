@@ -55,9 +55,13 @@
 #include "het.h"
 #include "gio.h"
 #include "mibspi.h"
+#include "rti.h"
 #include "sci.h"
 #include "spi.h"
+#include "sys_vim.h"
+#include "AMS_common.h"
 #include "FE_AMS.h"
+
 /* USER CODE END */
 
 /** @fn void main(void)
@@ -79,24 +83,31 @@ uint16 RX_Data_Slave[16]  = { 0 };
 uint8	emacAddress[6U] = 	{0xFFU, 0xFFU, 0xFFU, 0xFFU, 0xFFU, 0xFFU};
 uint32 	emacPhyAddress	=	0U;
 
-int main(void)
+void main(void)
 {
 /* USER CODE BEGIN (3) */
     gioInit();
     canInit();
-    gioEnableNotification(gioPORTB,1);
-    _enable_IRQ();
     adcInit();
     hetInit();
     mibspiInit();
     sciInit();
     spiInit();
+
+    rtiInit();
+	vimInit();
+
+    gioEnableNotification(gioPORTB,1);
+
+    _enable_IRQ();
+
+
+
     gioSetBit(hetPORT1,14,1);
     gioSetBit(hetPORT1,12,1);
-//    mibspiSetData(mibspiREG1, 0, TX_Data_Master);
-//    mibspiSetData(mibspiREG1, 1, TX_Data_Master);
-    spiDAT1_t dataconfig1_t;
 
+
+    /*spiDAT1_t dataconfig1_t;
         dataconfig1_t.CS_HOLD = TRUE;
         dataconfig1_t.WDEL    = TRUE;
         dataconfig1_t.DFSEL   = SPI_FMT_0;
@@ -106,41 +117,25 @@ int main(void)
             dataconfig2_t.CS_HOLD = TRUE;
             dataconfig2_t.WDEL    = TRUE;
             dataconfig2_t.DFSEL   = SPI_FMT_0;
-            dataconfig2_t.CSNR    = 0xFE;
+            dataconfig2_t.CSNR    = 0xFE;*/
 
-
-        //    mibspiTransfer(mibspiREG1, 0);
-//    while(!(mibspiIsTransferComplete(mibspiREG1,0)));
-//    mibspiTransfer(mibspiREG1, 1);
-//    while(!(mibspiIsTransferComplete(mibspiREG1,1)));
-      //  spiTransmitAndReceiveData(spiREG1, &dataconfig1_t, 1, TX_Data_Master, RX_Data_Master);
 
 
     while(1){
-        spiReceiveData(spiREG1, &dataconfig1_t, 1, RX_Data_Master);
+
+    	/*spiReceiveData(spiREG1, &dataconfig1_t, 1, RX_Data_Master);
         spiReceiveData(spiREG3, &dataconfig2_t, 1, RX_Data_Slave);
         setCurrentBatteryVoltage(RX_Data_Slave[0]);
-        setCurrentVehicleVoltage(RX_Data_Master[0]);
-        //  spiReceiveData(spiREG1, &dataconfig2_t, 1, RX_Data_Slave);
-//        spiTransmitAndReceiveData(spiREG1, &dataconfig1_t, 1, TX_Data_Master, RX_Data_Master);
-//
-//        spiTransmitAndReceiveData(spiREG1, &dataconfig2_t, 1, TX_Data_Slave, RX_Data_Slave);
-
-//        mibspiTransfer(mibspiREG1, 0);
-//            while(!(mibspiIsTransferComplete(mibspiREG1,0)));
-//            mibspiTransfer(mibspiREG1, 1);
-//            while(!(mibspiIsTransferComplete(mibspiREG1,1)));
-//        mibspiGetData(mibspiREG1, 0, RX_Data_Master);
-//        mibspiGetData(mibspiREG1, 1, RX_Data_Slave);
-
-      //  gioSetBit(hetPORT1,14,1);
+        setCurrentVehicleVoltage(RX_Data_Master[0]);*/
 
     }
 /* USER CODE END */
 
-    return 0;
 }
 
 
 /* USER CODE BEGIN (4) */
+
+
+
 /* USER CODE END */

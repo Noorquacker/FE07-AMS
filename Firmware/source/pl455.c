@@ -22,7 +22,7 @@
 
 #include "pl455.h"
 #include "AMS_common.h"
-#include "datatypes.h"
+//#include "datatypes.h"
 
 extern int UART_RX_RDY;
 extern int RTI_TIMEOUT;
