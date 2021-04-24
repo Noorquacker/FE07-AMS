@@ -1,12 +1,12 @@
 /** @file sys_vim.c 
 *   @brief VIM Driver Implementation File
-*   @date 11-Dec-2018
-*   @version 04.07.01
+*   @date 07-July-2017
+*   @version 04.07.00
 *
 */
 
 /* 
-* Copyright (C) 2009-2018 Texas Instruments Incorporated - www.ti.com 
+* Copyright (C) 2009-2016 Texas Instruments Incorporated - www.ti.com 
 * 
 * 
 *  Redistribution and use in source and binary forms, with or without 
@@ -71,13 +71,13 @@ static const t_isrFuncPTR s_vim_init[96U] =
     &phantomInterrupt,
     &esmHighInterrupt,            /* Channel 0 */
     &phantomInterrupt,            /* Channel 1 */
-    &phantomInterrupt,            /* Channel 2 */
-    &phantomInterrupt,            /* Channel 3 */
-    &phantomInterrupt,            /* Channel 4 */
-    &phantomInterrupt,            /* Channel 5 */
-    &phantomInterrupt,            /* Channel 6 */
-    &phantomInterrupt,            /* Channel 7 */
-    &phantomInterrupt,            /* Channel 8 */
+    &rtiCompare0Interrupt,            /* Channel 2 */
+    &rtiCompare1Interrupt,            /* Channel 3 */
+    &rtiCompare2Interrupt,            /* Channel 4 */
+    &rtiCompare3Interrupt,            /* Channel 5 */
+    &rtiOverflow0Interrupt,            /* Channel 6 */
+    &rtiOverflow1Interrupt,            /* Channel 7 */
+    &rtiTimebaseInterrupt,            /* Channel 8 */
     &gioHighLevelInterrupt,            /* Channel 9 */
     &phantomInterrupt,            /* Channel 10 */
     &phantomInterrupt,            /* Channel 11 */
@@ -133,7 +133,7 @@ static const t_isrFuncPTR s_vim_init[96U] =
     &phantomInterrupt,            /* Channel 61 */
     &phantomInterrupt,            /* Channel 62 */
     &phantomInterrupt,            /* Channel 63 */
-    &phantomInterrupt,            /* Channel 64 */
+    &sciHighLevelInterrupt,            /* Channel 64 */
     &phantomInterrupt,            /* Channel 65 */
     &phantomInterrupt,            /* Channel 66 */
     &phantomInterrupt,            /* Channel 67 */
@@ -143,7 +143,7 @@ static const t_isrFuncPTR s_vim_init[96U] =
     &phantomInterrupt,            /* Channel 71 */
     &phantomInterrupt,            /* Channel 72 */
     &phantomInterrupt,            /* Channel 73 */
-    &phantomInterrupt,            /* Channel 74 */
+    &sciLowLevelInterrupt,            /* Channel 74 */
     &phantomInterrupt,            /* Channel 75 */
     &phantomInterrupt,            /* Channel 76 */
     &phantomInterrupt,            /* Channel 77 */
@@ -333,13 +333,13 @@ void vimInit(void)
     /* enable interrupts */
     vimREG->REQMASKSET0 = (uint32)((uint32)1U << 0U)
                         | (uint32)((uint32)1U << 1U)
-                        | (uint32)((uint32)0U << 2U)
-                        | (uint32)((uint32)0U << 3U)
-                        | (uint32)((uint32)0U << 4U)
-                        | (uint32)((uint32)0U << 5U)
-                        | (uint32)((uint32)0U << 6U)
-                        | (uint32)((uint32)0U << 7U)
-                        | (uint32)((uint32)0U << 8U)
+                        | (uint32)((uint32)1U << 2U)
+                        | (uint32)((uint32)1U << 3U)
+                        | (uint32)((uint32)1U << 4U)
+                        | (uint32)((uint32)1U << 5U)
+                        | (uint32)((uint32)1U << 6U)
+                        | (uint32)((uint32)1U << 7U)
+                        | (uint32)((uint32)1U << 8U)
                         | (uint32)((uint32)1U << 9U)
                         | (uint32)((uint32)0U << 10U)
                         | (uint32)((uint32)0U << 11U)
@@ -397,7 +397,7 @@ void vimInit(void)
                         | (uint32)((uint32)0U << 30U)
                         | (uint32)((uint32)0U << 31U);
 
-    vimREG->REQMASKSET2 = (uint32)((uint32)0U << 0U)
+    vimREG->REQMASKSET2 = (uint32)((uint32)1U << 0U)
                         | (uint32)((uint32)0U << 1U)
                         | (uint32)((uint32)0U << 2U)
                         | (uint32)((uint32)0U << 3U)
@@ -407,7 +407,7 @@ void vimInit(void)
                         | (uint32)((uint32)0U << 7U)
                         | (uint32)((uint32)0U << 8U)
                         | (uint32)((uint32)0U << 9U)
-                        | (uint32)((uint32)0U << 10U)
+                        | (uint32)((uint32)1U << 10U)
                         | (uint32)((uint32)0U << 11U)
                         | (uint32)((uint32)0U << 12U)
                         | (uint32)((uint32)0U << 13U)

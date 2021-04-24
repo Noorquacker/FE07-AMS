@@ -16,6 +16,7 @@ ASM_SRCS += \
 ../source/sys_pmu.asm 
 
 C_SRCS += \
+../source/BMS.c \
 ../source/FE_AMS.c \
 ../source/adc.c \
 ../source/can.c \
@@ -57,6 +58,7 @@ C_SRCS += \
 ../source/usbringbuf.c 
 
 C_DEPS += \
+./source/BMS.d \
 ./source/FE_AMS.d \
 ./source/adc.d \
 ./source/can.d \
@@ -98,6 +100,7 @@ C_DEPS += \
 ./source/usbringbuf.d 
 
 OBJS += \
+./source/BMS.obj \
 ./source/FE_AMS.obj \
 ./source/adc.obj \
 ./source/can.obj \
@@ -151,6 +154,7 @@ ASM_DEPS += \
 ./source/sys_pmu.d 
 
 OBJS__QUOTED += \
+"source\BMS.obj" \
 "source\FE_AMS.obj" \
 "source\adc.obj" \
 "source\can.obj" \
@@ -197,6 +201,7 @@ OBJS__QUOTED += \
 "source\usbringbuf.obj" 
 
 C_DEPS__QUOTED += \
+"source\BMS.d" \
 "source\FE_AMS.d" \
 "source\adc.d" \
 "source\can.d" \
@@ -245,6 +250,7 @@ ASM_DEPS__QUOTED += \
 "source\sys_pmu.d" 
 
 C_SRCS__QUOTED += \
+"../source/BMS.c" \
 "../source/FE_AMS.c" \
 "../source/adc.c" \
 "../source/can.c" \

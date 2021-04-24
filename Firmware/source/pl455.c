@@ -79,7 +79,7 @@ bool GetFaultStat()
 int  WriteReg(uint8 bID, uint16 wAddr, uint64 dwData, uint8 bLen, uint8 bWriteType)
 {
 	int bRes = 0;
-	uint8 bBuf[4] = {0, 0, 0, 0};
+	uint8 bBuf[16] = {0};
 	switch(bLen)
 	{
 	case 1:

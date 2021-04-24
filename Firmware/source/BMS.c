@@ -10,7 +10,10 @@
 #include "sci.h"
 #include "pl455.h"
 
-bool BMS_Init(){
+int UART_RX_RDY = 0;
+int RTI_TIMEOUT = 0;
+
+int BMS_Init(){
 	// From bq76PL455A Example Code
 	sciSetBaudrate(sciREG, BMS_BAUDRATE);
 	WakePL455();
@@ -52,6 +55,7 @@ bool BMS_Init(){
 
 	// Enable all communication interfaces on all boards in the stack (section 1.2.1)
 	nSent = WriteReg(0, 16, 0x10F8, 2, FRMWRT_ALL_NR);	// set communications baud rate and enable all interfaces on all boards in stack
+    nRead = ReadReg(0, 10, &wTemp, 1, 0); // 0ms timeout
 
 	for (nDev_ID = BMS_TOTALBOARDS - 1; nDev_ID >= 0; --nDev_ID)
 	{
@@ -119,11 +123,11 @@ bool BMS_Init(){
 
 	// Send broadcast request to all boards to sample and send results (section 3.2)
 	nSent = WriteReg(0, 2, 0x02, 1, FRMWRT_ALL_NR); // send sync sample command
-	nSent = WaitRespFrame(bFrame, 195, 0); // 39? bytes data (x5) + packet header (x5) + CRC (2bytes) (x5), 0ms timeout
+	nSent = WaitRespFrame(bFrame, /*195*/39, 2); // 39? bytes data (x5) + packet header (x5) + CRC (2bytes) (x5), 0ms timeout
 										   // For calculations, see Page 27 of https://www.ti.com/lit/ds/slusc51c/slusc51c.pdf?ts=1619217953406
 
 
-	return 0;
+	return nSent;
 
 
 }

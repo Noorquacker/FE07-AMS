@@ -1,14 +1,14 @@
 /** @file sys_main.c 
 *   @brief Application main file
-*   @date 11-Dec-2018
-*   @version 04.07.01
+*   @date 07-July-2017
+*   @version 04.07.00
 *
 *   This file contains an empty main function,
 *   which can be used for the application.
 */
 
 /* 
-* Copyright (C) 2009-2018 Texas Instruments Incorporated - www.ti.com 
+* Copyright (C) 2009-2016 Texas Instruments Incorporated - www.ti.com 
 * 
 * 
 *  Redistribution and use in source and binary forms, with or without 
@@ -51,6 +51,7 @@
 
 /* USER CODE BEGIN (1) */
 #include "adc.h"
+#include "BMS.h"
 #include "can.h"
 #include "het.h"
 #include "gio.h"
@@ -61,6 +62,7 @@
 #include "sys_vim.h"
 #include "AMS_common.h"
 #include "FE_AMS.h"
+//#include "swi_util.h"
 
 /* USER CODE END */
 
@@ -83,9 +85,11 @@ uint16 RX_Data_Slave[16]  = { 0 };
 uint8	emacAddress[6U] = 	{0xFFU, 0xFFU, 0xFFU, 0xFFU, 0xFFU, 0xFFU};
 uint32 	emacPhyAddress	=	0U;
 
-void main(void)
+int main(void)
 {
 /* USER CODE BEGIN (3) */
+    systemInit();
+
     gioInit();
     canInit();
     adcInit();
@@ -94,12 +98,22 @@ void main(void)
     sciInit();
     spiInit();
 
+    sciSetBaudrate(sciREG, BMS_BAUDRATE);
     rtiInit();
-	vimInit();
+    vimInit();
+
+    _enable_IRQ();
+
+    WakePL455();
+
+    CommClear();
+
+    CommReset();
+
+    _enable_IRQ();
 
     gioEnableNotification(gioPORTB,1);
 
-    _enable_IRQ();
 
 
 
@@ -119,9 +133,17 @@ void main(void)
             dataconfig2_t.DFSEL   = SPI_FMT_0;
             dataconfig2_t.CSNR    = 0xFE;*/
 
+    uint8 buffer[164] = {0};
+    int result = 0;
+    result = BMS_Init();
+    AMS_readSCI();
+    getBMSData(buffer);
 
 
     while(1){
+        getBMSData(buffer);
+        gioToggleBit(hetPORT1,12);
+        delayms(500);
 
     	/*spiReceiveData(spiREG1, &dataconfig1_t, 1, RX_Data_Master);
         spiReceiveData(spiREG3, &dataconfig2_t, 1, RX_Data_Slave);
@@ -131,6 +153,7 @@ void main(void)
     }
 /* USER CODE END */
 
+    return 0;
 }
 
 

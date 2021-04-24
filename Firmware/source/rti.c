@@ -1,7 +1,7 @@
 /** @file rti.c 
 *   @brief RTI Driver Source File
-*   @date 11-Dec-2018
-*   @version 04.07.01
+*   @date 07-July-2017
+*   @version 04.07.00
 *
 *   This file contains:
 *   - API Functions
@@ -11,7 +11,7 @@
 */
 
 /* 
-* Copyright (C) 2009-2018 Texas Instruments Incorporated - www.ti.com 
+* Copyright (C) 2009-2016 Texas Instruments Incorporated - www.ti.com 
 * 
 * 
 *  Redistribution and use in source and binary forms, with or without 
@@ -844,9 +844,202 @@ void rtiGetConfigValue(rti_config_reg_t *config_reg, config_value_type_t type)
 	}
 }
 
+/* USER CODE BEGIN (73) */
+/* USER CODE END */
+
+/** @fn void rtiCompare0Interrupt(void)
+*   @brief RTI1 Compare 0 Interrupt Handler
+*
+*   RTI1 Compare 0 interrupt handler 
+*
+*/
+#pragma CODE_STATE(rtiCompare0Interrupt, 32)
+#pragma INTERRUPT(rtiCompare0Interrupt, IRQ)
+
+/* SourceId : RTI_SourceId_022 */
+/* DesignId : RTI_DesignId_022 */
+/* Requirements : HL_SR95 */
+void rtiCompare0Interrupt(void)
+{
+/* USER CODE BEGIN (74) */
+/* USER CODE END */
+
+    rtiREG1->INTFLAG = 1U;
+    rtiNotification(rtiNOTIFICATION_COMPARE0);
+
+/* USER CODE BEGIN (75) */
+/* USER CODE END */
+}
+
+/* USER CODE BEGIN (76) */
+/* USER CODE END */
+
+/** @fn void rtiCompare1Interrupt(void)
+*   @brief RTI1 Compare 1 Interrupt Handler
+*
+*   RTI1 Compare 1 interrupt handler 
+*
+*/
+#pragma CODE_STATE(rtiCompare1Interrupt, 32)
+#pragma INTERRUPT(rtiCompare1Interrupt, IRQ)
+
+/* SourceId : RTI_SourceId_023 */
+/* DesignId : RTI_DesignId_022 */
+/* Requirements : HL_SR95 */
+void rtiCompare1Interrupt(void)
+{
+/* USER CODE BEGIN (77) */
+/* USER CODE END */
+
+    rtiREG1->INTFLAG = 2U;
+    rtiNotification(rtiNOTIFICATION_COMPARE1);
+
+/* USER CODE BEGIN (78) */
+/* USER CODE END */
+}
 
 
+/* USER CODE BEGIN (79) */
+/* USER CODE END */
+
+/** @fn void rtiCompare2Interrupt(void)
+*   @brief RTI1 Compare 2 Interrupt Handler
+*
+*   RTI1 Compare 2 interrupt handler 
+*
+*/
+#pragma CODE_STATE(rtiCompare2Interrupt, 32)
+#pragma INTERRUPT(rtiCompare2Interrupt, IRQ)
+
+/* SourceId : RTI_SourceId_024 */
+/* DesignId : RTI_DesignId_022 */
+/* Requirements : HL_SR95 */
+void rtiCompare2Interrupt(void)
+{
+/* USER CODE BEGIN (80) */
+/* USER CODE END */
+
+    rtiREG1->INTFLAG = 4U;
+    rtiNotification(rtiNOTIFICATION_COMPARE2);
+
+/* USER CODE BEGIN (81) */
+/* USER CODE END */
+}
 
 
+/* USER CODE BEGIN (82) */
+/* USER CODE END */
+
+/** @fn void rtiCompare3Interrupt(void)
+*   @brief RTI1 Compare 3 Interrupt Handler
+*
+*   RTI1 Compare 3 interrupt handler 
+*
+*/
+#pragma CODE_STATE(rtiCompare3Interrupt, 32)
+#pragma INTERRUPT(rtiCompare3Interrupt, IRQ)
+
+/* SourceId : RTI_SourceId_025 */
+/* DesignId : RTI_DesignId_022 */
+/* Requirements : HL_SR95 */
+void rtiCompare3Interrupt(void)
+{
+/* USER CODE BEGIN (83) */
+/* USER CODE END */
+
+    rtiREG1->INTFLAG = 8U;
+    rtiNotification(rtiNOTIFICATION_COMPARE3);
+
+/* USER CODE BEGIN (84) */
+/* USER CODE END */
+}
+
+
+/* USER CODE BEGIN (85) */
+/* USER CODE END */
+
+/** @fn void rtiTimebaseInterrupt(void)
+*   @brief RTI1 Timebase Interrupt Handler
+*
+*   RTI1 timebase interrupt handler 
+*
+*/
+#pragma CODE_STATE(rtiTimebaseInterrupt, 32)
+#pragma INTERRUPT(rtiTimebaseInterrupt, IRQ)
+
+/* SourceId : RTI_SourceId_026 */
+/* DesignId : RTI_DesignId_022 */
+/* Requirements : HL_SR95 */
+void rtiTimebaseInterrupt(void)
+{
+/* USER CODE BEGIN (86) */
+/* USER CODE END */
+
+    rtiREG1->INTFLAG = 0x10000U;
+    rtiNotification(rtiNOTIFICATION_TIMEBASE);
+
+/* USER CODE BEGIN (87) */
+/* USER CODE END */
+}
+
+/* USER CODE BEGIN (88) */
+/* USER CODE END */
+
+/** @fn void rtiOverflow0Interrupt(void)
+*   @brief RTI1 Counter 0 overflow Interrupt Handler
+*
+*   RTI1 counter 0 overflow interrupt handler 
+*
+*/
+#pragma CODE_STATE(rtiOverflow0Interrupt, 32)
+#pragma INTERRUPT(rtiOverflow0Interrupt, IRQ)
+
+/* SourceId : RTI_SourceId_027 */
+/* DesignId : RTI_DesignId_022 */
+/* Requirements : HL_SR95 */
+void rtiOverflow0Interrupt(void)
+{
+/* USER CODE BEGIN (89) */
+/* USER CODE END */
+
+    rtiREG1->INTFLAG = 0x20000U;
+    rtiNotification(rtiNOTIFICATION_COUNTER0);
+
+/* USER CODE BEGIN (90) */
+/* USER CODE END */
+}
+
+/* USER CODE BEGIN (91) */
+/* USER CODE END */
+
+/* USER CODE BEGIN (92) */
+/* USER CODE END */
+
+/** @fn void rtiOverflow1Interrupt(void)
+*   @brief RTI1 Counter 1 overflow Interrupt Handler
+*
+*   RTI1 counter 1 overflow interrupt handler 
+*
+*/
+#pragma CODE_STATE(rtiOverflow1Interrupt, 32)
+#pragma INTERRUPT(rtiOverflow1Interrupt, IRQ)
+
+/* SourceId : RTI_SourceId_028 */
+/* DesignId : RTI_DesignId_022 */
+/* Requirements : HL_SR95 */
+void rtiOverflow1Interrupt(void)
+{
+/* USER CODE BEGIN (93) */
+/* USER CODE END */
+
+    rtiREG1->INTFLAG = 0x40000U;
+    rtiNotification(rtiNOTIFICATION_COUNTER1);
+
+/* USER CODE BEGIN (94) */
+/* USER CODE END */
+}
+
+/* USER CODE BEGIN (95) */
+/* USER CODE END */
 
 

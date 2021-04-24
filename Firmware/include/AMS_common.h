@@ -9,7 +9,7 @@
 #define INCLUDE_AMS_COMMON_H_
 
 // BMS Constants (used in pl455.c)
-#define BMS_TOTALBOARDS					5  		// number of BMS boards
+#define BMS_TOTALBOARDS					1  		// number of BMS boards
 #define BMS_BAUDRATE 					250000  // default baud for BMS boards
 
 // GIO PORT A PIN DEFINITIONS
