@@ -263,11 +263,11 @@ void AMS_readSPI() {
 void AMS_readSCI() {
 	WriteReg(0, 2, 0x02, 1, FRMWRT_ALL_NR); // send sync sample command
 	//WaitRespFrame(AMS_DATA, 195, 0); // 39? bytes data (x5) + packet header (x5) + CRC (2bytes) (x5), 0ms timeout
-	WaitRespFrame(AMS_DATA, 39, 0); // 39? bytes data (x5) + packet header (x5) + CRC (2bytes) (x5), 0ms timeout
+	WaitRespFrame(AMS_DATA, 39*BMS_TOTALBOARDS, 0); // 39? bytes data (x5) + packet header (x5) + CRC (2bytes) (x5), 0ms timeout
 	return;
 }
 
-void getBMSData(uint8 * buffer){
+void getBMSData(uint8 *buffer){
     uint16 i =0;
     for(i=0; i<164;i++){
         buffer[i] = AMS_DATA[i];
