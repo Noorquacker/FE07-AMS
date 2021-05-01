@@ -254,9 +254,9 @@ void BMS_configOversample(){
 }
 
 // 2.2.4
-uint16 BMS_checkFault(uint8 deviceNumber){
+uint16 BMS_checkFault(uint8 device){
 	uint16 faults = 0xFFFF;
-	uint8 checkStatus[4] = {0x81,deviceNumber,0x51,0x00};
+	uint8 checkStatus[4] = {0x81,device,0x51,0x00};
 	uint8 noFaultsMessage[4] = {0x00,0x00,0x00,0x00};
 	uint8 receivedMessage[5] = {0x00,0x00,0x00,0x00};
 
@@ -267,7 +267,7 @@ uint16 BMS_checkFault(uint8 deviceNumber){
 
 	// If Device Status is NOT 0x00000000
 	// Check Fault Summary
-	uint8 checkFaultSummary[4] = {0x81,deviceNumber,0x52,0x01};
+	uint8 checkFaultSummary[4] = {0x81,device,0x52,0x01};
 	BMS_sendMessage(checkFaultSummary,4);
 	if(!BMS_receiveMessage(receivedMessage, 5)){
 		return faults;
