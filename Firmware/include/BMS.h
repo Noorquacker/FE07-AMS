@@ -8,6 +8,7 @@
 #ifndef INCLUDE_BMS_H_
 #define INCLUDE_BMS_H_
 
+// MAKE SURE TO DEFINE BMS_TOTALBOARDS in AMS_common.h (otherwise, define here)
 
 bool BMS_Init();
 uint32 BMS_receiveByte();
@@ -25,11 +26,13 @@ void BMS_disableBottomLowSideRx();
 void BMS_clearFaults();
 void BMS_setSamplingDelay();
 void BMS_setSamplePeriods();
-uint16 BMS_checkFault(uint8 deviceNumber);
+uint16 BMS_checkFault(uint8 device);
 bool BMS_checkAllFaults(uint16 * buffer);
 void BMS_setSingleModuleNumChannels(uint8 device, uint8 numCells, uint8 numAux, bool digitalDie, bool analogDie);
 void BMS_setAllModulesNumChannels(uint8 numCells, uint8 numAux, bool digitalDie, bool analogDie);
 void BMS_setSingleModuleOvervolt(uint8 device,float threshold);
 void BMS_setSingleModuleUndervolt(uint8 device,float threshold);
+void BMS_setAllOvervolt(float threshold);
+void BMS_setAllUndervolt(float threshold);
 
 #endif /* INCLUDE_BMS_H_ */
