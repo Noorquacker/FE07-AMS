@@ -35,5 +35,7 @@ void BMS_setSingleModuleOvervolt(uint8 device,float threshold);
 void BMS_setSingleModuleUndervolt(uint8 device,float threshold);
 void BMS_setAllOvervolt(float threshold);
 void BMS_setAllUndervolt(float threshold);
-
+bool BMS_getBroadcastData(uint8 * buffer, uint16 datasize);
+void BMS_syncSampleAll();
+bool BMS_getAllIndividualData(uint8 * buffer, uint16 datasize);
 #endif /* INCLUDE_BMS_H_ */

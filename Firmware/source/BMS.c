@@ -435,12 +435,18 @@ void BMS_syncSampleAll(){
 // Datasize is the amount of data that is expected from only ONE of the boards
 bool BMS_getAllIndividualData(uint8 * buffer, uint16 datasize){
 	bool success = true;
+	uint8 i = 0;
+	uint8 j = 0;
 	BMS_syncSampleAll();
-	uint8 message[4] = {0x81,BMS_TOTALBOARDS-1,0x02,0x20};
-	BMS_sendMessage(message, 3);
-
-	success &= BMS_receiveMessage(buffer, datasize);
-
+	uint8 tmp[50] = {0};
+	for(i=0;i<BMS_TOTALBOARDS;i++){
+		uint8 message[4] = {0x81,BMS_TOTALBOARDS-(1+i),0x02,0x20};
+		BMS_sendMessage(message, 3);
+		success &= BMS_receiveMessage(tmp, datasize);
+		for(j=0;j<datasize;j++){
+			buffer[(i*datasize)+j] = tmp[j];
+		}
+	}
 
 	return success;
 }
