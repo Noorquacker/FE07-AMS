@@ -13,6 +13,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include "AMS_common.h"
+#include "gio.h"
 #include "sci.h"
 #include "pl455.h"
 #include "BMS.h"
@@ -24,11 +25,30 @@ int RTI_TIMEOUT = 0;
 bool BMS_Init(){
 	bool initSuccess = true;
 	uint16 faults[BMS_TOTALBOARDS] = {0};
+	uint8 i = 0;
+	uint16 timeout = 0;
 
 	sciSetBaudrate(sciREG, BMS_BAUDRATE);
+	for(i=0;i<BMS_TOTALBOARDS;i++){
+		delayms(5); //~5ms
+		BMS_wakeup();
+	}
+
 	BMS_initialConfig();
 	BMS_initAutoAddress();
 	BMS_setAddresses();
+	while(!BMS_checkHeartbeats()){
+		if(timeout > 100){
+			initSuccess = false;
+			return initSuccess;
+		}
+		delayms(5); //~5ms
+		BMS_wakeup();
+		BMS_initialConfig();
+		BMS_initAutoAddress();
+		BMS_setAddresses();
+		timeout++;
+	}
 	initSuccess &= BMS_checkHeartbeats();
 	BMS_disableTopHighSideRx();
 	BMS_disableBottomLowSideRx();
@@ -45,6 +65,13 @@ bool BMS_Init(){
 	return initSuccess;
 }
 
+
+void BMS_wakeup(){
+	// toggle wake signal
+	gioSetBit(gioPORTB, GIOB_BMS_WAKEUP, 0); // assert wake (active low)
+	delayus(10);
+	gioToggleBit(gioPORTB, GIOB_BMS_WAKEUP); // deassert wake
+}
 
 
 // Modification of sciReceiveByte with an added timeout, let's hope it works :sunglasses: :grimacing:
@@ -188,13 +215,6 @@ void BMS_disableTopHighSideRx(){
     uint8 message[5] = {0x92,BMS_TOTALBOARDS-1,0x10,0x10,0x20};
     BMS_sendMessage(message, 5);
 
-//    sciSendByte(sciREG, 0x92);                      // SINGLE DECIVE WRITE W/O RESPONSE (2 BYTES)
-//    sciSendByte(sciREG, BMS_TOTALBOARDS-1);         // DEVICE ADDRESS
-//    sciSendByte(sciREG, 0x10);                      // REGISTER ADDRESS
-//    sciSendByte(sciREG, 0x10);                      // DATA (BAUD RATE 250k)
-//    sciSendByte(sciREG, 0x20);                      // DATA (DISABLE HIGH SIDE)
-//    sciSendByte(sciREG, 0xB5);                      // CRC
-//    sciSendByte(sciREG, 0xFC);                      // CRC
 }
 
 // 1.2.6
@@ -329,7 +349,7 @@ void BMS_setSingleModuleNumChannels(uint8 device, uint8 numCells, uint8 numAux, 
 void BMS_setAllModulesNumChannels(uint8 numCells, uint8 numAux, bool digitalDie, bool analogDie){
 	// Select Number of Cells and Channels on a Single Module
 	// Write to Register 13 - Number of Cell Channels
-	uint8 message[4] = {0xF1,0x0D,numCells};
+	uint8 message[3] = {0xF1,0x0D,numCells};
 	BMS_sendMessage(message, 3);
 
 	uint8 i = 0;
@@ -391,4 +411,36 @@ void BMS_setAllUndervolt(float threshold){
 	return;
 }
 
+// 3.2 Get Data from all boards with a broadcast request.
+// Boards will respond in Descending Order (Board at highest address first, down to address 0)
+// Datasize is the amount of data that is expected from only ONE of the boards
+bool BMS_getBroadcastData(uint8 * buffer, uint16 datasize){
+	uint8 message[3] = {0xE1,0x02,BMS_TOTALBOARDS-1};
+	BMS_sendMessage(message, 3);
 
+	return BMS_receiveMessage(buffer, datasize*BMS_TOTALBOARDS);
+}
+
+
+// 3.3.1 - Send Broadcast Request to All bq76PL455A-Q1 Devices to Sample and Store Results
+void BMS_syncSampleAll(){
+	uint8 message[3] = {0xF1,0x02,0x00};
+	BMS_sendMessage(message, 3);
+
+	return;
+}
+
+// 3.3.2 Get Data from all boards with a individual request.
+// Boards will respond in Descending Order (Board at highest address first, down to address 0)
+// Datasize is the amount of data that is expected from only ONE of the boards
+bool BMS_getAllIndividualData(uint8 * buffer, uint16 datasize){
+	bool success = true;
+	BMS_syncSampleAll();
+	uint8 message[4] = {0x81,BMS_TOTALBOARDS-1,0x02,0x20};
+	BMS_sendMessage(message, 3);
+
+	success &= BMS_receiveMessage(buffer, datasize);
+
+
+	return success;
+}

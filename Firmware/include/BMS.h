@@ -17,6 +17,7 @@ void BMS_getCRCBytes(uint8 * CRC, uint8 * message, uint8 length);
 void BMS_sendMessage(uint8 * message, uint8 length);
 bool BMS_messageIsExpected(uint8 * expected, uint8 * received, uint8 length);
 
+void BMS_wakeup();
 void BMS_initialConfig();
 void BMS_initAutoAddress();
 void BMS_setAddresses();

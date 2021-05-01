@@ -9,8 +9,8 @@
 #define INCLUDE_AMS_COMMON_H_
 
 // BMS Constants (used in BMS.c & pl455.c)
-#define BMS_TOTALBOARDS					2  		// number of BMS boards
-#define BMS_BAUDRATE 					250000  // default baud for BMS boards
+#define BMS_TOTALBOARDS					2  		// number of BMS boards (MAX 16, MIN 1)
+#define BMS_BAUDRATE 					250000  // default baud for BMS boards - DO NOT CHANGE w/o changing BMS functions
 #define BMS_CELL_OVERVOLTAGE_THRESHOLD	4.2		// Overvolt Fault Threshold for Cells
 #define BMS_CELL_UNDERVOLTAGE_THRESHOLD	3.0		// Undervolt Fault Threshold for Cells
 #define BMS_AUX_OVERVOLTAGE_THRESHOLD	4.2		// Overvolt Fault Threshold for AUX Inputs (Temp Sensors)
