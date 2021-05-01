@@ -1,0 +1,18 @@
+BQ76PL455EVM Product Page
+https://www.ti.com/tool/BQ76PL455EVM#supported-products
+
+BQ76PL455EVM User Guide
+https://www.ti.com/lit/ug/sluuba7a/sluuba7a.pdf?ts=1619859436453&ref_url=https%253A%252F%252Fwww.ti.com%252Ftool%252FBQ76PL455EVM
+
+bq76PL455A-Q1 Software Design Reference
+https://www.ti.com/lit/an/slva617a/slva617a.pdf?ts=1619120159432&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FBQ76PL455A
+
+bq76PL455A-Q1 Example Code
+https://www.ti.com/lit/an/slva635/slva635.pdf?ts=1619118366334&ref_url=https%253A%252F%252Fwww.ti.com%252Ftool%252FBQ76PL455EVM
+
+
+
+OTHER:
+
+EM1402 Evaluation Module User Guide (Similar product, but not the same, still useful)
+https://www.ti.com/lit/ug/snou143/snou143.pdf?ts=1619120185573&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FBQ76PL455A

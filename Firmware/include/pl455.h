@@ -29,6 +29,8 @@
 #define FRMWRT_ALL_R	0x60 // general broadcast with response
 #define FRMWRT_ALL_NR	0x70 // general broadcast without response
 
+uint16 CRC16(uint8 *pBuf, int nLen);
+
 // Function Prototypes
 void ResetPL455();
 void WakePL455();
