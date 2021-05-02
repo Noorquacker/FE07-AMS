@@ -101,9 +101,9 @@ int main(void)
 
     sciSetBaudrate(sciREG, BMS_BAUDRATE);
 
-    BMS_Init();
-    uint8 BMS_DATA[55*BMS_TOTALBOARDS];
-    BMS_getBroadcastData(BMS_DATA, 55);
+    bool how = BMS_Init();
+    uint8 BMS_DATA[37*BMS_TOTALBOARDS];
+    BMS_getBroadcastData(BMS_DATA, 37);
 
 //    rtiInit();
 //    vimInit();
@@ -135,7 +135,10 @@ int main(void)
 
     while(1){
         gioToggleBit(hetPORT1,12);
-        BMS_getBroadcastData(BMS_DATA, 55);
+
+//        CommClear();
+//        delayms(5);
+        BMS_getBroadcastData(BMS_DATA, 37);
         delayms(500);
     }
 /* USER CODE END */

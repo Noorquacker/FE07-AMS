@@ -23,13 +23,27 @@
 #include "pl455.h"
 #include "AMS_common.h"
 //#include "datatypes.h"
-
-extern int UART_RX_RDY;
-extern int RTI_TIMEOUT;
+//
+//extern int UART_RX_RDY;
+//extern int RTI_TIMEOUT;
 
 // internal function prototype
 uint16 CRC16(uint8 *pBuf, int nLen);
 
+void CommClear(void)
+{
+    int baudRate;
+    baudRate = sciREG->BRS;
+
+    sciREG->GCR1 &= ~(1U << 7U); // put SCI into reset
+    sciREG->PIO0 &= ~(1U << 2U); // disable transmit function - now a GPIO
+    sciREG->PIO3 &= ~(1U << 2U); // set output to low
+
+    delayus(baudRate * 2); // ~= 1/BAUDRATE/16*(155+1)*1.01
+    sciInit();
+    sciSetBaudrate(sciREG, BMS_BAUDRATE);
+}
+/*
 void CommClear(void)
 {
 	int baudRate;
@@ -246,95 +260,95 @@ int  ReadFrameReq(uint8 bID, uint16 wAddr, uint8 bByteToReturn)
 		return 0;
 
 	return WriteFrame(bID, wAddr, &bReturn, 1, FRMWRT_SGL_R);
-}
+}*/
 
-int  WaitRespFrame(uint8 *pFrame, uint8 bLen, uint32 dwTimeOut)
-{
-	uint16 wCRC = 0, wCRC16;
-	uint8 bBuf[132];
-	uint8 bRxDataLen;
-
-	memset(bBuf, 0, sizeof(bBuf));
-
-	sciEnableNotification(sciREG, SCI_RX_INT);
-	rtiEnableNotification(rtiNOTIFICATION_COMPARE1);
+//int  WaitRespFrame(uint8 *pFrame, uint8 bLen, uint32 dwTimeOut)
+//{
+//	uint16 wCRC = 0, wCRC16;
+//	uint8 bBuf[132];
+//	uint8 bRxDataLen;
+//
+//	memset(bBuf, 0, sizeof(bBuf));
+//
+//	sciEnableNotification(sciREG, SCI_RX_INT);
+//	rtiEnableNotification(rtiNOTIFICATION_COMPARE1);
 	 /* rtiNOTIFICATION_COMPARE0 = 1ms
 	 *  rtiNOTIFICATION_COMPARE1 = 5ms
 	 *  rtiNOTIFICATION_COMPARE2 = 8ms
 	 *  rtiNOTIFICATION_COMPARE3 = 10ms
 	 */
-	sciReceive(sciREG, bLen, bBuf);
-	rtiResetCounter(rtiCOUNTER_BLOCK0);
-	rtiStartCounter(rtiCOUNTER_BLOCK0);
-
-	while(UART_RX_RDY == 0U)
-	{
-		// Check for timeout.
-		if(RTI_TIMEOUT == 1U)
-		{
-			RTI_TIMEOUT = 0;
-			return 0; // timed out
-		}
-	} /* Wait */
-	rtiStopCounter(rtiCOUNTER_BLOCK0);
-
-	UART_RX_RDY = 0;
-	bRxDataLen = bBuf[0];
-
-	delayms(dwTimeOut);
-
-	// rebuild bBuf to have bLen as first byte to use the same CRC function as TX
-//	i = bRxDataLen + 3;
-//	while(--i >= 0)
+//	sciReceive(sciREG, bLen, bBuf);
+//	rtiResetCounter(rtiCOUNTER_BLOCK0);
+//	rtiStartCounter(rtiCOUNTER_BLOCK0);
+//
+//	while(UART_RX_RDY == 0U)
 //	{
-//		bBuf[i + 1] = bBuf[i];
-//	}
-//	bBuf[0] = bRxDataLen;
-
-	wCRC = bBuf[bRxDataLen+2];
-	wCRC |= ((uint16)bBuf[bRxDataLen+3] << 8);
-	wCRC16 = CRC16(bBuf, bRxDataLen+2);
-	if (wCRC != wCRC16)
-		return -1;
-
-	memcpy(pFrame, bBuf, bRxDataLen + 4);
-
-	return bRxDataLen + 1;
-}
-
-// Big endian / Little endian conversion
-uint16  B2SWORD(uint16 wIN)
-{
-	uint16 wOUT = 0;
-
-	wOUT =   wIN & 0x00FF >> 8;
-	wOUT |= (wIN & 0xFF00) >> 8;
-
-	return wOUT;
-}
-
-uint32 B2SDWORD(uint32 dwIN)
-{
-	uint32 dwOUT = 0;
-
-	dwOUT =   dwIN & 0x00FF >> 8;
-	dwOUT |= (dwIN & 0xFF00) >> 8;
-	dwOUT |=  dwIN & 0x00FF >> 8;
-	dwOUT |= (dwIN & 0xFF00) >> 8;
-
-	return dwOUT;
-}
-
-uint32 B2SINT24(uint32 dwIN24)
-{
-	uint32 dwOUT = 0;
-
-	dwOUT =   dwIN24 & 0x00FF >> 8;
-	dwOUT |= (dwIN24 & 0xFF00) >> 8;
-	dwOUT |=  dwIN24 & 0x00FF >> 8;
-
-	return dwOUT;
-}
+//		// Check for timeout.
+//		if(RTI_TIMEOUT == 1U)
+//		{
+//			RTI_TIMEOUT = 0;
+//			return 0; // timed out
+//		}
+//	} /* Wait */
+//	rtiStopCounter(rtiCOUNTER_BLOCK0);
+//
+//	UART_RX_RDY = 0;
+//	bRxDataLen = bBuf[0];
+//
+//	delayms(dwTimeOut);
+//
+//	// rebuild bBuf to have bLen as first byte to use the same CRC function as TX
+////	i = bRxDataLen + 3;
+////	while(--i >= 0)
+////	{
+////		bBuf[i + 1] = bBuf[i];
+////	}
+////	bBuf[0] = bRxDataLen;
+//
+//	wCRC = bBuf[bRxDataLen+2];
+//	wCRC |= ((uint16)bBuf[bRxDataLen+3] << 8);
+//	wCRC16 = CRC16(bBuf, bRxDataLen+2);
+//	if (wCRC != wCRC16)
+//		return -1;
+//
+//	memcpy(pFrame, bBuf, bRxDataLen + 4);
+//
+//	return bRxDataLen + 1;
+//}
+//
+//// Big endian / Little endian conversion
+//uint16  B2SWORD(uint16 wIN)
+//{
+//	uint16 wOUT = 0;
+//
+//	wOUT =   wIN & 0x00FF >> 8;
+//	wOUT |= (wIN & 0xFF00) >> 8;
+//
+//	return wOUT;
+//}
+//
+//uint32 B2SDWORD(uint32 dwIN)
+//{
+//	uint32 dwOUT = 0;
+//
+//	dwOUT =   dwIN & 0x00FF >> 8;
+//	dwOUT |= (dwIN & 0xFF00) >> 8;
+//	dwOUT |=  dwIN & 0x00FF >> 8;
+//	dwOUT |= (dwIN & 0xFF00) >> 8;
+//
+//	return dwOUT;
+//}
+//
+//uint32 B2SINT24(uint32 dwIN24)
+//{
+//	uint32 dwOUT = 0;
+//
+//	dwOUT =   dwIN24 & 0x00FF >> 8;
+//	dwOUT |= (dwIN24 & 0xFF00) >> 8;
+//	dwOUT |=  dwIN24 & 0x00FF >> 8;
+//
+//	return dwOUT;
+//}
 
 // CRC16 for PL455
 // ITU_T polynomial: x^16 + x^15 + x^2 + 1

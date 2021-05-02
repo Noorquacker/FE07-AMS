@@ -18,8 +18,6 @@
 #include "pl455.h"
 #include "BMS.h"
 
-int UART_RX_RDY = 0;
-int RTI_TIMEOUT = 0;
 
 // MAKE SURE TO DEFINE BMS_TOTALBOARDS in AMS_common.h
 bool BMS_Init(){
@@ -35,8 +33,11 @@ bool BMS_Init(){
 	}
 
 	BMS_initialConfig();
+	delayms(5);
 	BMS_initAutoAddress();
+	delayms(5);
 	BMS_setAddresses();
+	delayms(5);
 	while(!BMS_checkHeartbeats()){
 		if(timeout > 100){
 			initSuccess = false;
@@ -44,22 +45,35 @@ bool BMS_Init(){
 		}
 		delayms(5); //~5ms
 		BMS_wakeup();
+		delayms(5);
 		BMS_initialConfig();
+		delayms(5);
 		BMS_initAutoAddress();
+		delayms(5);
 		BMS_setAddresses();
+		delayms(5);
 		timeout++;
 	}
 	initSuccess &= BMS_checkHeartbeats();
+	delayms(5);
 	BMS_disableTopHighSideRx();
+	delayms(5);
 	BMS_disableBottomLowSideRx();
+	delayms(5);
 	BMS_clearFaults();
+	delayms(5);
 	BMS_setSamplingDelay();
+	delayms(5);
 	BMS_setSamplePeriods();
+	delayms(5);
 	initSuccess &= BMS_checkAllFaults(faults);
+	delayms(5);
 	BMS_setAllModulesNumChannels(16,8,1,1);
+	delayms(5);
 	BMS_setAllOvervolt(BMS_CELL_OVERVOLTAGE_THRESHOLD);
+	delayms(5);
 	BMS_setAllUndervolt(BMS_CELL_UNDERVOLTAGE_THRESHOLD);
-
+	delayms(5);
 	initSuccess &= BMS_checkAllFaults(faults);
 
 	return initSuccess;
@@ -132,12 +146,14 @@ void BMS_sendMessage(uint8 * message, uint8 length){
 
 bool BMS_messageIsExpected(uint8 * expected, uint8 * received, uint8 length){
     int i = 0;
-    bool messageIsCorrect;
+    bool messageIsCorrect = 1;
+    uint32 x = 0;
     for(i=0;i<length;i++){
-        received[i] = BMS_receiveByte();
-        if(received[i] == 0xFFFFFFFF){
+        x = BMS_receiveByte();
+        if(x == 0xFFFFFFFF){
             return 0; // TIMEOUT
         }
+        received[i] = x & 0xFF;
         messageIsCorrect &= (received[i] == expected[i]);
     }
 
@@ -160,6 +176,7 @@ void BMS_initAutoAddress(){
     uint8 messageOne[3] = {0xF1,0x0E,0x10};
     BMS_sendMessage(messageOne, 3);
 
+    delayms(5);
     // Configure the bq76PL455A-Q1 device to enter auto-address mode
     uint8 messageTwo[3] = {0xF1,0x0C,0x08};
     BMS_sendMessage(messageTwo, 3);
@@ -176,6 +193,7 @@ void BMS_setAddresses(){
 
 	for(i=0; i<BMS_TOTALBOARDS;i++){
 		message[2] = i;
+		delayms(5);
 		BMS_sendMessage(message,3);
 	}
 
@@ -192,19 +210,30 @@ bool BMS_checkHeartbeats(){
 	uint8 expectedData[2] = {0x00,0x00};
 	uint8 expectedCRC[2] = {0x00,0x00};
 
+//	BMS_sendMessage(message,4);
+//
+//	delayms(5);
+//	message[1] = 1;
+//	BMS_sendMessage(message,4);
+//
+//	message[1] = 0;
+//	delayms(5);
+//	BMS_sendMessage(message,4);
+//	delayms(5);
     for(i=0; i<BMS_TOTALBOARDS;i++){
         message[1] = i;
-        BMS_sendMessage(message,4);
+        delayms(5);
         expectedData[1] = i;
         BMS_getCRCBytes(expectedCRC, expectedData, 2);
         expectedMessage[0] = expectedData[0];
         expectedMessage[1] = expectedData[1];
-        expectedMessage[2] = expectedCRC[0];
-        expectedMessage[3] = expectedCRC[1];
+        expectedMessage[2] = expectedCRC[1];
+        expectedMessage[3] = expectedCRC[0];
 
+        BMS_sendMessage(message,4);
         boardsAreAlive &= BMS_messageIsExpected(expectedMessage, receivedMessage, 4);
     }
-
+    delayms(5);
     return boardsAreAlive;
 }
 
@@ -416,9 +445,13 @@ void BMS_setAllUndervolt(float threshold){
 // Datasize is the amount of data that is expected from only ONE of the boards
 bool BMS_getBroadcastData(uint8 * buffer, uint16 datasize){
 	uint8 message[3] = {0xE1,0x02,BMS_TOTALBOARDS-1};
-	BMS_sendMessage(message, 3);
-
-	return BMS_receiveMessage(buffer, datasize*BMS_TOTALBOARDS);
+	uint8 crc[2] = {0,0};
+    BMS_getCRCBytes(crc, message,3);
+    uint8 Tmessage[5] = {message[0],message[1],message[2],crc[1],crc[0]};
+//	BMS_sendMessage(message, 3);
+	sciSend(sciREG, 5, Tmessage);
+	sciReceive(sciREG, datasize, buffer);
+	return true;//BMS_receiveMessage(buffer, datasize*BMS_TOTALBOARDS);
 }
 
 
