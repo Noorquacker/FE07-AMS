@@ -18,6 +18,10 @@
 #include "AMS_common.h"
 
 
+uint16 cellVoltages[BMS_TOTALBOARDS][16];
+uint16 tempData[BMS_TOTALBOARDS][8];
+uint16 BMS_InternalTemps[BMS_TOTALBOARDS][2];
+
 float64 imdPeriod = 0;
 uint32 imdDutyCycle = 0;
 
@@ -31,10 +35,10 @@ uint16 currentVehicleVoltage = 0;
 uint16 currentBatteryVoltage = 0;
 
 uint16 stateOfCharge = 0;
-uint16 minCellTemperature_Scaled = 0;
+uint16 minCellTemperature_Scaled = 0xFFFF;
 uint16 maxCellTemperature_Scaled = 0;
 
-uint16 minCellVoltage_Scaled = 0;
+uint16 minCellVoltage_Scaled = 0xFFFF;
 uint16 maxCellVoltage_Scaled = 0;
 uint16 vehicleVoltage_Scaled = 0;
 uint16 batteryVoltage_Scaled = 0;
@@ -206,7 +210,7 @@ void AMS_readHET(){
 
 void AMS_canTX_Car(){
 	uint8 tx_data1[8] = {0};
-	uint8 tx_data2[8] = {0};
+	uint8 tx_data2[8] = {0,0,0,0,0,0,0,0};
 	uint8 tx_data3[8] = {0};
 
 	tx_data1[7] = stateOfCharge & 0xFF;
@@ -240,23 +244,88 @@ void AMS_canTX_Car(){
 	tx_data3[1] = packCurrent_Scaled & 0xFF;
 	tx_data3[0] = packCurrent_Scaled >> 8;
 
+//	delayms(1000);
     canTransmit(canREG1, CANBOX_AMS_STATUS, tx_data1);
+//    delayms(1000);
     canTransmit(canREG1, CANBOX_AMS_VOLTS, tx_data2);
+//    delayms(1000);
     canTransmit(canREG1, CANBOX_AMS_AMPS, tx_data3);
+//    delayms(1000);
 
     return;
+}
+
+void AMS_canTx_BMSData(){
+    uint8 j = 0;
+    uint8 i = 0;
+    uint8 k = 0;
+
+    uint8 message[7][8];// = {0,0,0,0,0,0,0,0};
+    for(j=0;j<BMS_TOTALBOARDS;j++){
+        //EVEN
+        for(i=0;i<2;i++){
+            message[i*2][7] = (j*7) + (i*2);
+            for(k=0;k<3;k++){
+                message[i*2][(k*2)] = (cellVoltages[j][k+(7*i)])&0xFF;
+                message[i*2][(k*2)+1] = ((cellVoltages[j][k+(7*i)])>>8)&0xFF;
+            }
+            message[i*2][6] = ((cellVoltages[j][(7*(i+1))-4])&0xFF);
+        }
+        //ODD
+        for(i=0;i<2;i++){
+            message[(i*2)+1][7] = (j*7) + (i*2) + 1;
+            message[(i*2)+1][0] = (((cellVoltages[j][(7*(i+1))-4])>>8)&0xFF);
+            for(k=0;k<3;k++){
+                message[(i*2)+1][(k*2)+1] = (cellVoltages[j][k+4+(7*i)])&0xFF;
+                message[(i*2)+1][(k*2)+2] = ((cellVoltages[j][k+4+(7*i)])>>8)&0xFF;
+            }
+        }
+
+        //Hybrid message
+        message[4][7] = (j*7) + 4;
+        for(k=0;k<2;k++){
+            message[4][(k*2)] = (cellVoltages[j][k+14])&0xFF;
+            message[4][(k*2)+1] = ((cellVoltages[j][k+14])>>8)&0xFF;
+        }
+        message[4][4] = (tempData[j][0])&0xFF;
+        message[4][5] = ((tempData[j][0])>>8)&0xFF;
+        message[4][6] = (tempData[j][1])&0xFF;
+
+        // Send Rest of Temps
+        message[5][7] = (j*7) + 5;
+        message[5][0] = ((tempData[j][1])>>8)&0xFF;
+        for(k=0;k<3;k++){
+            message[5][(k*2)+1] = (tempData[j][k+2])&0xFF;
+            message[5][(k*2)+2] = ((tempData[j][k+2])>>8)&0xFF;
+        }
+
+        message[6][7] = (j*7) + 6;
+        message[6][6] = 0;
+        for(k=0;k<3;k++){
+            message[6][(k*2)] = (tempData[j][k+5])&0xFF;
+            message[6][(k*2)+1] = ((tempData[j][k+5])>>8)&0xFF;
+        }
+
+        for(i=0;i<7;i++){
+            canTransmit(canREG1, CANBOX_BMS_DATA, message[i]);
+        }
+    }
 }
 
 void AMS_readSPI() {
 	uint16 spiBatteryRX[1] = { 0 };
 	uint16 spiVehicleRX[1] = { 0 };
+	uint32 tmp = 0;
 
 	spiReceiveData(spiREG3, &dataconfig00_t, 1, spiBatteryRX);
 	spiReceiveData(spiREG1, &dataconfig00_t, 1, spiVehicleRX);
 
 	currentVehicleVoltage = spiVehicleRX[0];
 	currentBatteryVoltage = spiBatteryRX[0];
-
+	tmp = currentVehicleVoltage*4000;
+	vehicleVoltage_Scaled = (tmp>>12)&0xFFFF;
+    tmp = currentBatteryVoltage*4000;
+	batteryVoltage_Scaled = (tmp>>12)&0xFFFF;
 	return;
 }
 
@@ -273,6 +342,52 @@ void getBMSData(uint8 *buffer){
         buffer[i] = AMS_DATA[i];
     }
     return;
+}
+
+
+
+void AMS_parseBMSData(uint8 *buffer, uint8 numCells, uint8 numAux, bool digitalDie, bool analogDie){
+    uint8 i = 0;
+    uint8 j = 0;
+    uint8 n = 0;
+    uint16 t = 0;
+    minCellVoltage_Scaled = 0xFFFF;
+    maxCellVoltage_Scaled = 0;
+    minCellTemperature_Scaled = 0xFFFF;
+    maxCellTemperature_Scaled = 0;
+    //for(j=BMS_TOTALBOARDS;j>0;j--){
+     for(j=0;j<BMS_TOTALBOARDS;j++){
+        for(i=0;i<numCells;i++){
+            t = ((buffer[(j*55)+(1+(i*2))])&0xFF)<<8 | ((buffer[(j*55)+((i*2)+2)])&0xFF);
+            t = (uint16)((((float)t)/13123)*10000);
+            cellVoltages[BMS_TOTALBOARDS-1-j][i] = t;
+            if(t<minCellVoltage_Scaled){
+                minCellVoltage_Scaled = t;
+            }
+            if(t>maxCellVoltage_Scaled){
+                maxCellVoltage_Scaled = t;
+            }
+        }
+        for(i=0;i<numAux;i++){
+            t = ((buffer[(j*55)+(1+numCells+(i*2))])&0xFF)<<8 | ((buffer[(j*55)+(numCells+((i*2)+2))])&0xFF);
+            tempData[BMS_TOTALBOARDS-1-j][i] = (uint16)((((float)t)/13123)*10000);
+            if(t<minCellTemperature_Scaled){
+                minCellTemperature_Scaled = t;
+            }
+            if(t>maxCellTemperature_Scaled){
+                maxCellTemperature_Scaled = t;
+            }
+        }
+        if(digitalDie){
+            t = ((buffer[(j*55)+(1+numCells+numAux+(i*2))])&0xFF)<<8 | ((buffer[(j*55)+(numCells+numAux+((i*2)+2))])&0xFF);
+            BMS_InternalTemps[BMS_TOTALBOARDS-1-j][0] = tempData[j][i] = (uint16)((((float)t)/13123)*10000);
+            n=1;
+        }
+        if(analogDie){
+            t = ((buffer[(j*55)+(1+n+numCells+numAux+(i*2))])&0xFF)<<8 | ((buffer[(j*55)+(n+numCells+numAux+((i*2)+2))])&0xFF);
+            BMS_InternalTemps[BMS_TOTALBOARDS-1-j][1] = (uint16)((((float)t)/13123)*10000);//(uint16)((((float)(buffer[1+n+numAux+numCells+(i*2)]<<8 | buffer[n+numAux+numCells*((i*2)+2)]))/13107)*10000);
+        }
+    }
 }
 
 void AMS_checkPreContactorState() {

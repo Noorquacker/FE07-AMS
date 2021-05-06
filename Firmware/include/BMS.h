@@ -9,6 +9,7 @@
 #define INCLUDE_BMS_H_
 
 // MAKE SURE TO DEFINE BMS_TOTALBOARDS in AMS_common.h (otherwise, define here)
+void BMS_configureGPIO();
 
 bool BMS_Init();
 uint32 BMS_receiveByte();

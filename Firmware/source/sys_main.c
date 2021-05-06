@@ -102,13 +102,14 @@ int main(void)
     sciSetBaudrate(sciREG, BMS_BAUDRATE);
 
     bool how = BMS_Init();
-    uint8 BMS_DATA[37*BMS_TOTALBOARDS];
-    BMS_getBroadcastData(BMS_DATA, 37);
-
+    uint8 BMS_DATA[55*BMS_TOTALBOARDS] = {0};
+//    BMS_getBroadcastData(BMS_DATA, 55);
+    BMS_getAllIndividualData(BMS_DATA,55);
+    AMS_parseBMSData(BMS_DATA,16,8,1,1);
 //    rtiInit();
 //    vimInit();
 //
-//    _enable_IRQ();
+    _enable_IRQ();
 //
 //    WakePL455();
 //
@@ -138,8 +139,12 @@ int main(void)
 
 //        CommClear();
 //        delayms(5);
-        BMS_getBroadcastData(BMS_DATA, 37);
-        delayms(500);
+        AMS_readSPI();
+        BMS_getAllIndividualData(BMS_DATA,55);
+        AMS_parseBMSData(BMS_DATA,16,8,1,1);
+        AMS_canTX_Car();
+        AMS_canTx_BMSData();
+        delayms(1000);
     }
 /* USER CODE END */
 

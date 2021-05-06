@@ -30,6 +30,9 @@ void AMS_sendBMSWakeup(void);
 uint16 getDelta();
 void AMS_start_HV(void);
 void AMS_readADC();
-
+void AMS_readSPI();
+void AMS_canTX_Car();
+void AMS_canTx_BMSData();
+void AMS_parseBMSData(uint8 *buffer, uint8 numCells, uint8 numAux, bool digitalDie, bool analogDie);
 
 #endif /* FE_AMS_H_ */

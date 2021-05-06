@@ -57,9 +57,10 @@
 #define HET1_POSITIVE_CONTACT_CTRL 		20
 
 // CAR CAN Message Boxes	    		NUMBER  TX/RX
-#define CANBOX_AMS_STATUS       		1U      //RX
-#define CANBOX_AMS_VOLTS        		2U      //RX
-#define CANBOX_AMS_AMPS         		3U      //RX
+#define CANBOX_AMS_STATUS       		1U      //TX
+#define CANBOX_AMS_VOLTS        		2U      //TX
+#define CANBOX_AMS_AMPS         		3U      //TX
+#define CANBOX_BMS_DATA                 4U      //TX
 
 
 #define FAULT_CELL_OVR_VOLT				1<<0
