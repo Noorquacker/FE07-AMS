@@ -282,6 +282,7 @@ void BMS_setSamplingDelay(){
 	for(i=0;i<BMS_TOTALBOARDS;i++){
 		message[1] = i;
 		BMS_sendMessage(message,4);
+	    delayus(500);
 	}
 	return;
 }
@@ -530,7 +531,7 @@ bool BMS_getAllIndividualData(uint8 * buffer, uint16 datasize){
 	BMS_syncSampleAll();
 	uint8 tmp[55] = {0};
 	uint8 tmp2[1] = {0};
-    sciReceive(sciREG,1,tmp2);
+	BMS_receiveByte(); //sciReceive(sciREG,1,tmp2);
     uint8 message[4] = {0x81,0x00,0x02,0x20};
 //    uint8 message[9] = {0x96,0x00,0x02,0x00,0xFF,0xFF,0x0F,0xC0,0x00};
 
@@ -546,8 +547,8 @@ bool BMS_getAllIndividualData(uint8 * buffer, uint16 datasize){
 	}
 
 	delayus(2500);
-    BMS_sendMessage(message, 4);
-    BMS_receiveMessage(tmp, datasize);
+//    BMS_sendMessage(message, 4);
+//    BMS_receiveMessage(tmp, datasize);
 
 
 

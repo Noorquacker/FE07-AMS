@@ -15,6 +15,7 @@
 #include "pl455.h"
 #include "sci.h"
 #include "spi.h"
+#include "FE_AMS.h"
 #include "AMS_common.h"
 
 
@@ -85,12 +86,13 @@ spiDAT1_t dataconfig00_t = {TRUE, TRUE, SPI_FMT_0, 0xFE};
 //}
 
 uint16 getDelta() {
+    AMS_readSPI();
     uint16 x = currentBatteryVoltage - currentVehicleVoltage;
     x = x*(-1);
     return x;
 }
 
-void AMS_start_HV(void){
+void AMS_startHV(void){
 //    dataConfigFnct();
     uint16 x = getDelta();
     // Engage Negative Contactor
@@ -196,16 +198,16 @@ void AMS_readGIO() {
 }
 
 void AMS_readHET(){
-	hetSIGNAL_t imd_data[1];
-
-	scOutsideSense = gioGetBit(hetPORT1, HET1_SC_OUTSIDE_SENSE);
-
+//	hetSIGNAL_t imd_data[1];
+//
+//	scOutsideSense = gioGetBit(hetPORT1, HET1_SC_OUTSIDE_SENSE);
+//
 
 	// READ IMD PWM
-	capGetSignal(hetRAM1, cap0, &imd_data[0]);
-
-	imdDutyCycle = imd_data[0].duty;
-	imdPeriod = imd_data[0].period;
+//	capGetSignal(hetRAM1, cap0, &imd_data[0]);
+//
+//	imdDutyCycle = imd_data[0].duty;
+//	imdPeriod = imd_data[0].period;
 }
 
 void AMS_canTX_Car(){
@@ -307,7 +309,11 @@ void AMS_canTx_BMSData(){
         }
 
         for(i=0;i<7;i++){
-            canTransmit(canREG1, CANBOX_BMS_DATA, message[i]);
+            uint8 tmp[8] = {0};
+            for(k=0;k<8;k++){
+                tmp[k] = message[i][k];
+            }
+            canTransmit(canREG1, CANBOX_BMS_DATA, tmp);
         }
     }
 }

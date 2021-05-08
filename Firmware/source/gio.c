@@ -539,8 +539,6 @@ void gioHighLevelInterrupt(void)
     gioToggleBit(hetPORT1, 14);
 
     if(gioGetBit(gioPORTB, 1) != 1){
-
-        AMS_start_HV();
     }
 /* USER CODE END */
     

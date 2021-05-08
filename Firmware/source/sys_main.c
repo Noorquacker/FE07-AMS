@@ -135,15 +135,39 @@ int main(void)
         dataconfig1_t.CSNR    = 0xFE;*/
 
     while(1){
-        gioToggleBit(hetPORT1,12);
+        //gioToggleBit(hetPORT1,12);
 
 //        CommClear();
 //        delayms(5);
-        AMS_readSPI();
-        BMS_getAllIndividualData(BMS_DATA,55);
-        AMS_parseBMSData(BMS_DATA,16,8,1,1);
-        AMS_canTX_Car();
-        AMS_canTx_BMSData();
+        gioSetBit(hetPORT1,12,0);
+        gioSetBit(hetPORT1,12,1);
+        AMS_readSPI();//1
+        gioSetBit(hetPORT1,12,0);
+        gioSetBit(hetPORT1,12,1);
+        AMS_readADC();//2
+        gioSetBit(hetPORT1,12,0);
+        gioSetBit(hetPORT1,12,1);
+        AMS_readGIO();//3
+//        gioSetBit(hetPORT1,14,0);
+//        gioSetBit(hetPORT1,14,1);
+//        AMS_readHET();
+        gioSetBit(hetPORT1,12,0);
+        gioSetBit(hetPORT1,12,1);
+      //  AMS_startHV();//4
+        gioSetBit(hetPORT1,12,0);
+        gioSetBit(hetPORT1,12,1);
+        BMS_getAllIndividualData(BMS_DATA,55);//5
+        gioSetBit(hetPORT1,12,0);
+        gioSetBit(hetPORT1,12,1);
+        AMS_parseBMSData(BMS_DATA,16,8,1,1);//6
+        gioSetBit(hetPORT1,12,0);
+        gioSetBit(hetPORT1,12,1);
+        AMS_canTX_Car();//7
+        gioSetBit(hetPORT1,12,0);
+        gioSetBit(hetPORT1,12,1);
+      //  AMS_canTx_BMSData();//8
+        gioSetBit(hetPORT1,12,0);
+        gioSetBit(hetPORT1,HET1_NEGATIVE_CONTACT_CTRL,0);
         delayms(1000);
     }
 /* USER CODE END */
