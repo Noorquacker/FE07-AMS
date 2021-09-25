@@ -1,0 +1,86 @@
+@startuml
+
+[*] --> Boot: Entry Point
+
+state Boot {
+	Heartbeat: Send Heartbeat to Car CAN
+	Heartbeat --> Wakeup
+	Wakeup: Send BMS Wakeup
+	Wakeup --> Init
+	Init: Initialize BMSs
+	Init --> CheckIMDFault
+	CheckIMDFault --> CheckContactors
+	CheckContactors --> CheckFault
+}
+
+Boot --> Idle
+Boot --> AMSFault
+
+state Idle {
+	CheckCarVoltages --> CheckCurrent
+	CheckCurrent --> CheckTemps
+	CheckTemps --> CheckCellVoltages
+	CheckCellVoltages --> CheckFaults
+	CheckFaults --> TransmitData
+}
+
+Idle --> Idle: Wait until HV started
+Idle --> HVStart
+Idle --> AMSFault
+
+state HVStart {
+	NegContactorOn: dsadasd
+	NegContactorOn --> NegContactorOn: Wait until neg sense
+	NegContactorOn --> PreContactorOn
+	PreContactorOn --> Monitor
+	Monitor: Monitor Vvehicle - Vcar, time (possible fault)
+	Monitor --> PosContactorOn
+	PosContactorOn --> PosContactorOn: Wait until pos sense
+	PosContactorOn --> PreContactorOff
+	PreContactorOff --> LogicCheck
+	LogicCheck: Check Digital Logic
+}
+
+HVStart --> HVRun
+
+state HVRun {
+	MonitorVoltages --> MonitorCurrent
+	MonitorCurrent --> MonitorCellTemps
+	MonitorCellTemps --> MonitorCellVoltages
+	MonitorCellVoltages --> CheckContactorLogic
+	CheckContactorLogic --> Transmit_Data
+
+}
+HVRun --> SCFault
+HVRun --> HVStop
+HVRun --> AMSFault
+
+
+state HVStop {
+	ReceiveStopMsg --> PosContactorOff
+	PosContactorOff --> PosContactorOff: Wait for pos sense
+	PosContactorOff --> NegContactorOff
+	NegContactorOff --> NegContactorOff: Wait for neg sense
+
+}
+
+HVStop --> Idle
+
+state SCFault {
+	[*] --> HV_Stop
+	HV_Stop: Redirect to HVStop
+	HV_Stop --> HVStop
+	state a <<choice>>
+	CheckAMS --> a: Is SC_SENSE=1?
+	a --> CheckAMS: No
+	a --> Exit: Yes
+}
+
+HVStop --> CheckAMS: Come back if directed by SCFault
+
+state AMSFault {
+	TODO: "Until Leave Fault State"
+	TODO --> SendError
+}
+
+@enduml

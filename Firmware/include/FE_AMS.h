@@ -30,6 +30,7 @@ void AMS_sendBMSWakeup(void);
 uint16 getDelta();
 void AMS_startHV(void);
 void AMS_readADC();
+void AMS_readGIO();
 void AMS_readSPI();
 void AMS_canTX_Car();
 void AMS_canTx_BMSData();
