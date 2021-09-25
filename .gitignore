@@ -8,3 +8,8 @@
 *.lck
 *.sch.lck
 *.brd.lck
+Firmware/Debug/
+Firmware/Debug__GNU/
+Firmware/.cache/
+Firmware/.settings/
+Firmware/.gitignore

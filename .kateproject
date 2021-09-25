@@ -1,0 +1,19 @@
+{
+	"name": "FE07-AMS",
+	"files": [ {"git": 1 } ],
+	"lspclient": {
+		"servers": {
+			"c": {
+				"command": ["clangd", "-log=error", "--background-index", "--compile-commands-dir", "/home/noorquacker/Documents/FormulaE/FE07-AMS/Firmware"],
+				"commandDebug": ["clangd", "-log=verbose", "--background-index"],
+				"url": "https://clang.llvm.org/extra/clangd/",
+				"highlightingModeRegex": "^(C|ANSI C89|Objective-C)$"
+			}
+        }
+	},
+	"build": {
+		"directory": "Firmware/Debug",
+		"build": "gmake",
+		"clean": "gmake clean"
+	}
+}
