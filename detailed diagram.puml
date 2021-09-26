@@ -1,0 +1,43 @@
+@startuml
+
+[*] --> Boot: Entry Point
+
+state Boot {
+	[*] --> BootInit
+	BootInit: Initialize various TI things (gio, spi, etc)
+	BootInit --> sciSetBaudrate
+	sciSetBaudrate: For BMS communication
+	sciSetBaudrate --> BMSInit
+	state BMSInit {
+		[*] --> Wake
+		Wake --> Wake: Loop for every board
+		Wake: Assert Wake bit to wake up bq76 BMS boards
+		Wake --> InitialConfig
+		InitialConfig: (1.2.1) Send 0xF21010E0 to all boards
+		InitialConfig --> StartAutoAddress
+		StartAutoAddress: (1.2.2) Tell BMSs to use auto addressing, then enter the auto-address mode
+		StartAutoAddress --> SetAutoAddress
+		SetAutoAddress: (1.2.3) Write the address to the Device Address Register
+		SetAutoAddress --> SetAutoAddress: Loop for all boards
+		SetAutoAddress --> CheckHeartbeats
+		CheckHeartbeats: (1.2.4) Checks to see if all BMSs respond with a heartbeat message (with proper CRC of course). The final check to make sure all boards are alive before doing anything fancy
+		CheckHeartbeats --> Wake: RESTART if failed
+		CheckHeartbeats --> DisableTopHighRX
+		DisableTopHighRX: (1.2.5) Make sure the top-most board doesn't try receiving on a floating port
+		DisableTopHighRX --> DisableBottomLowRX
+		DisableBottomLowRX: (1.2.6) Same as DisableTopHighRX but for bottom-most board
+		DisableBottomLowRX --> ConfigGPIO
+		ConfigGPIO: (5.2) Set all GPIO as inputs
+		ConfigGPIO --> SetSampleDelay
+		SetSampleDelay: (2.2.1) UNKNOWN: Check PDF
+		SetSampleDelay --> SetSamplePeriod
+		SetSamplePeriod: (2.2.2) UNKNOWN: Check PDF
+		SetSamplePeriod --> CheckBMSFaults
+		CheckBMSFaults: (2.2.4) Checks BMS boards for any faults
+		CheckBMSFaults --> SetChannels
+		SetChannels: (2.2.5.2) Tell BMSs how many channels (16) to use (CHECK MORE DOCUMENTATION)
+		ClearFaults: (1.2.7) Clear all faults from the individual BMS boards
+	}
+}
+
+@enduml
